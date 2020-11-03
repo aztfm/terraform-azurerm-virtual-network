@@ -3,8 +3,12 @@ name: Testing module
 on:
   push:
     branches: [main]
-  pull_request:
-    branches: [main]
+    paths-ignore:
+      - 'examples/**'
+      - 'LICENSE'
+      - '**.md'
+  # pull_request:
+  #   branches: [main]
 
 jobs:
   build:
