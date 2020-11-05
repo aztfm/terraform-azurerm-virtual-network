@@ -1,10 +1,10 @@
-## 1.1.0 (October 05, 2020)
+## 1.1.0 (November 05, 2020)
 
 FEATURES:
 
 * **New Parameter:** `ddos_protection_plan_id`
 
-## 1.0.0 (October 03, 2020)
+## 1.0.0 (November 03, 2020)
 
 FEATURES:
 
