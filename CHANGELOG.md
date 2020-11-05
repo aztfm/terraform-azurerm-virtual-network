@@ -8,4 +8,6 @@ FEATURES:
 * **New Parameter:** `address_space`
 * **New Parameter:** `dns_servers`
 * **New Parameter:** `subnets`
+* **New Parameter:** `subnets.name`
+* **New Parameter:** `subnets.address_prefix`
 * **New Parameter:** `tags`
