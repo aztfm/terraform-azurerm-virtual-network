@@ -19,6 +19,11 @@ variable dns_servers {
   default     = []
   description = "List of IP addresses of DNS servers."
 }
+variable ddos_protection_plan_id {
+  type        = string
+  default     = null
+  description = "The ID of DDoS Protection Plan."
+}
 variable subnets {
   type        = list(map(string))
   default     = []
