@@ -26,7 +26,7 @@ output dns_servers {
   value       = azurerm_virtual_network.vnet.dns_servers.*
   description = "The list of DNS servers used by the virtual network."
 }
-output ddos_plan {
+output ddos_protection_plan {
   value       = azurerm_virtual_network.vnet.ddos_protection_plan
   description = "Block containing configuration of ddos protection plan."
 }
