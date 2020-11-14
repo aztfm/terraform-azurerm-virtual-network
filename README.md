@@ -21,7 +21,7 @@ The following parameters are supported:
 | address\_space             | The address space that is used in the virtual network. More than one address space can be provisioned. |   `list(string)`    |   n/a   |   yes    |
 | dns\_servers               | List of IP addresses of DNS servers.                                                                   |   `list(string)`    |  `[]`   |    no    |
 | ddos\_protection\_plan\_id | The ID of DDoS Protection Plan.                                                                        |      `string`       | `null`  |    no    |
-| subnets                    | List containing the blocks for the configuration of the subnets.                                       | `list(map(string))` |  `[]`   |    no    |
+| subnets                    | List of objects that represent the configuration of each subnet.                                       | `list(map(string))` |  `[]`   |    no    |
 | tags                       | A mapping of tags to assign to the resource.                                                           |    `map(string)`    |  `{}`   |    no    |
 
 ##

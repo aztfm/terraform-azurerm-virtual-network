@@ -27,7 +27,7 @@ variable ddos_protection_plan_id {
 variable subnets {
   type        = list(map(string))
   default     = []
-  description = "List containing the blocks for the configuration of the subnets."
+  description = "List of objects that represent the configuration of each subnet."
   # subnets = [{ name = "", address_prefix = "" }]
 }
 variable tags {
