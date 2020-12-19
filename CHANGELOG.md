@@ -1,3 +1,10 @@
+## 1.1.1 (December 19, 2020)
+
+BUG FIXES:
+
+* **Output `dns_servers`:** The wrong parameter output.
+* **Output `tags`:** The wrong parameter output.
+
 ## 1.1.0 (November 05, 2020)
 
 FEATURES:
