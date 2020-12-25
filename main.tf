@@ -22,4 +22,5 @@ resource "azurerm_subnet" "vnet" {
   resource_group_name  = azurerm_virtual_network.vnet.resource_group_name
   virtual_network_name = azurerm_virtual_network.vnet.name
   address_prefixes     = each.value.address_prefix
+  service_endpoints    = each.value.service_endpoints
 }
