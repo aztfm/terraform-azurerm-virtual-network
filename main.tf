@@ -23,3 +23,9 @@ resource "azurerm_subnet" "vnet" {
   virtual_network_name = azurerm_virtual_network.vnet.name
   address_prefixes     = [each.value.address_prefix]
 }
+
+resource "azurerm_subnet_network_security_group_association" "vnet" {
+  for_each                  = { for subnet in var.subnets : subnet.name => subnet if subnet.network_security_group_id != null }
+  subnet_id                 = azurerm_subnet.vnet[each.value.name].id
+  network_security_group_id = each.value.network_security_group_id
+}
