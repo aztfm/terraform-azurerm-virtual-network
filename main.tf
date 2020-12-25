@@ -23,3 +23,9 @@ resource "azurerm_subnet" "vnet" {
   virtual_network_name = azurerm_virtual_network.vnet.name
   address_prefixes     = [each.value.address_prefix]
 }
+
+resource "azurerm_subnet_route_table_association" "vnet" {
+  for_each       = { for subnet in var.subnets : subnet.name => subnet if subnet.route_table_id != null }
+  subnet_id      = azurerm_subnet.vnet[each.value.name].id
+  route_table_id = each.value.route_table_id
+}
