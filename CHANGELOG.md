@@ -1,3 +1,9 @@
+## 1.2.0 (Unreleased)
+
+FEATURES:
+
+* **New Parameter:** `subnets.service_endpoints`
+
 ## 1.1.1 (December 19, 2020)
 
 BUG FIXES:

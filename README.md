@@ -24,13 +24,13 @@ The following parameters are supported:
 | subnets                    | List of objects that represent the configuration of each subnet.                                       | `list(map(string))` |  `[]`   |    no    |
 | tags                       | A mapping of tags to assign to the resource.                                                           |    `map(string)`    |  `{}`   |    no    |
 
-##
-The subnets supports the following:
+The `subnets` supports the following:
 
-| Name            | Description                               |   Type   | Default | Required |
-| --------------- | ----------------------------------------- | :------: | :-----: | :------: |
-| name            | The name of the subnet.                   | `string` |   n/a   |   yes    |
-| address\_prefix | The address prefix to use for the subnet. | `string` |   n/a   |   yes    |
+| Name               | Description                                                                                                                                                                                                                                                                                                    |   Type   | Default | Required |
+| ------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :------: | :-----: | :------: |
+| name               | The name of the subnet.                                                                                                                                                                                                                                                                                        | `string` |   n/a   |   yes    |
+| address\_prefix    | The address prefix to use for the subnet.                                                                                                                                                                                                                                                                      | `string` |   n/a   |   yes    |
+| service\_endpoints | The list of Service endpoints to associate with the subnet. Possible values include: `Microsoft.AzureActiveDirectory`, `Microsoft.AzureCosmosDB`, `Microsoft.ContainerRegistry`, `Microsoft.EventHub`, `Microsoft.KeyVault`, `Microsoft.ServiceBus`, `Microsoft.Sql`, `Microsoft.Storage` and `Microsoft.Web`. | `string` | `null`  |    no    |
 
 ## Outputs
 
