@@ -13,6 +13,13 @@ resource "azurerm_virtual_network" "vnet" {
     }
   }
 
+  lifecycle {
+    ignore_changes = [
+      bgp_community,
+      vm_protection_enabled
+    ]
+  }
+
   tags = var.tags
 }
 
@@ -23,4 +30,13 @@ resource "azurerm_subnet" "vnet" {
   virtual_network_name = azurerm_virtual_network.vnet.name
   address_prefixes     = [each.value.address_prefix]
   service_endpoints    = lookup(each.value, "service_endpoints", "") == "" ? null : split(",", each.value.service_endpoints)
+
+  lifecycle {
+    ignore_changes = [
+      delegation,
+      enforce_private_link_endpoint_network_policies,
+      enforce_private_link_service_network_policies,
+      service_endpoint_policy_ids
+    ]
+  }
 }
