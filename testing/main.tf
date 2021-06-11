@@ -10,7 +10,7 @@ resource "azurerm_network_ddos_protection_plan" "ddos" {
 }
 
 module "virtual_network" {
-  source                  = "./module"
+  source                  = "./virtual-network"
   name                    = "virtual-network"
   resource_group_name     = azurerm_resource_group.rg.name
   location                = azurerm_resource_group.rg.location
