@@ -31,6 +31,10 @@ jobs:
         with:
           path: testing/virtual-network
 
+      - run: ls
+
+      - run: ls testing
+
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v1.3.2
 
