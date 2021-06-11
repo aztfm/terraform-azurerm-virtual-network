@@ -25,7 +25,11 @@ variable "ddos_protection_plan_id" {
   description = "The ID of DDoS Protection Plan."
 }
 variable "subnets" {
-  type        = list(map(string))
+  type = list(object({
+    name              = string
+    address_prefixes  = list(string)
+    service_endpoints = optional(list(string))
+  }))
   default     = []
   description = "List of objects that represent the configuration of each subnet."
   # subnets = [{ name = "", address_prefix = "", service_endpoints = "" }]
