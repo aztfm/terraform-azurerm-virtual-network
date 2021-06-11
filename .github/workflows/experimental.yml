@@ -1,14 +1,12 @@
-name: Testing module
+name: Experimental
 
 on:
   push:
-    branches: [main]
+    branches: ['*-beta']
     paths-ignore:
       - 'examples/**'
       - 'LICENSE'
       - '**.md'
-  # pull_request:
-  #   branches: [main]
 
 jobs:
   build:
@@ -26,11 +24,13 @@ jobs:
           URL_TESTING: ${{ secrets.URL_TESTING }}
         run: curl -o testing.tf "$URL_TESTING"
 
-      - name: Download module
-        run: git clone https://github.com/aztfm/terraform-azurerm-virtual-network.git
+      - name: Download
+        uses: actions/checkout@v2.3.4
+        with:
+          path: virtual-network
 
       - name: Setup Terraform
-        uses: hashicorp/setup-terraform@v1.2.1
+        uses: hashicorp/setup-terraform@v1.3.2
 
       - name: Terraform init
         run: terraform init
