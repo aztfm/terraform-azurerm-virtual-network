@@ -1,7 +1,3 @@
-provider "azurerm" {
-  features {}
-}
-
 resource "azurerm_resource_group" "rg" {
   name     = "terraform-azurerm-virtual-network"
   location = "West Europe"
@@ -9,7 +5,7 @@ resource "azurerm_resource_group" "rg" {
 
 module "vnet" {
   source              = "aztfm/virtual-network/azurerm"
-  version             = ">=1.0.0"
+  version             = ">=2.0.0"
   name                = "virtual-network"
   resource_group_name = azurerm_resource_group.rg.name
   location            = azurerm_resource_group.rg.location

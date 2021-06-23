@@ -1,8 +1,9 @@
-name: Experimental
+name: terraform_0.15.X
 
 on:
-  push:
-    branches: ['*-beta']
+  pull_request:
+    branches: 
+      - main
     paths-ignore:
       - 'examples/**'
       - 'LICENSE'
@@ -10,11 +11,11 @@ on:
 
 defaults:
   run:
-    working-directory: 'testing'
+    working-directory: 'testing/pull_request'
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
+  terraform:
+    runs-on: ubuntu-20.04
 
     env:
       ARM_CLIENT_ID: ${{ secrets.ARM_CLIENT_ID }}
@@ -25,14 +26,21 @@ jobs:
     steps:
       - name: Download repository
         uses: actions/checkout@v2.3.4
+        with:
+          ref: main
 
       - name: Download repository as module 
         uses: actions/checkout@v2.3.4
         with:
-          path: testing/virtual-network
+          path: testing/pull_request/module
+
+      - name : Terraform fmt
+        run: terraform fmt -check
 
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v1.3.2
+        with:
+          terraform_version: 0.15.X
 
       - name: Terraform init
         run: terraform init
@@ -41,10 +49,12 @@ jobs:
         run: terraform validate
 
       - name: Terraform plan
-        run: terraform plan
+        run: terraform plan -out=tfplan
 
       - name: Terraform apply
-        run: terraform apply -auto-approve
+        id: terraformApply
+        run: terraform apply tfplan
 
       - name: Terraform destroy
+        if: ${{ (success() && steps.terraformApply.outcome == 'success') || (failure() && steps.terraformApply.outcome == 'failure') }}
         run: terraform destroy -auto-approve

@@ -1,7 +1,7 @@
-name: Release
+name: terraform_0.14.X
 
-on:
-  push:
+on: 
+  pull_request:
     branches: 
       - main
     paths-ignore:
@@ -11,7 +11,7 @@ on:
 
 defaults:
   run:
-    working-directory: 'testing/release'
+    working-directory: 'testing/pull_request'
 
 jobs:
   terraform:
@@ -32,7 +32,7 @@ jobs:
       - name: Download repository as module 
         uses: actions/checkout@v2.3.4
         with:
-          path: testing/release/module
+          path: testing/pull_request/module
 
       - name : Terraform fmt
         run: terraform fmt -check
@@ -40,7 +40,7 @@ jobs:
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v1.3.2
         with:
-          terraform_version: '0.13.0'
+          terraform_version: 0.14.X
 
       - name: Terraform init
         run: terraform init
