@@ -26,8 +26,6 @@ jobs:
     steps:
       - name: Download repository
         uses: actions/checkout@v2.3.4
-        with:
-          ref: main
 
       - name: Download repository as module 
         uses: actions/checkout@v2.3.4
