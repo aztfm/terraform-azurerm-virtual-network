@@ -12,7 +12,7 @@ module "vnet" {
   address_space       = ["10.0.0.0/16"]
   subnets = [
     { name = "subnet1", address_prefix = "10.0.0.0/24" },
-    { name = "subnet2", address_prefix = "10.0.1.0/24" },
-    { name = "subnet3", address_prefix = "10.0.2.0/24" }
+    { name = "subnet2", address_prefix = "10.1.0.0/24", service_endpoints = "Microsoft.Sql" },
+    { name = "subnet3", address_prefix = "10.2.0.0/24", service_endpoints = "Microsoft.Storage,Microsoft.Web" }
   ]
 }
