@@ -42,7 +42,7 @@ resource "azurerm_subnet" "vnet" {
 }
 
 resource "azurerm_subnet_nat_gateway_association" "vnet" {
-  for_each       = { for subnet in var.subnets : subnet.name => subnet if subnet.nat_gateway_id != null }
+  for_each       = { for subnet in var.subnets : subnet.name => subnet if lookup(subnet, "nat_gateway_id", null) != null }
   subnet_id      = azurerm_subnet.vnet[each.value.name].id
   nat_gateway_id = each.value.nat_gateway_id
 }
