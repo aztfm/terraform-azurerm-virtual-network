@@ -42,7 +42,7 @@ resource "azurerm_subnet" "vnet" {
 }
 
 resource "azurerm_subnet_route_table_association" "vnet" {
-  for_each       = { for subnet in var.subnets : subnet.name => subnet if subnet.route_table_id != null }
+  for_each       = { for subnet in var.subnets : subnet.name => subnet if lookup(subnet, "route_table_id", null) != null }
   subnet_id      = azurerm_subnet.vnet[each.value.name].id
   route_table_id = each.value.route_table_id
 }
