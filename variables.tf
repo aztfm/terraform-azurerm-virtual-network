@@ -28,7 +28,7 @@ variable "subnets" {
   type        = list(map(string))
   default     = []
   description = "List of objects that represent the configuration of each subnet."
-  # subnets = [{ name = "", address_prefix = "", network_security_group_id = "" }]
+  # subnets = [{ name = "", address_prefix = "", network_security_group_id = "", service_endpoints = "" }]
 }
 variable "tags" {
   type        = map(string)
