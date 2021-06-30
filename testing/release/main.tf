@@ -23,7 +23,7 @@ module "virtual_network" {
   ddos_protection_plan_id = azurerm_network_ddos_protection_plan.ddos.id
   subnets = [
     { name = "subnet1", address_prefixes = ["10.1.0.0/24"] },
-    { name = "subnet2", address_prefixes = ["10.2.0.0/24"], service_endpoints = ["Microsoft.Sql"], route_table_id = azurerm_route_table.rt.id },
+    { name = "subnet2", address_prefixes = ["10.2.0.0/24"], service_endpoints = ["Microsoft.Sql"] },
     { name = "subnet3", address_prefixes = ["10.3.0.0/24"], service_endpoints = ["Microsoft.Storage", "Microsoft.Web"] }
   ]
 }
