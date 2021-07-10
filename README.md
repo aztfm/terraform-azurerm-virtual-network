@@ -7,6 +7,7 @@
 
 | Module version | Terraform version | AzureRM version |
 | -------------- | ----------------- | --------------- |
+| >= 2.x.x       | >= 0.13.x         | >= 2.25.0       |
 | >= 1.x.x       | >= 0.13.x         | >= 2.8.0        |
 
 ## Parameters
