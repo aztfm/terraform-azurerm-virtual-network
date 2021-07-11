@@ -1,4 +1,4 @@
-## 1.3.0 (Unrelease)
+## 1.3.0 (August 11, 2021)
 
 FEATURES:
 
