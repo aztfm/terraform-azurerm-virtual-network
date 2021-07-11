@@ -20,7 +20,7 @@ resource "azurerm_subnet" "vnet" {
   name                                           = each.value.name
   resource_group_name                            = azurerm_virtual_network.vnet.resource_group_name
   virtual_network_name                           = azurerm_virtual_network.vnet.name
-  address_prefixes                               = each.value.address_prefix
+  address_prefixes                               = [each.value.address_prefix]
   service_endpoints                              = lookup(each.value, "service_endpoints", "") == "" ? null : split(",", each.value.service_endpoints)
   enforce_private_link_service_network_policies  = lookup(each.value, "enforce_private_link_service_network_policies", false)
   enforce_private_link_endpoint_network_policies = lookup(each.value, "enforce_private_link_endpoint_network_policies", false)
