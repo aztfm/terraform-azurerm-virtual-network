@@ -2,6 +2,7 @@ resource "azurerm_virtual_network" "vnet" {
   name                = var.name
   resource_group_name = var.resource_group_name
   location            = var.location
+  tags                = var.tags
   address_space       = var.address_space
   dns_servers         = var.dns_servers
 
@@ -12,15 +13,6 @@ resource "azurerm_virtual_network" "vnet" {
       enable = true
     }
   }
-
-  lifecycle {
-    ignore_changes = [
-      bgp_community,
-      vm_protection_enabled
-    ]
-  }
-
-  tags = var.tags
 }
 
 resource "azurerm_subnet" "vnet" {
@@ -31,12 +23,5 @@ resource "azurerm_subnet" "vnet" {
   address_prefixes     = [each.value.address_prefix]
   service_endpoints    = lookup(each.value, "service_endpoints", "") == "" ? null : split(",", each.value.service_endpoints)
 
-  lifecycle {
-    ignore_changes = [
-      delegation,
-      enforce_private_link_endpoint_network_policies,
-      enforce_private_link_service_network_policies,
-      service_endpoint_policy_ids
-    ]
   }
 }

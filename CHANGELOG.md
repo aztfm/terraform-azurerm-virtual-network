@@ -1,3 +1,9 @@
+## 1.3.0 (Unrelease)
+
+BUG FIXES:
+
+* The `lifecycle` property has been removed both because there are parameters that have been added to the module, and parameters that are not compatible with the minimum version of the module. 
+
 ## 1.2.0 (March 11, 2021)
 
 FEATURES:
