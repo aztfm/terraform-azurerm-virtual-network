@@ -16,12 +16,14 @@ resource "azurerm_virtual_network" "vnet" {
 }
 
 resource "azurerm_subnet" "vnet" {
-  for_each             = { for subnet in var.subnets : subnet.name => subnet }
-  name                 = each.value.name
-  resource_group_name  = azurerm_virtual_network.vnet.resource_group_name
-  virtual_network_name = azurerm_virtual_network.vnet.name
-  address_prefixes     = [each.value.address_prefix]
-  service_endpoints    = lookup(each.value, "service_endpoints", "") == "" ? null : split(",", each.value.service_endpoints)
+  for_each                                       = { for subnet in var.subnets : subnet.name => subnet }
+  name                                           = each.value.name
+  resource_group_name                            = azurerm_virtual_network.vnet.resource_group_name
+  virtual_network_name                           = azurerm_virtual_network.vnet.name
+  address_prefixes                               = each.value.address_prefixes
+  service_endpoints                              = lookup(each.value, "service_endpoints", [])
+  enforce_private_link_service_network_policies  = lookup(each.value, "enforce_private_link_service_network_policies", false)
+  enforce_private_link_endpoint_network_policies = lookup(each.value, "enforce_private_link_endpoint_network_policies", false)
 
   dynamic "delegation" {
     for_each = lookup(each.value, "delegation", null) != null ? [""] : []
