@@ -23,5 +23,14 @@ resource "azurerm_subnet" "vnet" {
   address_prefixes     = [each.value.address_prefix]
   service_endpoints    = lookup(each.value, "service_endpoints", "") == "" ? null : split(",", each.value.service_endpoints)
 
+  dynamic "delegation" {
+    for_each = lookup(each.value, "delegation", null) != null ? [""] : []
+    content {
+      name = each.value.delegation
+      service_delegation {
+        name    = each.value.delegation
+        actions = formatlist("Microsoft.Network/%s", local.service_delegation_actions[each.value.delegation])
+      }
+    }
   }
 }
