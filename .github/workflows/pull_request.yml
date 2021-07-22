@@ -1,6 +1,6 @@
-name: terraform_0.14.X
+name: 'Pull request'
 
-on: 
+on:   
   pull_request:
     branches: 
       - main
@@ -23,6 +23,10 @@ jobs:
       ARM_SUBSCRIPTION_ID: ${{ secrets.ARM_SUBSCRIPTION_ID }}
       ARM_TENANT_ID: ${{ secrets.ARM_TENANT_ID }}
 
+    strategy:
+      matrix:
+        terraform: [1.0.0, 0.15.0, 0.14.0, 0.13.0]
+
     steps:
       - name: Download repository
         uses: actions/checkout@v2.3.4
@@ -38,7 +42,7 @@ jobs:
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v1.3.2
         with:
-          terraform_version: 0.14.X
+          terraform_version: ${{ matrix.terraform }}
 
       - name: Terraform init
         run: terraform init

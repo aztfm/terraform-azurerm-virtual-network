@@ -1,25 +1,21 @@
-provider "azurerm" {
-  features {}
-}
-
 resource "azurerm_resource_group" "rg" {
-  name     = "terraform-azurerm-virtual-network"
+  name     = "resource-group"
   location = "West Europe"
 }
 
 resource "azurerm_network_ddos_protection_plan" "ddos" {
-  name                = "ddos_protection_plan"
+  name                = "ddos-protection-plan"
   resource_group_name = azurerm_resource_group.rg.name
   location            = azurerm_resource_group.rg.location
 }
 
-module "virtual-network" {
+module "virtual_network" {
   source                  = "aztfm/virtual-network/azurerm"
-  version                 = ">=1.0.0"
+  version                 = ">=2.0.0"
   name                    = "virtual-network"
   resource_group_name     = azurerm_resource_group.rg.name
   location                = azurerm_resource_group.rg.location
   address_space           = ["10.0.0.0/16"]
   ddos_protection_plan_id = azurerm_network_ddos_protection_plan.ddos.id
-  subnets                 = [{ name = "subnet1", address_prefix = "10.0.0.0/24" }]
+  subnets                 = [{ name = "subnet1", address_prefixes = ["10.0.0.0/24"] }]
 }
