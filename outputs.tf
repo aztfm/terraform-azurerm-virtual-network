@@ -31,7 +31,7 @@ output "ddos_protection_plan" {
   description = "Block containing configuration of ddos protection plan."
 }
 output "subnets" {
-  value       = { for subnet in azurerm_subnet.vnet : subnet.name => subnet }
+  value       = { for subnet in azurerm_subnet.subnets : subnet.name => subnet }
   description = "Blocks containing configuration of each subnet."
   # module.MODULE_NAME.subnets["SUBNET_NAME"].id
 }
