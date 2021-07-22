@@ -10,6 +10,8 @@ FEATURES:
 
 ENHANCEMENTS:
 
+* New options have been added to the `subnets.delegation` parameter: `Microsoft.ApiManagement/service`, `Microsoft.AzureCosmosDB/clusters`, `Microsoft.DBforMySQL/flexibleServers`, `Microsoft.DBforMySQL/serversv2`, `Microsoft.DBforPostgreSQL/flexibleServers`, `Microsoft.DBforPostgreSQL/singleServers`, `Microsoft.Kusto/clusters`, `Microsoft.MachineLearningServices/workspaces`, `Microsoft.PowerPlatform/vnetaccesslinks` and `Microsoft.Synapse/workspaces`.
+
 ## 1.3.0 (August 11, 2021)
 
 FEATURES:
