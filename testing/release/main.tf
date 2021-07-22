@@ -25,17 +25,21 @@ module "virtual_network" {
   ddos_protection_plan_id = azurerm_network_ddos_protection_plan.ddos.id
   subnets = [
     {
-      name                                          = "subnet1", address_prefix = "10.1.0.0/24"
+      name                                          = "subnet1"
+      address_prefix                                = "10.1.0.0/24"
       nat_gateway_id                                = azurerm_nat_gateway.nat.id
       delegation                                    = "Microsoft.Sql/managedInstances"
       enforce_private_link_service_network_policies = true
     },
     {
-      name                                           = "subnet2", address_prefix = "10.2.0.0/24", service_endpoints = "Microsoft.Sql"
+      name                                           = "subnet2"
+      address_prefix                                 = "10.2.0.0/24"
+      service_endpoints                              = "Microsoft.Sql"
       enforce_private_link_endpoint_network_policies = true
     },
     {
-      name              = "subnet3", address_prefix = "10.3.0.0/24"
+      name              = "subnet3"
+      address_prefix    = "10.3.0.0/24"
       service_endpoints = "Microsoft.Storage,Microsoft.Web"
       delegation        = "Microsoft.Web/serverFarms"
     }
