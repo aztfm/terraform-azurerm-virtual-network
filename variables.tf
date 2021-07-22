@@ -24,8 +24,13 @@ variable "ddos_protection_plan_id" {
   default     = null
   description = "The ID of DDoS Protection Plan."
 }
+variable "bgp_community" {
+  type        = string
+  default     = null
+  description = "The BGP community attribute in format <as-number>:<community-value>. The as-number segment is the Microsoft ASN, which is always 12076 for now."
+}
 variable "subnets" {
-  type        = list(map(string))
+  type        = any
   default     = []
   description = "List of objects that represent the configuration of each subnet."
   # subnets = [
