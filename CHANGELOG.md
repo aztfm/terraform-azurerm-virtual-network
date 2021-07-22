@@ -1,4 +1,20 @@
-## 1.3.0 (August 11, 2021)
+## 2.0.0 (July 22, 2021)
+
+BREAKING CHANGES:
+
+* The internal name by which the `azurerm_subnet` resource is defined was defined as `vnet`. This has been changed by `subnets` to maintain the internal consistency of the module, so the resources deployed in the previous version of the module are not compatible with this new version.
+* The `subnet.address_prefix` parameter is now `subnet.address_prefixes` and changes from type `string` to `list(string)`.
+* The parameter `subnet.service endpoints` changes type` string` to `list (string)`.
+
+FEATURES:
+
+* **New Parameter:** `bgp_community`
+
+ENHANCEMENTS:
+
+* New options have been added to the `subnets.delegation` parameter: `Microsoft.ApiManagement/service`, `Microsoft.AzureCosmosDB/clusters`, `Microsoft.DBforMySQL/flexibleServers`, `Microsoft.DBforMySQL/serversv2`, `Microsoft.DBforPostgreSQL/flexibleServers`, `Microsoft.DBforPostgreSQL/singleServers`, `Microsoft.Kusto/clusters`, `Microsoft.MachineLearningServices/workspaces`, `Microsoft.PowerPlatform/vnetaccesslinks` and `Microsoft.Synapse/workspaces`.
+
+## 1.3.0 (July 11, 2021)
 
 FEATURES:
 
