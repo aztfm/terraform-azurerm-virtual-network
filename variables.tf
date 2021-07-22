@@ -28,7 +28,16 @@ variable "subnets" {
   type        = list(map(string))
   default     = []
   description = "List of objects that represent the configuration of each subnet."
-  # subnets = [{ name = "", address_prefix = "", route_table_id = "" service_endpoints = "" }]
+  # subnets = [
+  #   {
+  #     name                                           = ""
+  #     address_prefixes                               = []
+  #     service_endpoints                              = []
+  #     delegation                                     = ""
+  #     enforce_private_link_service_network_policies  = false
+  #     enforce_private_link_endpoint_network_policies = false
+  #   }
+  # ]
 }
 variable "tags" {
   type        = map(string)
