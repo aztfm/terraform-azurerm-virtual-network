@@ -3,7 +3,10 @@
 BREAKING CHANGES:
 
 * The internal name by which the `azurerm_subnet` resource is defined was defined as `vnet`. This has been changed by `subnets` to maintain the internal consistency of the module, so the resources deployed in the previous version of the module are not compatible with this new version. 
+
 FEATURES:
+
+* **New Parameter:** `bgp_community`
 
 ENHANCEMENTS:
 
