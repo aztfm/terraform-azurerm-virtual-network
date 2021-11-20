@@ -29,10 +29,10 @@ jobs:
 
     steps:
       - name: Download repository
-        uses: actions/checkout@v2.3.4
+        uses: actions/checkout@v2
 
       - name: Download repository as module 
-        uses: actions/checkout@v2.3.4
+        uses: actions/checkout@v2
         with:
           path: testing/pull_request/module
 
@@ -40,7 +40,7 @@ jobs:
         run: terraform fmt -check
 
       - name: Setup Terraform
-        uses: hashicorp/setup-terraform@v1.3.2
+        uses: hashicorp/setup-terraform@v1
         with:
           terraform_version: ${{ matrix.terraform }}
 
