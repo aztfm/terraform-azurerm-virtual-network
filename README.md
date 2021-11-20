@@ -1,7 +1,6 @@
-# Azure Virtual Network - Terraform Module
-[![Release](https://github.com/aztfm/terraform-azurerm-virtual-network/actions/workflows/release.yml/badge.svg)](https://github.com/aztfm/terraform-azurerm-virtual-network/actions/workflows/release.yml)
-[![TF Registry](https://img.shields.io/badge/terraform-registry-blueviolet.svg)](https://registry.terraform.io/modules/aztfm/virtual-network/azurerm/)
-![GitHub release (latest by date)](https://img.shields.io/github/v/release/aztfm/terraform-azurerm-virtual-network)
+![GitHub Workflow Status](https://img.shields.io/github/workflow/status/aztfm/terraform-azurerm-virtual-network/Release?label=Testing&logo=GitHub)
+[![Terraform Registry](https://img.shields.io/badge/Terraform-registry-blueviolet.svg?logo=terraform)](https://registry.terraform.io/modules/aztfm/virtual-network/azurerm/)
+![GitHub release (latest by date)](https://img.shields.io/github/v/release/aztfm/terraform-azurerm-virtual-network?label=Release)
 
 ## Version compatibility
 
