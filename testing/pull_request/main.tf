@@ -19,21 +19,21 @@ module "virtual_network" {
   subnets = [
     {
       name                                          = "subnet1"
-      address_prefix                                = "10.1.0.0/24"
+      address_prefixes                              = ["10.1.0.0/24"]
       route_table_id                                = azurerm_route_table.rt.id
       delegation                                    = "Microsoft.Sql/managedInstances"
       enforce_private_link_service_network_policies = true
     },
     {
       name                                           = "subnet2"
-      address_prefix                                 = "10.2.0.0/24"
-      service_endpoints                              = "Microsoft.Sql"
+      address_prefixes                               = ["10.2.0.0/24"]
+      service_endpoints                              = ["Microsoft.Sql"]
       enforce_private_link_endpoint_network_policies = true
     },
     {
       name              = "subnet3"
-      address_prefix    = "10.3.0.0/24"
-      service_endpoints = "Microsoft.Storage,Microsoft.Web"
+      address_prefixes  = ["10.3.0.0/24"]
+      service_endpoints = ["Microsoft.Storage", "Microsoft.Web"]
       delegation        = "Microsoft.Web/serverFarms"
     }
   ]
