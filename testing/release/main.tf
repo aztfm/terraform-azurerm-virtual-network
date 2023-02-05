@@ -10,7 +10,7 @@ resource "azurerm_network_ddos_protection_plan" "ddos" {
 }
 
 module "virtual_network" {
-  source                  = "./module"
+  source                  = "../../../terraform-azurerm-virtual-network"
   name                    = azurerm_resource_group.rg.name
   resource_group_name     = azurerm_resource_group.rg.name
   location                = azurerm_resource_group.rg.location

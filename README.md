@@ -1,4 +1,4 @@
-![GitHub Workflow Status](https://img.shields.io/github/workflow/status/aztfm/terraform-azurerm-virtual-network/Release?label=Testing&logo=GitHub)
+![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/aztfm/terraform-azurerm-virtual-network/release.yml?label=Testing&logo=GitHub)
 [![Terraform Registry](https://img.shields.io/badge/Terraform-registry-blueviolet.svg?logo=terraform)](https://registry.terraform.io/modules/aztfm/virtual-network/azurerm/)
 ![GitHub release (latest by date)](https://img.shields.io/github/v/release/aztfm/terraform-azurerm-virtual-network?label=Release)
 
@@ -6,6 +6,7 @@
 
 | Module version | Terraform version | AzureRM version |
 | -------------- | ----------------- | --------------- |
+| >= 3.x.x       | >= 1.3.x          | >= 3.28.0       |
 | >= 2.x.x       | >= 0.13.x         | >= 2.36.0       |
 | >= 1.x.x       | >= 0.13.x         | >= 2.8.0        |
 

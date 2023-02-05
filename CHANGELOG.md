@@ -1,3 +1,14 @@
+## 3.0.0 (February XX, 2023)
+
+BREAKING CHANGES:
+
+* dependencies: updating to `v1.3.0` minimum of `terraform`.
+* dependencies: updating to `v3.28.0` minimum of `hashicorp/azurerm` provider.
+
+ENHANCEMENTS:
+
+* New options have been added to the `subnets.delegation` parameter: `Microsoft.ContainerService/managedClusters`, `Microsoft.LabServices/labplans`, `Microsoft.Orbital/orbitalGateways`, `Microsoft.StoragePool/diskPools`, `NGINX.NGINXPLUS/nginxDeployments` and `PaloAltoNetworks.Cloudngfw/firewalls`.
+
 ## 2.0.1 (November 27, 2021)
 
 ENHANCEMENTS:
@@ -8,6 +19,7 @@ ENHANCEMENTS:
 
 BREAKING CHANGES:
 
+* dependencies: updating to `v2.36.0` minimum of `hashicorp/azurerm` provider.
 * The internal name by which the `azurerm_subnet` resource is defined was defined as `vnet`. This has been changed by `subnets` to maintain the internal consistency of the module, so the resources deployed in the previous version of the module are not compatible with this new version.
 * The `subnet.address_prefix` parameter is now `subnet.address_prefixes` and changes from type `string` to `list(string)`.
 * The parameter `subnet.service endpoints` changes type` string` to `list (string)`.
