@@ -9,6 +9,10 @@ on:
       - 'LICENSE'
       - '**.md'
 
+permissions:
+  id-token: write
+  contents: read
+
 defaults:
   run:
     working-directory: 'testing/pull_request'
