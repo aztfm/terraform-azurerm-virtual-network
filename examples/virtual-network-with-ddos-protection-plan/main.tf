@@ -11,7 +11,7 @@ resource "azurerm_network_ddos_protection_plan" "ddos" {
 
 module "virtual_network" {
   source                  = "aztfm/virtual-network/azurerm"
-  version                 = ">=2.0.0"
+  version                 = ">=3.0.0"
   name                    = "virtual-network"
   resource_group_name     = azurerm_resource_group.rg.name
   location                = azurerm_resource_group.rg.location
