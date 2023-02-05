@@ -1,4 +1,4 @@
-## 3.0.0 (February XX, 2023)
+## 3.0.0 (February 05, 2023)
 
 BREAKING CHANGES:
 
@@ -7,6 +7,7 @@ BREAKING CHANGES:
 
 ENHANCEMENTS:
 
+* Internal changes that change the way data is received by child parameters, but do not change the behavior of the module.
 * New options have been added to the `subnets.delegation` parameter: `Microsoft.ContainerService/managedClusters`, `Microsoft.LabServices/labplans`, `Microsoft.Orbital/orbitalGateways`, `Microsoft.StoragePool/diskPools`, `NGINX.NGINXPLUS/nginxDeployments` and `PaloAltoNetworks.Cloudngfw/firewalls`.
 
 ## 2.0.1 (November 27, 2021)
