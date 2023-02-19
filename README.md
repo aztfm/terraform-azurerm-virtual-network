@@ -19,12 +19,12 @@ The following parameters are supported:
 | name                       | The name of the virtual network.                                                                                                                  |      `string`       |   n/a   |   yes    |
 | resource\_group\_name      | The name of the resource group in which to create the virtual network.                                                                            |      `string`       |   n/a   |   yes    |
 | location                   | The location/region where the virtual network is created.                                                                                         |      `string`       |   n/a   |   yes    |
+| tags                       | A mapping of tags to assign to the resource.                                                                                                      |    `map(string)`    |  `{}`   |    no    |
 | address\_space             | The address space that is used in the virtual network. More than one address space can be provisioned.                                            |   `list(string)`    |   n/a   |   yes    |
 | dns\_servers               | List of IP addresses of DNS servers.                                                                                                              |   `list(string)`    |  `[]`   |    no    |
 | ddos\_protection\_plan\_id | The ID of DDoS Protection Plan.                                                                                                                   |      `string`       | `null`  |    no    |
 | bgp\_community             | The BGP community attribute in format `<as-number>:<community-value>`. The as-number segment is the Microsoft ASN, which is always 12076 for now. |      `string`       | `null`  |    no    |
 | subnets                    | List of objects that represent the configuration of each subnet.                                                                                  | `list(map(string))` |  `[]`   |    no    |
-| tags                       | A mapping of tags to assign to the resource.                                                                                                      |    `map(string)`    |  `{}`   |    no    |
 
 The `subnets` supports the following:
 

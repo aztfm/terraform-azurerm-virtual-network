@@ -13,6 +13,12 @@ variable "location" {
   description = "The location/region where the virtual network is created."
 }
 
+variable "tags" {
+  type        = map(string)
+  default     = {}
+  description = "A mapping of tags to assign to the resource."
+}
+
 variable "address_space" {
   type        = list(string)
   description = "The address space that is used in the virtual network. More than one address space can be provisioned."
@@ -47,10 +53,4 @@ variable "subnets" {
   }))
   default     = []
   description = "List of objects that represent the configuration of each subnet."
-}
-
-variable "tags" {
-  type        = map(string)
-  default     = {}
-  description = "A mapping of tags to assign to the resource."
 }
