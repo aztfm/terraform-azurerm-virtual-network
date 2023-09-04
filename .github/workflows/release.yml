@@ -28,10 +28,10 @@ jobs:
 
     steps:
       - name: Download repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Download repository as module 
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           path: testing/release/module
 
