@@ -32,7 +32,7 @@ resource "azurerm_subnet" "subnets" {
 
     content {
       name = each.value.delegation
-      
+
       service_delegation {
         name    = each.value.delegation
         actions = formatlist("Microsoft.Network/%s", local.service_delegation_actions[each.value.delegation])

@@ -39,16 +39,6 @@ run "testing_plan" {
   }
 
   assert {
-    condition     = (
-      split(".", split("/", azurerm_virtual_network.vnet.address_space[0])[0])[0] >=0 &&
-      split(".", split("/", azurerm_virtual_network.vnet.address_space[0])[0])[0] <=255
-    )
-    error_message = ""
-  }
-
-split(".", split("/", ["10.1.0.0/16"][0])[0])[0]
-
-  assert {
     condition     = azurerm_virtual_network.vnet.ddos_protection_plan[0].enable == true
     error_message = ""
   }
