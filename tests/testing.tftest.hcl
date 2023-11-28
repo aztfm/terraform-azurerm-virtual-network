@@ -39,6 +39,16 @@ run "testing_plan" {
   }
 
   assert {
+    condition = azurerm_virtual_network.vnet.name == run.setup.resource_group_name
+    error_message = "The virtual network name input variable is being modified."
+  }
+
+  assert {
+    condition = azurerm_virtual_network.vnet.location == run.setup.resourcresource_group_locatione_group_name
+    error_message = "The virtual network name input variable is being modified."
+  }
+
+  assert {
     condition     = azurerm_virtual_network.vnet.ddos_protection_plan[0].enable == true
     error_message = "The configuration of the ddos protection plan is set to false."
   }
