@@ -40,6 +40,6 @@ run "testing_plan" {
 
   assert {
     condition     = azurerm_virtual_network.vnet.ddos_protection_plan[0].enable == true
-    error_message = ""
+    error_message = "The configuration of the ddos protection plan is set to false."
   }
 }
