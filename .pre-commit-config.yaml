@@ -1,21 +1,7 @@
-ci:
-  skip: [terraform_fmt, terraform_validate, terraform_tflint]
-
 repos:
   - repo: https://github.com/antonbabenko/pre-commit-terraform
     rev: v1.83.6
     hooks:
-      # - id: tfupdate
-      #   name: Update Terraform version
-      #   args:
-      #     - --args=terraform -v >=1.3.0
-
-      # - id: tfupdate
-      #   name: Update Terraform's azurerm provider
-      #   args:
-      #     - --args=provider azurerm
-      #     - --args=--version >=3.28.0
-
       - id: terraform_fmt
         name: Format Terraform code
 
