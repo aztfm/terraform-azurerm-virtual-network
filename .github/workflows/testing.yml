@@ -1,13 +1,15 @@
-name: 'Unit testing'
+name: "Unit testing"
 
-on:   
+on:
+  push:
   pull_request:
-    branches: 
+    branches:
       - main
     paths-ignore:
-      - 'examples/**'
-      - 'LICENSE'
-      - '**.md'
+      - ".*"
+      - "examples/**"
+      - "LICENSE"
+      - "**.md"
 
 permissions:
   id-token: write
@@ -22,27 +24,14 @@ jobs:
       ARM_CLIENT_ID: ${{ secrets.ARM_CLIENT_ID }}
       ARM_SUBSCRIPTION_ID: ${{ secrets.ARM_SUBSCRIPTION_ID }}
 
-    # strategy:
-    #   fail-fast: false
-    #   matrix:
-    #     terraform: [1.3.0]
-
     steps:
       - name: Download repository
         uses: actions/checkout@v4
 
-      # - name: Download repository as module 
-      #   uses: actions/checkout@v4
-      #   with:
-      #     path: testing/pull_request/module
-
-      - name : Terraform fmt
-        run: terraform fmt -check
-
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v3
         with:
-          terraform_version: "~1.6.0" # ${{ matrix.terraform }}
+          terraform_version: "~>1.6.0"
 
       - name: Terraform init
         run: terraform init
@@ -59,14 +48,3 @@ jobs:
 
       - name: Terraform test
         run: terraform test
-
-      # - name: Terraform plan
-      #   run: terraform plan -out=tfplan
-
-      # - name: Terraform apply
-      #   id: terraformApply
-      #   run: terraform apply tfplan
-
-      # - name: Terraform destroy
-      #   if: ${{ (success() && steps.terraformApply.outcome == 'success') || (failure() && steps.terraformApply.outcome == 'failure') }}
-      #   run: terraform destroy -auto-approve
