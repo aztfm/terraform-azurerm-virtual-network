@@ -1,7 +1,6 @@
 name: "Unit testing"
 
 on:
-  push:
   pull_request:
     branches:
       - main
