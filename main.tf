@@ -37,3 +37,9 @@ resource "azurerm_subnet" "subnets" {
     }
   }
 }
+
+resource "azurerm_subnet_network_security_group_association" "vnet" {
+  for_each                  = { for subnet in var.subnets : subnet.name => subnet if subnet.network_security_group_id != null }
+  subnet_id                 = azurerm_subnet.vnet[each.value.name].id
+  network_security_group_id = each.value.network_security_group_id
+}
