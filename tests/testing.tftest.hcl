@@ -62,7 +62,6 @@ run "testing_apply" {
     location                = run.setup.resource_group_location
     address_space           = ["10.1.0.0/16", "10.2.0.0/16", "10.3.0.0/16"]
     dns_servers             = ["8.8.8.8", "8.8.4.4"]
-    ddos_protection_plan_id = run.setup.ddos_protection_plan_id
     subnets = [{
       name                                          = "subnet1",
       address_prefixes                              = ["10.1.0.0/24"],
