@@ -47,3 +47,4 @@ jobs:
 
       - name: Terraform test
         run: terraform test
+        if: always()
