@@ -49,7 +49,7 @@ run "testing_plan" {
   }
 
   assert {
-    condition     = azurerm_virtual_network.vnet.bgp_community = "12076:20001"
+    condition     = azurerm_virtual_network.vnet.bgp_community == "12076:20001"
     error_message = "The virtual network bgp community variable is being modified."
   }
 }
