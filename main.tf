@@ -9,6 +9,7 @@ resource "azurerm_virtual_network" "vnet" {
 
   dynamic "ddos_protection_plan" {
     for_each = var.ddos_protection_plan_id != null ? [""] : []
+
     content {
       id     = var.ddos_protection_plan_id
       enable = true
@@ -28,8 +29,10 @@ resource "azurerm_subnet" "subnets" {
 
   dynamic "delegation" {
     for_each = lookup(each.value, "delegation", null) != null ? [""] : []
+
     content {
       name = each.value.delegation
+
       service_delegation {
         name    = each.value.delegation
         actions = formatlist("Microsoft.Network/%s", local.service_delegation_actions[each.value.delegation])
