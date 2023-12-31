@@ -11,6 +11,7 @@ repos:
         args:
           - --tf-init-args=-upgrade
           - --tf-init-args=-backend=false
+          - --hook-config=--retry-once-with-cleanup=true
 
       - id: terraform_tflint
         name: Validate Terraform tests
