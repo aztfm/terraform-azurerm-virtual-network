@@ -5,7 +5,10 @@ on:
     branches:
       - main
     paths-ignore:
-      - ".*"
+      - ".devcontainer"
+      - ".vscode"
+      - ".gitignore"
+      - ".pre-commit-config.yaml"
       - "examples/**"
       - "LICENSE"
       - "**.md"

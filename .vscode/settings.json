@@ -1,0 +1,17 @@
+{
+    "editor.bracketPairColorization.enabled": true,
+    "editor.defaultFormatter": "hashicorp.terraform",
+    "editor.formatOnSave": true,
+    "editor.formatOnSaveMode": "file",
+    "editor.guides.bracketPairs": "active",
+    "editor.suggest.preview": true,
+    "explorer.compactFolders": false,
+    "files.autoSave": "afterDelay",
+    "git.autofetch": true,
+    "git.confirmSync": false,
+    "terraform.codelens.referenceCount": true,
+    "terraform.experimentalFeatures.prefillRequiredFields": true,
+    "terraform.experimentalFeatures.validateOnSave": true,
+    // "terraform.validation.enableEnhancedValidation": true,
+    "redhat.telemetry.enabled": true
+}

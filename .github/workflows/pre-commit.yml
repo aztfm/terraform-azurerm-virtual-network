@@ -4,10 +4,6 @@ on:
   pull_request:
     branches:
       - main
-    paths-ignore:
-      - "examples/**"
-      - "LICENSE"
-      - "**.md"
 
 permissions:
   id-token: write
