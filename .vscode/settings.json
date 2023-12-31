@@ -8,6 +8,7 @@
     "explorer.compactFolders": false,
     "files.autoSave": "afterDelay",
     "git.autofetch": true,
+    "git.confirmSync": false,
     "terraform.codelens.referenceCount": true,
     "terraform.experimentalFeatures.prefillRequiredFields": true,
     "terraform.experimentalFeatures.validateOnSave": true,
