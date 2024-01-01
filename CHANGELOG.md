@@ -1,3 +1,4 @@
+<!-- markdownlint-disable MD041 MD013 -->
 ## 3.0.0 (February 05, 2023)
 
 BREAKING CHANGES:
@@ -23,7 +24,7 @@ BREAKING CHANGES:
 * dependencies: updating to `v2.36.0` minimum of `hashicorp/azurerm` provider.
 * The internal name by which the `azurerm_subnet` resource is defined was defined as `vnet`. This has been changed by `subnets` to maintain the internal consistency of the module, so the resources deployed in the previous version of the module are not compatible with this new version.
 * The `subnet.address_prefix` parameter is now `subnet.address_prefixes` and changes from type `string` to `list(string)`.
-* The parameter `subnet.service endpoints` changes type` string` to `list (string)`.
+* The parameter `subnet.service endpoints` changes type `string` to `list (string)`.
 
 FEATURES:
 
@@ -43,7 +44,7 @@ FEATURES:
 
 BUG FIXES:
 
-* The `lifecycle` property has been removed both because there are parameters that have been added to the module, and parameters that are not compatible with the minimum version of the module. 
+* The `lifecycle` property has been removed both because there are parameters that have been added to the module, and parameters that are not compatible with the minimum version of the module.
 
 ## 1.2.0 (March 11, 2021)
 
@@ -53,7 +54,7 @@ FEATURES:
 
 ENHANCEMENTS:
 
-* The `lifecycle` feature has been added to the `azurerm_virtual_network` and `azurerm_subnet` resources for the following parameters that are not yet programmed in the module: 
+* The `lifecycle` feature has been added to the `azurerm_virtual_network` and `azurerm_subnet` resources for the following parameters that are not yet programmed in the module:
   * `azurerm_virtual_network`: `bgp_community` and `vm_protection_enabled`.
   * `azurerm_subnet`: `delegation`, `enforce_private_link_endpoint_network_policies`, `enforce_private_link_service_network_policies`, `service_endpoints` and `service_endpoint_policy_ids`.
 

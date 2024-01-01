@@ -8,12 +8,15 @@
 	// Features to add to the dev container. More info: https://containers.dev/features.
 	"features": {
 		"ghcr.io/devcontainers/features/terraform:1": {
-			// "installTerraformDocs": true,
+			"installTerraformDocs": true,
 			"version": "latest",
 			"tflint": "latest",
 			"terragrunt": "latest"
 		},
 		"ghcr.io/devcontainers-contrib/features/pre-commit:2": {
+			"version": "latest"
+		},
+		"ghcr.io/devcontainers-contrib/features/markdownlint-cli:1": {
 			"version": "latest"
 		}
 	},
@@ -30,7 +33,8 @@
 			"extensions": [
 				"hashicorp.hcl",
 				"hashicorp.terraform",
-				"redhat.vscode-yaml"
+				"redhat.vscode-yaml",
+				"yzhang.markdown-all-in-one"
 			]
 		}
 	}

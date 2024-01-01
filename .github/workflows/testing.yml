@@ -9,6 +9,7 @@ on:
       - ".vscode"
       - ".gitignore"
       - ".pre-commit-config.yaml"
+      - ".terraform-docs.yml"
       - "examples/**"
       - "LICENSE"
       - "**.md"
