@@ -1,0 +1,73 @@
+formatter: markdown
+
+settings:
+  anchor: false
+
+sort:
+  enabled: false
+
+output:
+  file: README.md
+  mode: inject
+
+content: |
+  ## Parameters
+
+  The following parameters are supported:
+
+  | Name | Description | Type | Default | Required |
+  | ---- | ----------- | :--: | :-----: | :------: |
+  {{- range .Module.Inputs }}
+  | {{ anchorNameMarkdown "input" .Name -}}
+  | {{ tostring .Description | sanitizeMarkdownTbl -}}
+    {{ if eq (substr 0 13 (toString .Type)) "list(object({" -}}
+      | {{ "`list(object({}))`" -}}
+    {{ else -}}
+      | {{ printf "`" }}{{ tostring .Type | sanitizeMarkdownTbl }}{{ printf "`" -}}
+    {{ end -}}
+    {{ if eq .GetValue "" -}}
+      | {{ .GetValue | sanitizeMarkdownTbl -}}
+    {{ else -}}
+      | {{ printf "`" }}{{ .GetValue | sanitizeMarkdownTbl }}{{ printf "`" -}}
+    {{ end -}}
+  | {{ printf "" }}{{ ternary .Required "yes" "no" }} |
+  {{- end }}
+
+  The `subnets` supports the following:
+
+  | Name | Description |  Type | Default | Required |
+  | ---- | ------------| :---: | :-----: | :------: |
+  {{ range include ".config/subnets_parameters.json" | fromJson -}}
+    | {{ .Name | sanitizeMarkdownTbl -}}
+    {{ $z := len .Support }}{{ if ne $z 0 -}}
+      | {{ .Description }}{{ range $x, $y := .Support }}
+        {{- if eq $x (sub $z 1) }}
+          {{- print " `" . "`." -}} 
+        {{- else if eq $x (sub $z 2) }}
+          {{- print " `" . "` and" -}}
+        {{- else }}
+          {{- print " `" . "`," -}}
+        {{ end }}
+      {{- end }}
+    {{- else -}}
+    | {{ .Description }}
+    {{- end -}}
+    | {{ printf "`" }}{{ .Type }}{{ printf "`" -}}
+    {{ if eq .Default "n/a" -}}
+      | {{ .Default | sanitizeMarkdownTbl -}}
+    {{ else -}}
+      | {{ printf "`" }}{{ .Default | sanitizeMarkdownTbl }}{{ printf "`" -}}
+    {{ end -}}
+    | {{ .Required }} |
+  {{ end }}
+  ## Outputs
+
+  The following outputs are exported:
+
+  | Name | Description | Sensitive |
+  | ---- | ------------| :-------: | 
+  {{- range .Module.Outputs }}
+  | {{ anchorNameMarkdown "output" .Name -}} 
+  | {{ tostring .Description | sanitizeMarkdownTbl -}}
+  | {{ ternary .Sensitive "yes" "no" }} |
+  {{- end }}
