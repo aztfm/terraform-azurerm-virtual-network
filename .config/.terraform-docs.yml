@@ -17,57 +17,58 @@ content: |
 
   | Name | Description | Type | Default | Required |
   | ---- | ----------- | :--: | :-----: | :------: |
-  {{- range .Module.Inputs }}
-  | {{ anchorNameMarkdown "input" .Name -}}
-  | {{ tostring .Description | sanitizeMarkdownTbl -}}
+  {{ range .Module.Inputs -}}
+    {{ print "|" (.Name | sanitizeMarkdownTbl) -}}
+    {{ print "|" (toString .Description | sanitizeMarkdownTbl) -}}
     {{ if eq (substr 0 13 (toString .Type)) "list(object({" -}}
-      | {{ "`list(object({}))`" -}}
+      {{ print "|`list(object({}))`" -}}
     {{ else -}}
-      | {{ printf "`" }}{{ tostring .Type | sanitizeMarkdownTbl }}{{ printf "`" -}}
+      {{ print "|`" (tostring .Type | sanitizeMarkdownTbl) "`" -}}
     {{ end -}}
     {{ if eq .GetValue "" -}}
-      | {{ .GetValue | sanitizeMarkdownTbl -}}
+      {{ print "|" (.GetValue | sanitizeMarkdownTbl) -}}
     {{ else -}}
-      | {{ printf "`" }}{{ .GetValue | sanitizeMarkdownTbl }}{{ printf "`" -}}
+      {{ print "|`" (.GetValue | sanitizeMarkdownTbl) "`" -}}
     {{ end -}}
-  | {{ printf "" }}{{ ternary .Required "yes" "no" }} |
-  {{- end }}
-
+    {{ print "|" (ternary .Required "yes" "no") "|" }}
+  {{ end }}{{ printf "\n" -}}
+  
   The `subnets` supports the following:
 
-  | Name | Description |  Type | Default | Required |
-  | ---- | ------------| :---: | :-----: | :------: |
+  | Name | Description | Type | Default | Required |
+  | ---- | ------------| :--: | :-----: | :------: |
   {{ range include ".config/subnets_parameters.json" | fromJson -}}
-    | {{ .Name | sanitizeMarkdownTbl -}}
-    {{ $z := len .Support }}{{ if ne $z 0 -}}
-      | {{ .Description }}{{ range $x, $y := .Support }}
-        {{- if eq $x (sub $z 1) }}
-          {{- print " `" . "`." -}} 
-        {{- else if eq $x (sub $z 2) }}
-          {{- print " `" . "` and" -}}
-        {{- else }}
-          {{- print " `" . "`," -}}
-        {{ end }}
-      {{- end }}
-    {{- else -}}
-    | {{ .Description }}
-    {{- end -}}
-    | {{ printf "`" }}{{ .Type }}{{ printf "`" -}}
-    {{ if eq .Default "n/a" -}}
-      | {{ .Default | sanitizeMarkdownTbl -}}
+    {{ print "|" (.Name | sanitizeMarkdownTbl) -}}
+    {{ $z := len .Support }}{{ if ne $z 0 }}
+      {{- print "|" .Description }}{{ range $x, $y := .Support -}}
+        {{ if eq $x (sub $z 1) -}}
+          {{ print " `" . "`." -}} 
+        {{ else if eq $x (sub $z 2) -}}
+          {{ print " `" . "` and" -}}
+        {{ else -}}
+          {{ print " `" . "`," -}}
+        {{ end -}}
+      {{ end -}}
     {{ else -}}
-      | {{ printf "`" }}{{ .Default | sanitizeMarkdownTbl }}{{ printf "`" -}}
+      {{ print "|" .Description -}}
     {{ end -}}
-    | {{ .Required }} |
-  {{ end }}
+    {{ print "|`" .Type "`" -}}
+    {{ if eq .Default "n/a" -}}
+      {{ print "|" (.Default | sanitizeMarkdownTbl) -}}
+    {{ else -}}
+      {{ print "|`" (.Default | sanitizeMarkdownTbl) "`" -}}
+    {{ end -}}
+    {{ print "|" .Required "|" }}
+  {{ end }}{{ printf "\n" -}}
+
   ## Outputs
 
   The following outputs are exported:
 
   | Name | Description | Sensitive |
-  | ---- | ------------| :-------: | 
-  {{- range .Module.Outputs }}
-  | {{ anchorNameMarkdown "output" .Name -}} 
-  | {{ tostring .Description | sanitizeMarkdownTbl -}}
-  | {{ ternary .Sensitive "yes" "no" }} |
-  {{- end }}
+  | ---- | ------------| :-------: |
+  {{ range .Module.Outputs -}}
+    {{ print "|" .Name -}}
+    {{ print "|" (toString .Description | sanitizeMarkdownTbl) -}}
+    {{ print "|" (ternary .Sensitive "yes" "no") "|" }}
+  {{ end -}}
