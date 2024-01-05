@@ -73,16 +73,16 @@
         ]
     },
     {
-        "Name": "enforce_private_link_service_network_policies",
-        "Description": "Enable or Disable network policies for the private link service on the subnet. Conflicts with `enforce_private_link_endpoint_network_policies`.",
+        "Name": "private_endpoint_network_policies_enabled",
+        "Description": "Enable or Disable network policies for the private link endpoint on the subnet. Conflicts with `private_link_service_network_policies_enabled`.",
         "Type": "bool",
         "Default": "false",
         "Required": "no",
         "Support": []
     },
     {
-        "Name": "enforce_private_link_endpoint_network_policies",
-        "Description": "Enable or Disable network policies for the private link endpoint on the subnet. Conflicts with `enforce_private_link_service_network_policies`.",
+        "Name": "private_link_service_network_policies_enabled",
+        "Description": "Enable or Disable network policies for the private link service on the subnet. Conflicts with `private_endpoint_network_policies_enabled`.",
         "Type": "bool",
         "Default": "false",
         "Required": "no",

@@ -1,5 +1,4 @@
 <!-- markdownlint-disable MD041 MD013 -->
-
 [![pre-commit](https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit)](https://github.com/pre-commit/pre-commit)
 [![Terraform Registry](https://img.shields.io/badge/Terraform-registry-blueviolet.svg?logo=terraform)](https://registry.terraform.io/modules/aztfm/virtual-network/azurerm/)
 ![GitHub release (latest by date)](https://img.shields.io/github/v/release/aztfm/terraform-azurerm-virtual-network?label=Release)
@@ -39,8 +38,8 @@ The `subnets` supports the following:
 |address\_prefixes|The address prefix/es to use for the subnet.|`list(string)`|n/a|yes|
 |service\_endpoints|The list of Service endpoints to associate with the subnet. Possible values include: `Microsoft.AzureActiveDirectory`, `Microsoft.AzureCosmosDB`, `Microsoft.ContainerRegistry`, `Microsoft.EventHub`, `Microsoft.KeyVault`, `Microsoft.ServiceBus`, `Microsoft.Sql`, `Microsoft.Storage` and `Microsoft.Web`.|`string`|`null`|no|
 |delegation|The name of service to delegate to. Possible values include: `Microsoft.ApiManagement/service`, `Microsoft.AzureCosmosDB/clusters`, `Microsoft.BareMetal/AzureVMware`, `Microsoft.BareMetal/CrayServers`, `Microsoft.Batch/batchAccounts`, `Microsoft.ContainerInstance/containerGroups`, `Microsoft.ContainerService/managedClusters`, `Microsoft.Databricks/workspaces`, `Microsoft.DBforMySQL/flexibleServers`, `Microsoft.DBforMySQL/serversv2`, `Microsoft.DBforPostgreSQL/flexibleServers`, `Microsoft.DBforPostgreSQL/serversv2`, `Microsoft.DBforPostgreSQL/singleServers`, `Microsoft.HardwareSecurityModules/dedicatedHSMs`, `Microsoft.Kusto/clusters`, `Microsoft.Logic/integrationServiceEnvironments`, `Microsoft.LabServices/labplans`, `Microsoft.MachineLearningServices/workspaces`, `Microsoft.Netapp/volumes`, `Microsoft.Orbital/orbitalGateways`, `Microsoft.PowerPlatform/vnetaccesslinks`, `Microsoft.ServiceFabricMesh/networks`, `Microsoft.Sql/managedInstances`, `Microsoft.StoragePool/diskPools`, `Microsoft.StreamAnalytics/streamingJobs`, `Microsoft.Synapse/workspaces`, `Microsoft.Web/hostingEnvironments`, `Microsoft.Web/serverFarms`, `NGINX.NGINXPLUS/nginxDeployments` and `PaloAltoNetworks.Cloudngfw/firewalls`.|`string`|`null`|no|
-|enforce\_private\_link\_service\_network\_policies|Enable or Disable network policies for the private link service on the subnet. Conflicts with `enforce_private_link_endpoint_network_policies`.|`bool`|`false`|no|
-|enforce\_private\_link\_endpoint\_network\_policies|Enable or Disable network policies for the private link endpoint on the subnet. Conflicts with `enforce_private_link_service_network_policies`.|`bool`|`false`|no|
+|private\_endpoint\_network\_policies\_enabled|Enable or Disable network policies for the private link endpoint on the subnet. Conflicts with `private_link_service_network_policies_enabled`.|`bool`|`false`|no|
+|private\_link\_service\_network\_policies\_enabled|Enable or Disable network policies for the private link service on the subnet. Conflicts with `private_endpoint_network_policies_enabled`.|`bool`|`false`|no|
 
 ## Outputs
 
