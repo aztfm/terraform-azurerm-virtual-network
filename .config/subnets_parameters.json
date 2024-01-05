@@ -1,0 +1,91 @@
+[
+    {
+        "Name": "name",
+        "Description": "The name of the subnet.",
+        "Type": "string",
+        "Default": "n/a",
+        "Required": "yes",
+        "Support": []
+    },
+    {
+        "Name": "address_prefixes",
+        "Description": "The address prefix/es to use for the subnet.",
+        "Type": "list(string)",
+        "Default": "n/a",
+        "Required": "yes",
+        "Support": []
+    },
+    {
+        "Name": "service_endpoints",
+        "Description": "The list of Service endpoints to associate with the subnet. Possible values include:",
+        "Type": "string",
+        "Default": "null",
+        "Required": "no",
+        "Support": [
+            "Microsoft.AzureActiveDirectory",
+            "Microsoft.AzureCosmosDB",
+            "Microsoft.ContainerRegistry",
+            "Microsoft.EventHub",
+            "Microsoft.KeyVault",
+            "Microsoft.ServiceBus",
+            "Microsoft.Sql",
+            "Microsoft.Storage",
+            "Microsoft.Web"
+        ]
+    },
+    {
+        "Name": "delegation",
+        "Description": "The name of service to delegate to. Possible values include:",
+        "Type": "string",
+        "Default": "null",
+        "Required": "no",
+        "Support": [
+            "Microsoft.ApiManagement/service",
+            "Microsoft.AzureCosmosDB/clusters",
+            "Microsoft.BareMetal/AzureVMware",
+            "Microsoft.BareMetal/CrayServers",
+            "Microsoft.Batch/batchAccounts",
+            "Microsoft.ContainerInstance/containerGroups",
+            "Microsoft.ContainerService/managedClusters",
+            "Microsoft.Databricks/workspaces",
+            "Microsoft.DBforMySQL/flexibleServers",
+            "Microsoft.DBforMySQL/serversv2",
+            "Microsoft.DBforPostgreSQL/flexibleServers",
+            "Microsoft.DBforPostgreSQL/serversv2",
+            "Microsoft.DBforPostgreSQL/singleServers",
+            "Microsoft.HardwareSecurityModules/dedicatedHSMs",
+            "Microsoft.Kusto/clusters",
+            "Microsoft.Logic/integrationServiceEnvironments",
+            "Microsoft.LabServices/labplans",
+            "Microsoft.MachineLearningServices/workspaces",
+            "Microsoft.Netapp/volumes",
+            "Microsoft.Orbital/orbitalGateways",
+            "Microsoft.PowerPlatform/vnetaccesslinks",
+            "Microsoft.ServiceFabricMesh/networks",
+            "Microsoft.Sql/managedInstances",
+            "Microsoft.StoragePool/diskPools",
+            "Microsoft.StreamAnalytics/streamingJobs",
+            "Microsoft.Synapse/workspaces",
+            "Microsoft.Web/hostingEnvironments",
+            "Microsoft.Web/serverFarms",
+            "NGINX.NGINXPLUS/nginxDeployments",
+            "PaloAltoNetworks.Cloudngfw/firewalls"
+        ]
+    },
+    {
+        "Name": "enforce_private_link_service_network_policies",
+        "Description": "Enable or Disable network policies for the private link service on the subnet. Conflicts with `enforce_private_link_endpoint_network_policies`.",
+        "Type": "bool",
+        "Default": "false",
+        "Required": "no",
+        "Support": []
+    },
+    {
+        "Name": "enforce_private_link_endpoint_network_policies",
+        "Description": "Enable or Disable network policies for the private link endpoint on the subnet. Conflicts with `enforce_private_link_service_network_policies`.",
+        "Type": "bool",
+        "Default": "false",
+        "Required": "no",
+        "Support": []
+    }
+]

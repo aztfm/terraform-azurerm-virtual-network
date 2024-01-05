@@ -39,7 +39,7 @@ variable "ddos_protection_plan_id" {
 variable "bgp_community" {
   type        = string
   default     = null
-  description = "The BGP community attribute in format <as-number>:<community-value>. The as-number segment is the Microsoft ASN, which is always 12076 for now."
+  description = "The BGP community attribute in format `<as-number>:<community-value>`. The as-number segment is the Microsoft ASN, which is always 12076 for now."
 }
 
 variable "subnets" {

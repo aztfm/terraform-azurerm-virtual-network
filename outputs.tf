@@ -23,6 +23,11 @@ output "location" {
   description = "The location/region where the virtual network is created."
 }
 
+output "tags" {
+  value       = azurerm_virtual_network.vnet.tags
+  description = "The tags assigned to the resource."
+}
+
 output "address_space" {
   value       = azurerm_virtual_network.vnet.address_space
   description = "The list of address spaces used by the virtual network."
@@ -42,9 +47,4 @@ output "subnets" {
   value       = { for subnet in azurerm_subnet.subnets : subnet.name => subnet }
   description = "Blocks containing configuration of each subnet."
   # module.MODULE_NAME.subnets["SUBNET_NAME"].id
-}
-
-output "tags" {
-  value       = azurerm_virtual_network.vnet.tags
-  description = "The tags assigned to the resource."
 }

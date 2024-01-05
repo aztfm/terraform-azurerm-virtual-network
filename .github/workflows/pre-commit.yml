@@ -22,11 +22,15 @@ jobs:
         with:
           terraform_version: "1.3.0"
 
-      - name: Setup TFLint
-        uses: terraform-linters/setup-tflint@v4
-
-      - uses: actions/setup-python@v4
+      - name: Setup Python
+        uses: actions/setup-python@v4
         with:
           python-version: 3.x
+
+      - name: Setup Homebrew
+        uses: Homebrew/actions/setup-homebrew@master
+
+      - name: Install dependencies
+        run: brew install tflint terraform-docs
 
       - uses: pre-commit/action@v3.0.0

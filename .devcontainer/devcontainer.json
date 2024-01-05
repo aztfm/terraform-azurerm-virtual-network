@@ -8,12 +8,14 @@
 	// Features to add to the dev container. More info: https://containers.dev/features.
 	"features": {
 		"ghcr.io/devcontainers/features/terraform:1": {
-			// "installTerraformDocs": true,
+			"installTerraformDocs": true,
 			"version": "latest",
-			"tflint": "latest",
-			"terragrunt": "latest"
+			"tflint": "latest"
 		},
 		"ghcr.io/devcontainers-contrib/features/pre-commit:2": {
+			"version": "latest"
+		},
+		"ghcr.io/devcontainers-contrib/features/markdownlint-cli:1": {
 			"version": "latest"
 		}
 	},
@@ -22,7 +24,8 @@
 	// "forwardPorts": [],
 
 	// Use 'postCreateCommand' to run commands after the container is created.
-	"postCreateCommand": "pre-commit install",
+	"onCreateCommand": "pre-commit install",
+	"postAttachCommand": "pre-commit autoupdate && pre-commit install-hooks",
 
 	// Configure tool-specific properties.
 	"customizations": {
@@ -30,7 +33,8 @@
 			"extensions": [
 				"hashicorp.hcl",
 				"hashicorp.terraform",
-				"redhat.vscode-yaml"
+				"redhat.vscode-yaml",
+				"yzhang.markdown-all-in-one"
 			]
 		}
 	}
