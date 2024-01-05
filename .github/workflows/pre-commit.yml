@@ -25,8 +25,12 @@ jobs:
       - name: Setup TFLint
         uses: terraform-linters/setup-tflint@v4
 
-      - uses: actions/setup-python@v4
+      - name: Setup terraform-docs
+        uses: terraform-docs/gh-actions@v1
+
+      - name: Setup Python
+        uses: actions/setup-python@v4
         with:
           python-version: 3.x
 
-      - uses: pre-commit/action@v3.0.0
+      - uses: pre-commit/action@v3
