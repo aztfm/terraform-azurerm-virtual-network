@@ -12,7 +12,6 @@
     "terraform.codelens.referenceCount": true,
     "terraform.experimentalFeatures.prefillRequiredFields": true,
     "terraform.experimentalFeatures.validateOnSave": true,
-    // "terraform.validation.enableEnhancedValidation": true,
     "redhat.telemetry.enabled": true,
     "[markdown]": {
         "editor.defaultFormatter": "yzhang.markdown-all-in-one"

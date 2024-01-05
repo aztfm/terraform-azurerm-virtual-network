@@ -5,14 +5,13 @@ on:
     branches:
       - main
     paths-ignore:
-      - ".devcontainer"
-      - ".vscode"
+      - ".config/**"
       - ".gitignore"
       - ".pre-commit-config.yaml"
-      - ".terraform-docs.yml"
       - "examples/**"
       - "LICENSE"
       - "**.md"
+      - "**.json"
 
 permissions:
   id-token: write
