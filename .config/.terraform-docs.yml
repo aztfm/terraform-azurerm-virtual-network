@@ -1,0 +1,74 @@
+formatter: markdown
+
+settings:
+  anchor: false
+
+sort:
+  enabled: false
+
+output:
+  file: README.md
+  mode: inject
+
+content: |
+  ## Parameters
+
+  The following parameters are supported:
+
+  | Name | Description | Type | Default | Required |
+  | ---- | ----------- | :--: | :-----: | :------: |
+  {{ range .Module.Inputs -}}
+    {{ print "|" (.Name | sanitizeMarkdownTbl) -}}
+    {{ print "|" (toString .Description | sanitizeMarkdownTbl) -}}
+    {{ if eq (substr 0 13 (toString .Type)) "list(object({" -}}
+      {{ print "|`list(object({}))`" -}}
+    {{ else -}}
+      {{ print "|`" (tostring .Type | sanitizeMarkdownTbl) "`" -}}
+    {{ end -}}
+    {{ if eq .GetValue "" -}}
+      {{ print "|" (.GetValue | sanitizeMarkdownTbl) -}}
+    {{ else -}}
+      {{ print "|`" (.GetValue | sanitizeMarkdownTbl) "`" -}}
+    {{ end -}}
+    {{ print "|" (ternary .Required "yes" "no") "|" }}
+  {{ end }}{{ printf "\n" -}}
+  
+  The `subnets` supports the following:
+
+  | Name | Description | Type | Default | Required |
+  | ---- | ------------| :--: | :-----: | :------: |
+  {{ range include ".config/subnets_parameters.json" | fromJson -}}
+    {{ print "|" (.Name | sanitizeMarkdownTbl) -}}
+    {{ $z := len .Support }}{{ if ne $z 0 }}
+      {{- print "|" .Description }}{{ range $x, $y := .Support -}}
+        {{ if eq $x (sub $z 1) -}}
+          {{ print " `" . "`." -}} 
+        {{ else if eq $x (sub $z 2) -}}
+          {{ print " `" . "` and" -}}
+        {{ else -}}
+          {{ print " `" . "`," -}}
+        {{ end -}}
+      {{ end -}}
+    {{ else -}}
+      {{ print "|" .Description -}}
+    {{ end -}}
+    {{ print "|`" .Type "`" -}}
+    {{ if eq .Default "n/a" -}}
+      {{ print "|" (.Default | sanitizeMarkdownTbl) -}}
+    {{ else -}}
+      {{ print "|`" (.Default | sanitizeMarkdownTbl) "`" -}}
+    {{ end -}}
+    {{ print "|" .Required "|" }}
+  {{ end }}{{ printf "\n" -}}
+
+  ## Outputs
+
+  The following outputs are exported:
+
+  | Name | Description | Sensitive |
+  | ---- | ------------| :-------: |
+  {{ range .Module.Outputs -}}
+    {{ print "|" .Name -}}
+    {{ print "|" (toString .Description | sanitizeMarkdownTbl) -}}
+    {{ print "|" (ternary .Sensitive "yes" "no") "|" }}
+  {{ end -}}
