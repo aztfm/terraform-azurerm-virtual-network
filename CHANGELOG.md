@@ -1,6 +1,13 @@
 <!-- markdownlint-disable MD041 MD013 -->
 ## 4.0.0 (XXXXXXXX XX, XXXX)
 
+BREAKING CHANGES:
+
+- dependencies: updating to `v3.58.0` minimum of `hashicorp/azurerm` provider.
+
+ENHANCEMENTS:
+
+- Internal changes that do not modify the operation of the module.
 - New options have been added to the `subnets.delegation` parameter: `GitHub.Network/networkSettings`, `Microsoft.Apollo/npu`, `Microsoft.App/environments`, `Microsoft.App/testClients`, `Microsoft.AVS/PrivateClouds`, `Microsoft.BareMetal/AzureHostedService`, `Microsoft.CloudTest/hostedpools`, `Microsoft.CloudTest/images`, `Microsoft.CloudTest/pools`, `Microsoft.Codespaces/plans`, `Microsoft.DBforMySQL/servers`, `Microsoft.DelegatedNetwork/controller`, `Microsoft.DevCenter/networkConnection`, `Microsoft.DocumentDB/cassandraClusters`, `Microsoft.Fidalgo/networkSettings`, `Microsoft.LabServices/labplans`, `Microsoft.Network/dnsResolvers`, `Microsoft.PowerPlatform/enterprisePolicies`, `Microsoft.ServiceNetworking/trafficControllers`, `Microsoft.Singularity/accounts/networks`, `Microsoft.Singularity/accounts/npu` and `Qumulo.Storage/fileSystems`.
 
 ## 3.0.0 (February 05, 2023)
