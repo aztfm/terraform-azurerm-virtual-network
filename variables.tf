@@ -22,12 +22,22 @@ variable "tags" {
 variable "address_space" {
   type        = list(string)
   description = "The address space that is used in the virtual network. More than one address space can be provisioned."
+
+  validation {
+    condition     = can([for ip in var.address_space : cidrsubnet(ip, 0, 0)])
+    error_message = "All value must be a valid IP range in CIDR format."
+  }
 }
 
 variable "dns_servers" {
   type        = list(string)
   default     = []
   description = "List of IP addresses of DNS servers."
+
+  validation {
+    condition     = can([for ip in var.dns_servers : cidrnetmask("${ip}/32")])
+    error_message = "All value must be a valid IP address."
+  }
 }
 
 variable "ddos_protection_plan_id" {
@@ -40,6 +50,21 @@ variable "bgp_community" {
   type        = string
   default     = null
   description = "The BGP community attribute in format `<as-number>:<community-value>`. The as-number segment is the Microsoft ASN, which is always 12076 for now."
+
+  validation {
+    condition     = var.bgp_community == null ? true : length(split(":", var.bgp_community)) == 2
+    error_message = "The value must be a BGP community range in <as-number>:<community-value> format."
+  }
+
+  validation {
+    condition     = var.bgp_community == null ? true : split(":", var.bgp_community)[0] == "12076"
+    error_message = "The as-number must be 12076."
+  }
+
+  validation {
+    condition     = var.bgp_community == null ? true : split(":", var.bgp_community)[1] >= 20000 && split(":", var.bgp_community)[1] <= 49999
+    error_message = "The community-value must between 20000 and 49999."
+  }
 }
 
 variable "subnets" {
