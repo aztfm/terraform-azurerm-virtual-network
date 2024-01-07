@@ -1,5 +1,5 @@
 <!-- markdownlint-disable MD041 MD013 -->
-## 4.0.0 (XXXXXXXX XX, XXXX)
+## 4.0.0 (January 07, 2024)
 
 BREAKING CHANGES:
 
