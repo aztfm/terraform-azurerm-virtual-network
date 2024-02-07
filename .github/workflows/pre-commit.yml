@@ -33,4 +33,4 @@ jobs:
       - name: Install dependencies
         run: brew install tflint terraform-docs
 
-      - uses: pre-commit/action@v3.0.0
+      - uses: pre-commit/action@v3.0.1
