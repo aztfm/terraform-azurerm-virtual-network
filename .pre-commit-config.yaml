@@ -1,6 +1,6 @@
 repos:
   - repo: https://github.com/antonbabenko/pre-commit-terraform
-    rev: v1.86.0
+    rev: v1.88.0
     hooks:
       - id: terraform_fmt
         name: Format Terraform code
@@ -25,7 +25,7 @@ repos:
         name: Generate Terraform documentation
 
   - repo: https://github.com/igorshubovych/markdownlint-cli
-    rev: v0.38.0
+    rev: v0.39.0
     hooks:
     - id: markdownlint
       name: Validate Markdown text
