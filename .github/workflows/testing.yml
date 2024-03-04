@@ -42,7 +42,7 @@ jobs:
         run: terraform validate
 
       - name: "Az CLI login"
-        uses: azure/login@v1
+        uses: azure/login@v2
         with:
           tenant-id: ${{ secrets.ARM_TENANT_ID }}
           client-id: ${{ secrets.ARM_CLIENT_ID }}
