@@ -17,7 +17,7 @@
             "version": "latest"
         }
     },
-    "onCreateCommand": "git config credential.useHttpPath true && pre-commit install",
+    "onCreateCommand": "pre-commit install",
     "customizations": {
         "vscode": {
             "extensions": [
