@@ -1,4 +1,4 @@
-<!-- markdownlint-disable MD041 MD013 -->
+<!-- markdownlint-disable MD041 -->
 ## 4.0.0 (January 07, 2024)
 
 BREAKING CHANGES:
