@@ -23,7 +23,6 @@ resource "azurerm_resource_group" "rg" {
   location = "Spain Central"
 }
 
-
 module "virtual_network" {
   source              = "aztfm/virtual-network/azurerm"
   version             = ">=4.0.0"
