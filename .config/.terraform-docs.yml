@@ -11,7 +11,7 @@ output:
   mode: inject
 
 content: |
-  ## Parameters
+  ## :arrow_forward: Parameters
 
   The following parameters are supported:
 
@@ -36,7 +36,7 @@ content: |
   The `subnets` supports the following:
 
   | Name | Description | Type | Default | Required |
-  | ---- | ------------| :--: | :-----: | :------: |
+  | ---- | ----------- | :--: | :-----: | :------: |
   {{ range include ".config/subnets_parameters.json" | fromJson -}}
     {{ print "|" (.Name | sanitizeMarkdownTbl) -}}
     {{ $z := len .Support }}{{ if ne $z 0 }}
@@ -61,12 +61,12 @@ content: |
     {{ print "|" .Required "|" }}
   {{ end }}{{ printf "\n" -}}
 
-  ## Outputs
+  ## :arrow_backward: Outputs
 
   The following outputs are exported:
 
   | Name | Description | Sensitive |
-  | ---- | ------------| :-------: |
+  | ---- | ----------- | :-------: |
   {{ range .Module.Outputs -}}
     {{ print "|" .Name -}}
     {{ print "|" (toString .Description | sanitizeMarkdownTbl) -}}
