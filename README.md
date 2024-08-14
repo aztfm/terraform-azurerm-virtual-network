@@ -6,7 +6,7 @@
 
 [![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/aztfm/terraform-azurerm-virtual-network?quickstart=1)
 
-## Version compatibility
+## :gear: Version compatibility
 
 | Module version | Terraform version | AzureRM version |
 | -------------- | ----------------- | --------------- |
@@ -15,8 +15,33 @@
 | >= 2.x.x       | >= 0.13.x         | >= 2.36.0       |
 | >= 1.x.x       | >= 0.13.x         | >= 2.8.0        |
 
+## :memo: Usage
+
+```hcl
+resource "azurerm_resource_group" "rg" {
+  name     = "resource-group"
+  location = "Spain Central"
+}
+
+
+module "virtual_network" {
+  source              = "aztfm/virtual-network/azurerm"
+  version             = ">=4.0.0"
+  name                = "virtual-network"
+  resource_group_name = azurerm_resource_group.rg.name
+  location            = azurerm_resource_group.rg.location
+  address_space       = ["10.0.0.0/16"]
+  subnets = [{
+    name             = "subnet"
+    address_prefixes = ["10.0.0.0/24"]
+  }]
+}
+```
+
+Reference to more [examples](https://github.com/aztfm/terraform-azurerm-virtual-network/tree/main/examples).
+
 <!-- BEGIN_TF_DOCS -->
-## Parameters
+## :arrow_forward: Parameters
 
 The following parameters are supported:
 
@@ -35,7 +60,7 @@ The following parameters are supported:
 The `subnets` supports the following:
 
 | Name | Description | Type | Default | Required |
-| ---- | ------------| :--: | :-----: | :------: |
+| ---- | ----------- | :--: | :-----: | :------: |
 |name|The name of the subnet.|`string`|n/a|yes|
 |address\_prefixes|The address prefix/es to use for the subnet.|`list(string)`|n/a|yes|
 |service\_endpoints|The list of Service endpoints to associate with the subnet. Possible values include: `Microsoft.AzureActiveDirectory`, `Microsoft.AzureCosmosDB`, `Microsoft.ContainerRegistry`, `Microsoft.EventHub`, `Microsoft.KeyVault`, `Microsoft.ServiceBus`, `Microsoft.Sql`, `Microsoft.Storage` and `Microsoft.Web`.|`string`|`null`|no|
@@ -43,12 +68,12 @@ The `subnets` supports the following:
 |private\_endpoint\_network\_policies\_enabled|Enable or Disable network policies for the private link endpoint on the subnet. Conflicts with `private_link_service_network_policies_enabled`.|`bool`|`false`|no|
 |private\_link\_service\_network\_policies\_enabled|Enable or Disable network policies for the private link service on the subnet. Conflicts with `private_endpoint_network_policies_enabled`.|`bool`|`false`|no|
 
-## Outputs
+## :arrow_backward: Outputs
 
 The following outputs are exported:
 
 | Name | Description | Sensitive |
-| ---- | ------------| :-------: |
+| ---- | ----------- | :-------: |
 |id|The virtual network configuration ID.|no|
 |guid|The GUID of the virtual network.|no|
 |name|The name of the virtual network.|no|
