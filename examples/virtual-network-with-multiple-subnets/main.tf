@@ -1,6 +1,6 @@
 resource "azurerm_resource_group" "rg" {
   name     = "resource-group"
-  location = "Spaint Central"
+  location = "Spain Central"
 }
 
 module "virtual_network" {
