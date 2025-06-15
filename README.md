@@ -2,12 +2,13 @@
 
 [devcontainer]: https://vscode.dev/redirect?url=vscode://ms-vscode-remote.remote-containers/cloneInVolume?url=https://github.com/aztfm/terraform-azurerm-virtual-network
 [registry]: https://registry.terraform.io/modules/aztfm/virtual-network/azurerm/
+[releases]: https://github.com/aztfm/terraform-azurerm-virtual-network/releases
 
 [![pre-commit](https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit)](https://github.com/pre-commit/pre-commit)
 [![Terraform Registry](https://img.shields.io/badge/terraform-registry-blueviolet?logo=terraform&logoColor=white)][registry]
 [![Dev Container](https://img.shields.io/badge/devcontainer-VSCode-blue?logo=linuxcontainers)][devcontainer]
-![License](https://img.shields.io/github/license/aztfm/terraform-azurerm-virtual-network)
-![Last release](https://img.shields.io/github/v/release/aztfm/terraform-azurerm-virtual-network)
+[![License](https://img.shields.io/github/license/aztfm/terraform-azurerm-virtual-network)](LICENSE)
+[![Last release](https://img.shields.io/github/v/release/aztfm/terraform-azurerm-virtual-network)][releases]
 
 [![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/aztfm/terraform-azurerm-virtual-network?quickstart=1)
 
