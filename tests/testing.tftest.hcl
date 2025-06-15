@@ -157,17 +157,17 @@ run "apply" {
   }
 
   assert {
-    condition     = azurerm_virtual_network.vnet.subnets["subnet1"].id == "${run.setup.resource_group_id}/providers/Microsoft.Network/virtualNetworks/${run.setup.workspace_id}/subnets/subnet1"
+    condition     = azurerm_subnet.subnets["subnet1"].id == "${run.setup.resource_group_id}/providers/Microsoft.Network/virtualNetworks/${run.setup.workspace_id}/subnets/subnet1"
     error_message = "The Subnet1 ID is not as expected."
   }
 
   assert {
-    condition     = azurerm_virtual_network.vnet.subnets["subnet2"].id == "${run.setup.resource_group_id}/providers/Microsoft.Network/virtualNetworks/${run.setup.workspace_id}/subnets/subnet2"
+    condition     = azurerm_subnet.subnets["subnet2"].id == "${run.setup.resource_group_id}/providers/Microsoft.Network/virtualNetworks/${run.setup.workspace_id}/subnets/subnet2"
     error_message = "The Subnet2 ID is not as expected."
   }
 
   assert {
-    condition     = azurerm_virtual_network.vnet.subnets["subnet3"].id == "${run.setup.resource_group_id}/providers/Microsoft.Network/virtualNetworks/${run.setup.workspace_id}/subnets/subnet3"
+    condition     = azurerm_subnet.subnets["subnet3"].id == "${run.setup.resource_group_id}/providers/Microsoft.Network/virtualNetworks/${run.setup.workspace_id}/subnets/subnet3"
     error_message = "The Subnet3 ID is not as expected."
   }
 
