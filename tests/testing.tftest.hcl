@@ -18,16 +18,16 @@ variables {
     delegation                                    = "Microsoft.ApiManagement/service",
     private_link_service_network_policies_enabled = true
     }, {
-    name                                      = "subnet2"
-    address_prefixes                          = ["10.2.0.0/24"]
-    service_endpoints                         = ["Microsoft.Sql"]
-    private_endpoint_network_policies_enabled = true
+    name                           = "subnet2"
+    address_prefixes               = ["10.2.0.0/24"]
+    service_endpoints              = ["Microsoft.Sql"]
+    private_endpoint_network_policies = "RouteTableEnabled"
     }, {
     name                                          = "subnet3"
     address_prefixes                              = ["10.3.0.0/24"]
     service_endpoints                             = ["Microsoft.Storage", "Microsoft.Web"]
     delegation                                    = "Microsoft.Web/serverFarms"
-    private_endpoint_network_policies_enabled     = false
+    private_endpoint_network_policies                = "Disabled"
     private_link_service_network_policies_enabled = false
   }]
 }
@@ -107,7 +107,7 @@ run "plan" {
   }
 
   assert {
-    condition     = azurerm_subnet.subnets["subnet2"].private_endpoint_network_policies_enabled == ({ for s in var.subnets : s.name => s })["subnet2"].private_endpoint_network_policies_enabled
+    condition     = azurerm_subnet.subnets["subnet2"].private_endpoint_network_policies == ({ for s in var.subnets : s.name => s })["subnet2"].private_endpoint_network_policies
     error_message = "Subnet2 private endpoint service network policies is being modified."
   }
 
@@ -132,7 +132,7 @@ run "plan" {
   }
 
   assert {
-    condition     = azurerm_subnet.subnets["subnet3"].private_endpoint_network_policies_enabled == ({ for s in var.subnets : s.name => s })["subnet3"].private_endpoint_network_policies_enabled
+    condition     = azurerm_subnet.subnets["subnet3"].private_endpoint_network_policies == ({ for s in var.subnets : s.name => s })["subnet3"].private_endpoint_network_policies
     error_message = "Subnet3 private endpoint service network policies is being modified."
   }
 

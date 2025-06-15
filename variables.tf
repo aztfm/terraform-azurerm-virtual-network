@@ -73,9 +73,14 @@ variable "subnets" {
     address_prefixes                              = list(string)
     service_endpoints                             = optional(list(string))
     delegation                                    = optional(string)
-    private_endpoint_network_policies_enabled     = optional(bool)
+    private_endpoint_network_policies             = optional(string, "Disabled")
     private_link_service_network_policies_enabled = optional(bool)
   }))
   default     = []
   description = "List of objects that represent the configuration of each subnet."
+
+  validation {
+    condition     = alltrue([for subnet in var.subnets : contains(["Disabled", "Enabled", "NetworkSecurityGroupEnabled", "RouteTableEnabled"], subnet.private_endpoint_network_policies)])
+    error_message = "All private endpoint network policies must be Disabled, Enabled, NetworkSecurityGroupEnabled, or RouteTableEnabled."
+  }
 }
