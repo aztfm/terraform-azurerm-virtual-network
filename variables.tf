@@ -80,6 +80,20 @@ variable "subnets" {
   description = "List of objects that represent the configuration of each subnet."
 
   validation {
+    condition     = alltrue([for subnet in var.subnets : can([for ip in subnet.address_prefixes : cidrsubnet(ip, 0, 0)])])
+    error_message = "All address prefixes must be valid IP ranges in CIDR format."
+  }
+
+  validation {
+    condition = alltrue([for subnet in var.subnets : can([for endpoint in subnet.service_endpoints : contains([
+      "Microsoft.AzureActiveDirectory", "Microsoft.AzureCosmosDB", "Microsoft.ContainerRegistry",
+      "Microsoft.EventHub", "Microsoft.KeyVault", "Microsoft.ServiceBus", "Microsoft.Sql",
+      "Microsoft.Storage", "Microsoft.Web"
+    ], endpoint)])])
+    error_message = "All service endpoints must be one of the following: Microsoft.AzureActiveDirectory, Microsoft.AzureCosmosDB, Microsoft.ContainerRegistry, Microsoft.EventHub, Microsoft.KeyVault, Microsoft.ServiceBus, Microsoft.Sql, Microsoft.Storage, or Microsoft.Web."
+  }
+
+  validation {
     condition     = alltrue([for subnet in var.subnets : contains(["Disabled", "Enabled", "NetworkSecurityGroupEnabled", "RouteTableEnabled"], subnet.private_endpoint_network_policies)])
     error_message = "All private endpoint network policies must be Disabled, Enabled, NetworkSecurityGroupEnabled, or RouteTableEnabled."
   }

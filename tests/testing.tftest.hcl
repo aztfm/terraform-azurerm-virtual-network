@@ -18,16 +18,16 @@ variables {
     delegation                                    = "Microsoft.ApiManagement/service",
     private_link_service_network_policies_enabled = true
     }, {
-    name                           = "subnet2"
-    address_prefixes               = ["10.2.0.0/24"]
-    service_endpoints              = ["Microsoft.Sql"]
+    name                              = "subnet2"
+    address_prefixes                  = ["10.2.0.0/24"]
+    service_endpoints                 = ["Microsoft.Sql"]
     private_endpoint_network_policies = "RouteTableEnabled"
     }, {
     name                                          = "subnet3"
     address_prefixes                              = ["10.3.0.0/24"]
     service_endpoints                             = ["Microsoft.Storage", "Microsoft.Web"]
     delegation                                    = "Microsoft.Web/serverFarms"
-    private_endpoint_network_policies                = "Disabled"
+    private_endpoint_network_policies             = "Disabled"
     private_link_service_network_policies_enabled = false
   }]
 }
@@ -149,5 +149,75 @@ run "apply" {
     name                = run.setup.workspace_id
     resource_group_name = run.setup.resource_group_name
     location            = run.setup.resource_group_location
+  }
+
+  assert {
+    condition     = azurerm_virtual_network.vnet.id == "${run.setup.resource_group_id}/providers/Microsoft.Network/virtualNetworks/${run.setup.workspace_id}"
+    error_message = "The Virtual Network ID is not as expected."
+  }
+
+  assert {
+    condition     = azurerm_virtual_network.vnet.subnets["subnet1"].id == "${run.setup.resource_group_id}/providers/Microsoft.Network/virtualNetworks/${run.setup.workspace_id}/subnets/subnet1"
+    error_message = "The Subnet1 ID is not as expected."
+  }
+
+  assert {
+    condition     = azurerm_virtual_network.vnet.subnets["subnet2"].id == "${run.setup.resource_group_id}/providers/Microsoft.Network/virtualNetworks/${run.setup.workspace_id}/subnets/subnet2"
+    error_message = "The Subnet2 ID is not as expected."
+  }
+
+  assert {
+    condition     = azurerm_virtual_network.vnet.subnets["subnet3"].id == "${run.setup.resource_group_id}/providers/Microsoft.Network/virtualNetworks/${run.setup.workspace_id}/subnets/subnet3"
+    error_message = "The Subnet3 ID is not as expected."
+  }
+
+  assert {
+    condition     = output.id == azurerm_virtual_network.vnet.id
+    error_message = "The Virtual Network ID output is not as expected."
+  }
+
+  assert {
+    condition     = output.guid == azurerm_virtual_network.vnet.guid
+    error_message = "The Virtual Network GUID output is not as expected."
+  }
+
+  assert {
+    condition     = output.name == azurerm_virtual_network.vnet.name
+    error_message = "The Virtual Network name output is not as expected."
+  }
+
+  assert {
+    condition     = output.resource_group_name == azurerm_virtual_network.vnet.resource_group_name
+    error_message = "The Virtual Network resource group name output is not as expected."
+  }
+
+  assert {
+    condition     = output.location == azurerm_virtual_network.vnet.location
+    error_message = "The Virtual Network location output is not as expected."
+  }
+
+  assert {
+    condition     = output.tags == azurerm_virtual_network.vnet.tags
+    error_message = "The Virtual Network tags output is not as expected."
+  }
+
+  assert {
+    condition     = output.address_space == azurerm_virtual_network.vnet.address_space
+    error_message = "The Virtual Network address space output is not as expected."
+  }
+
+  assert {
+    condition     = output.dns_servers == azurerm_virtual_network.vnet.dns_servers
+    error_message = "The Virtual Network DNS servers output is not as expected."
+  }
+
+  assert {
+    condition     = output.ddos_protection_plan == azurerm_virtual_network.vnet.ddos_protection_plan
+    error_message = "The Virtual Network DDoS protection plan output is not as expected."
+  }
+  
+  assert {
+    condition     = length(output.subnets) == length(azurerm_subnet.subnets)
+    error_message = "The Virtual Network subnets output is not as expected."
   }
 }
