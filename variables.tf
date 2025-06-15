@@ -85,7 +85,7 @@ variable "subnets" {
   }
 
   validation {
-    condition = alltrue([for subnet in var.subnets : can([for endpoint in subnet.service_endpoints : contains([
+    condition = alltrue([for subnet in var.subnets : alltrue([for endpoint in subnet.service_endpoints : contains([
       "Microsoft.AzureActiveDirectory", "Microsoft.AzureCosmosDB", "Microsoft.ContainerRegistry",
       "Microsoft.EventHub", "Microsoft.KeyVault", "Microsoft.ServiceBus", "Microsoft.Sql",
       "Microsoft.Storage", "Microsoft.Web"
