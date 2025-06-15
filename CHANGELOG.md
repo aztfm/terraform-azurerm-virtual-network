@@ -1,3 +1,18 @@
+## 5.0.0 (Unrelease)
+
+BREAKING CHANGES:
+
+- dependencies: updating to `v1.9.0` minimum of `terraform`.
+- dependencies: updating to `v4.15.0` minimum of `hashicorp/azurerm` provider.
+
+ENHANCEMENTS:
+
+- **New Parameter:** `subnets.private_endpoint_network_policies`
+
+DEPRECATIONS:
+
+- The `private_link_service_network_policies_enabled` parameter has been removed in favor of `private_endpoint_network_policies`
+
 ## 4.0.0 (January 07, 2024)
 
 BREAKING CHANGES:
