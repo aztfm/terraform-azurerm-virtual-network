@@ -15,6 +15,7 @@
 
 | Module version | Terraform version | AzureRM version |
 | -------------- | ----------------- | --------------- |
+| >= 5.x.x       | >= 1.9.x          | >= 4.15.0       |
 | >= 4.x.x       | >= 1.3.x          | >= 3.58.0       |
 | >= 3.x.x       | >= 1.3.x          | >= 3.28.0       |
 | >= 2.x.x       | >= 0.13.x         | >= 2.36.0       |
@@ -69,8 +70,8 @@ The `subnets` supports the following:
 |address\_prefixes|The address prefix/es to use for the subnet.|`list(string)`|n/a|yes|
 |service\_endpoints|The list of Service endpoints to associate with the subnet. Possible values include: `Microsoft.AzureActiveDirectory`, `Microsoft.AzureCosmosDB`, `Microsoft.ContainerRegistry`, `Microsoft.EventHub`, `Microsoft.KeyVault`, `Microsoft.ServiceBus`, `Microsoft.Sql`, `Microsoft.Storage` and `Microsoft.Web`.|`string`|`null`|no|
 |delegation|The name of service to delegate to. Possible values include: `GitHub.Network/networkSettings`, `Microsoft.ApiManagement/service`, `Microsoft.Apollo/npu`, `Microsoft.App/environments`, `Microsoft.App/testClients`, `Microsoft.AVS/PrivateClouds`, `Microsoft.AzureCosmosDB/clusters`, `Microsoft.BareMetal/AzureHostedService`, `Microsoft.BareMetal/AzureVMware`, `Microsoft.BareMetal/CrayServers`, `Microsoft.Batch/batchAccounts`, `Microsoft.CloudTest/hostedpools`, `Microsoft.CloudTest/images`, `Microsoft.CloudTest/pools`, `Microsoft.Codespaces/plans`, `Microsoft.ContainerInstance/containerGroups`, `Microsoft.ContainerService/managedClusters`, `Microsoft.Databricks/workspaces`, `Microsoft.DBforMySQL/flexibleServers`, `Microsoft.DBforMySQL/servers`, `Microsoft.DBforMySQL/serversv2`, `Microsoft.DBforPostgreSQL/flexibleServers`, `Microsoft.DBforPostgreSQL/serversv2`, `Microsoft.DBforPostgreSQL/singleServers`, `Microsoft.DelegatedNetwork/controller`, `Microsoft.DevCenter/networkConnection`, `Microsoft.DocumentDB/cassandraClusters`, `Microsoft.Fidalgo/networkSettings`, `Microsoft.HardwareSecurityModules/dedicatedHSMs`, `Microsoft.Kusto/clusters`, `Microsoft.LabServices/labplans`, `Microsoft.Logic/integrationServiceEnvironments`, `Microsoft.MachineLearningServices/workspaces`, `Microsoft.Netapp/volumes`, `Microsoft.Network/dnsResolvers`, `Microsoft.Orbital/orbitalGateways`, `Microsoft.PowerPlatform/enterprisePolicies`, `Microsoft.PowerPlatform/vnetaccesslinks`, `Microsoft.ServiceFabricMesh/networks`, `Microsoft.ServiceNetworking/trafficControllers`, `Microsoft.Singularity/accounts/networks`, `Microsoft.Singularity/accounts/npu`, `Microsoft.Sql/managedInstances`, `Microsoft.StoragePool/diskPools`, `Microsoft.StreamAnalytics/streamingJobs`, `Microsoft.Synapse/workspaces`, `Microsoft.Web/hostingEnvironments`, `Microsoft.Web/serverFarms`, `NGINX.NGINXPLUS/nginxDeployments`, `PaloAltoNetworks.Cloudngfw/firewalls` and `Qumulo.Storage/fileSystems`.|`string`|`null`|no|
-|private\_endpoint\_network\_policies\_enabled|Enable or Disable network policies for the private link endpoint on the subnet. Conflicts with `private_link_service_network_policies_enabled`.|`bool`|`false`|no|
-|private\_link\_service\_network\_policies\_enabled|Enable or Disable network policies for the private link service on the subnet. Conflicts with `private_endpoint_network_policies_enabled`.|`bool`|`false`|no|
+|private\_endpoint\_network\_policies|Enable or Disable network policies for the private endpoint on the subnet. Possible values include: `Disabled`, `Enabled`, `NetworkSecurityGroupEnabled` and `RouteTableEnabled`.|`string`|`Disabled`|no|
+|private\_link\_service\_network\_policies\_enabled|Enable or Disable network policies for the private link service on the subnet.|`bool`|`false`|no|
 
 ## :arrow_backward: Outputs
 
