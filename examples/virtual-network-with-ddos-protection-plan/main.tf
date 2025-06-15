@@ -1,6 +1,6 @@
 resource "azurerm_resource_group" "rg" {
   name     = "resource-group"
-  location = "Spaint Central"
+  location = "Spain Central"
 }
 
 resource "azurerm_network_ddos_protection_plan" "ddos" {
