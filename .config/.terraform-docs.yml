@@ -11,6 +11,25 @@ output:
   mode: inject
 
 content: |
+  {{ define "table" }}{{ printf "The `%s` supports the following:" .Resource }}
+
+  | Name | Description | Type | Default | Required |
+  | ---- | ------------| :--: | :-----: | :------: |
+  {{ range include .File | fromJson -}}
+    {{ print "|" (.Name | sanitizeMarkdownTbl) -}}
+    {{ $z := len .Support }}{{ if ne $z 0 }}{{ print "|" .Description -}}
+      {{ range $x, $y := .Support -}}
+        {{ if eq $x (sub $z 1) }}{{ printf " `%s`." . -}}
+        {{ else if eq $x (sub $z 2) }}{{ printf " `%s` and" . -}}
+        {{ else }}{{ printf " `%s`," . }}{{ end -}}
+      {{ end -}}
+    {{ else }}{{ print "|" .Description }}{{ end -}}
+    {{ printf "|`%s`" .Type -}}
+    {{ if eq .Default "n/a" }}{{ print "|" (.Default | sanitizeMarkdownTbl) -}}
+    {{ else }}{{ printf "|`%s`" .Default }}{{ end -}}
+    {{ printf "|%s|" .Required }}
+  {{ end }}{{ end -}}
+
   ## :arrow_forward: Parameters
 
   The following parameters are supported:
@@ -20,53 +39,22 @@ content: |
   {{ range .Module.Inputs -}}
     {{ print "|" (.Name | sanitizeMarkdownTbl) -}}
     {{ print "|" (toString .Description | sanitizeMarkdownTbl) -}}
-    {{ if eq (substr 0 13 (toString .Type)) "list(object({" -}}
-      {{ print "|`list(object({}))`" -}}
-    {{ else -}}
-      {{ print "|`" (tostring .Type | sanitizeMarkdownTbl) "`" -}}
-    {{ end -}}
-    {{ if eq .GetValue "" -}}
-      {{ print "|" (.GetValue | sanitizeMarkdownTbl) -}}
-    {{ else -}}
-      {{ print "|`" (.GetValue | sanitizeMarkdownTbl) "`" -}}
-    {{ end -}}
+    {{ if eq (substr 0 13 (toString .Type)) "list(object({" }}{{ print "|`list(object({}))`" -}}
+    {{ else if eq (substr 0 8 (toString .Type)) "object({" }}{{ print "|`object({})`" -}}
+    {{ else }}{{ printf "|`%s`" .Type }}{{ end -}}
+    {{ if eq .GetValue "" }}{{ print "|" (.GetValue | sanitizeMarkdownTbl) -}}
+    {{ else }}{{ printf "|`%s`" .GetValue }}{{ end -}}
     {{ print "|" (ternary .Required "yes" "no") "|" }}
   {{ end }}{{ printf "\n" -}}
-  
-  The `subnets` supports the following:
 
-  | Name | Description | Type | Default | Required |
-  | ---- | ----------- | :--: | :-----: | :------: |
-  {{ range include ".config/subnets_parameters.json" | fromJson -}}
-    {{ print "|" (.Name | sanitizeMarkdownTbl) -}}
-    {{ $z := len .Support }}{{ if ne $z 0 }}
-      {{- print "|" .Description }}{{ range $x, $y := .Support -}}
-        {{ if eq $x (sub $z 1) -}}
-          {{ print " `" . "`." -}} 
-        {{ else if eq $x (sub $z 2) -}}
-          {{ print " `" . "` and" -}}
-        {{ else -}}
-          {{ print " `" . "`," -}}
-        {{ end -}}
-      {{ end -}}
-    {{ else -}}
-      {{ print "|" .Description -}}
-    {{ end -}}
-    {{ print "|`" .Type "`" -}}
-    {{ if eq .Default "n/a" -}}
-      {{ print "|" (.Default | sanitizeMarkdownTbl) -}}
-    {{ else -}}
-      {{ print "|`" (.Default | sanitizeMarkdownTbl) "`" -}}
-    {{ end -}}
-    {{ print "|" .Required "|" }}
-  {{ end }}{{ printf "\n" -}}
+  {{ template "table" dict "Resource" "subnets" "File" ".config/subnets_parameters.json" }}{{ printf "\n" -}}
 
   ## :arrow_backward: Outputs
 
   The following outputs are exported:
 
   | Name | Description | Sensitive |
-  | ---- | ----------- | :-------: |
+  | ---- | ------------| :-------: |
   {{ range .Module.Outputs -}}
     {{ print "|" .Name -}}
     {{ print "|" (toString .Description | sanitizeMarkdownTbl) -}}
