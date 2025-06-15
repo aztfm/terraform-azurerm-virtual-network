@@ -9,7 +9,7 @@ ENHANCEMENTS:
 
 - **New Parameter:** `subnets.private_endpoint_network_policies`
 
-DEPRECATE:
+DEPRECATIONS:
 
 - The `private_link_service_network_policies_enabled` parameter has been removed in favor of `private_endpoint_network_policies`
 
