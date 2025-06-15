@@ -1,8 +1,13 @@
 # Azure Virtual Network - Terraform Module
 
+[devcontainer]: https://vscode.dev/redirect?url=vscode://ms-vscode-remote.remote-containers/cloneInVolume?url=https://github.com/aztfm/terraform-azurerm-virtual-network
+[registry]: https://registry.terraform.io/modules/aztfm/virtual-network/azurerm/
+
 [![pre-commit](https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit)](https://github.com/pre-commit/pre-commit)
-[![Terraform Registry](https://img.shields.io/badge/Terraform-registry-blueviolet.svg?logo=terraform)](https://registry.terraform.io/modules/aztfm/virtual-network/azurerm/)
-![GitHub release (latest by date)](https://img.shields.io/github/v/release/aztfm/terraform-azurerm-virtual-network?label=Release)
+[![Terraform Registry](https://img.shields.io/badge/terraform-registry-blueviolet?logo=terraform&logoColor=white)][registry]
+[![Dev Container](https://img.shields.io/badge/devcontainer-VSCode-blue?logo=linuxcontainers)][devcontainer]
+![License](https://img.shields.io/github/license/aztfm/terraform-azurerm-virtual-network)
+![Last release](https://img.shields.io/github/v/release/aztfm/terraform-azurerm-virtual-network)
 
 [![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/aztfm/terraform-azurerm-virtual-network?quickstart=1)
 
@@ -59,7 +64,7 @@ The following parameters are supported:
 The `subnets` supports the following:
 
 | Name | Description | Type | Default | Required |
-| ---- | ----------- | :--: | :-----: | :------: |
+| ---- | ------------| :--: | :-----: | :------: |
 |name|The name of the subnet.|`string`|n/a|yes|
 |address\_prefixes|The address prefix/es to use for the subnet.|`list(string)`|n/a|yes|
 |service\_endpoints|The list of Service endpoints to associate with the subnet. Possible values include: `Microsoft.AzureActiveDirectory`, `Microsoft.AzureCosmosDB`, `Microsoft.ContainerRegistry`, `Microsoft.EventHub`, `Microsoft.KeyVault`, `Microsoft.ServiceBus`, `Microsoft.Sql`, `Microsoft.Storage` and `Microsoft.Web`.|`string`|`null`|no|
@@ -72,7 +77,7 @@ The `subnets` supports the following:
 The following outputs are exported:
 
 | Name | Description | Sensitive |
-| ---- | ----------- | :-------: |
+| ---- | ------------| :-------: |
 |id|The virtual network configuration ID.|no|
 |guid|The GUID of the virtual network.|no|
 |name|The name of the virtual network.|no|
