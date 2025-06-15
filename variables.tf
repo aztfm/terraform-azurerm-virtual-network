@@ -89,7 +89,7 @@ variable "subnets" {
       "Microsoft.AzureActiveDirectory", "Microsoft.AzureCosmosDB", "Microsoft.ContainerRegistry",
       "Microsoft.EventHub", "Microsoft.KeyVault", "Microsoft.ServiceBus", "Microsoft.Sql",
       "Microsoft.Storage", "Microsoft.Web"
-    ], endpoint)])])
+    ], endpoint)]) if subnet.service_endpoints != null])
     error_message = "All service endpoints must be one of the following: Microsoft.AzureActiveDirectory, Microsoft.AzureCosmosDB, Microsoft.ContainerRegistry, Microsoft.EventHub, Microsoft.KeyVault, Microsoft.ServiceBus, Microsoft.Sql, Microsoft.Storage, or Microsoft.Web."
   }
 
