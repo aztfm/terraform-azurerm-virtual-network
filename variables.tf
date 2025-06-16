@@ -131,9 +131,4 @@ variable "subnets" {
     ], subnet.delegation) if subnet.delegation != null])
     error_message = "All delegation values must be one of the allowed service delegations."
   }
-
-  validation {
-    condition     = alltrue([for subnet in var.subnets : contains(["GitHub.Network/networkSettings"], subnet.delegation)])
-    error_message = "All delegation values must be one of the allowed service delegations."
-  }
 }
