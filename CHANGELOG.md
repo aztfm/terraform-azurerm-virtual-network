@@ -1,4 +1,4 @@
-## 5.0.0 (Unrelease)
+## 5.0.0 (June 16, 2025)
 
 BREAKING CHANGES:
 
