@@ -128,7 +128,12 @@ variable "subnets" {
       "Microsoft.Singularity/accounts/npu", "Microsoft.Sql/managedInstances", "Microsoft.StoragePool/diskPools", "Microsoft.StreamAnalytics/streamingJobs",
       "Microsoft.Synapse/workspaces", "Microsoft.Web/hostingEnvironments", "Microsoft.Web/serverFarms", "NGINX.NGINXPLUS/nginxDeployments",
       "PaloAltoNetworks.Cloudngfw/firewalls", "Qumulo.Storage/fileSystems", "Oracle.Database/networkAttachments"
-    ], subnet.delegation)])
+    ], subnet.delegation) if subnet.delegation != null])
+    error_message = "All delegation values must be one of the allowed service delegations."
+  }
+
+  validation {
+    condition     = alltrue([for subnet in var.subnets : contains(["GitHub.Network/networkSettings"], subnet.delegation)])
     error_message = "All delegation values must be one of the allowed service delegations."
   }
 }
