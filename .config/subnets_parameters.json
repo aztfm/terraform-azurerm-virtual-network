@@ -50,6 +50,7 @@
         "Required": "no",
         "Support": [
             "GitHub.Network/networkSettings",
+            "Informatica.DataManagement/organizations",
             "Microsoft.ApiManagement/service",
             "Microsoft.Apollo/npu",
             "Microsoft.App/environments",
@@ -75,6 +76,7 @@
             "Microsoft.DBforPostgreSQL/singleServers",
             "Microsoft.DelegatedNetwork/controller",
             "Microsoft.DevCenter/networkConnection",
+            "Microsoft.DevOpsInfrastructure/pools",
             "Microsoft.DocumentDB/cassandraClusters",
             "Microsoft.Fidalgo/networkSettings",
             "Microsoft.HardwareSecurityModules/dedicatedHSMs",
@@ -83,8 +85,11 @@
             "Microsoft.Logic/integrationServiceEnvironments",
             "Microsoft.MachineLearningServices/workspaces",
             "Microsoft.Netapp/volumes",
+            "Microsoft.Network/applicationGateways",
             "Microsoft.Network/dnsResolvers",
+            "Microsoft.Network/networkWatchers",
             "Microsoft.Orbital/orbitalGateways",
+            "Microsoft.PowerAutomate/hostedRpa",
             "Microsoft.PowerPlatform/enterprisePolicies",
             "Microsoft.PowerPlatform/vnetaccesslinks",
             "Microsoft.ServiceFabricMesh/networks",
@@ -99,7 +104,8 @@
             "Microsoft.Web/serverFarms",
             "NGINX.NGINXPLUS/nginxDeployments",
             "PaloAltoNetworks.Cloudngfw/firewalls",
-            "Qumulo.Storage/fileSystems"
+            "Qumulo.Storage/fileSystems",
+            "Oracle.Database/networkAttachments"
         ]
     },
     {

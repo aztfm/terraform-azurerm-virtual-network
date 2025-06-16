@@ -109,4 +109,26 @@ variable "subnets" {
     condition     = alltrue([for subnet in var.subnets : contains(["Disabled", "Enabled", "NetworkSecurityGroupEnabled", "RouteTableEnabled"], subnet.private_endpoint_network_policies)])
     error_message = "All private endpoint network policies must be Disabled, Enabled, NetworkSecurityGroupEnabled, or RouteTableEnabled."
   }
+
+  validation {
+    condition = alltrue([for subnet in var.subnets : contains([
+      "GitHub.Network/networkSettings", "Informatica.DataManagement/organizations", "Microsoft.ApiManagement/service",
+      "Microsoft.Apollo/npu", "Microsoft.App/environments", "Microsoft.App/testClients", "Microsoft.AVS/PrivateClouds",
+      "Microsoft.AzureCosmosDB/clusters", "Microsoft.BareMetal/AzureHostedService", "Microsoft.BareMetal/AzureVMware",
+      "Microsoft.BareMetal/CrayServers", "Microsoft.Batch/batchAccounts", "Microsoft.CloudTest/hostedpools",
+      "Microsoft.CloudTest/images", "Microsoft.CloudTest/pools", "Microsoft.Codespaces/plans", "Microsoft.ContainerInstance/containerGroups",
+      "Microsoft.ContainerService/managedClusters", "Microsoft.Databricks/workspaces", "Microsoft.DBforMySQL/flexibleServers",
+      "Microsoft.DBforMySQL/servers", "Microsoft.DBforMySQL/serversv2", "Microsoft.DBforPostgreSQL/flexibleServers", "Microsoft.DBforPostgreSQL/serversv2",
+      "Microsoft.DBforPostgreSQL/singleServers", "Microsoft.DelegatedNetwork/controller", "Microsoft.DevCenter/networkConnection", "Microsoft.DevOpsInfrastructure/pools",
+      "Microsoft.DocumentDB/cassandraClusters", "Microsoft.Fidalgo/networkSettings", "Microsoft.HardwareSecurityModules/dedicatedHSMs", "Microsoft.Kusto/clusters",
+      "Microsoft.LabServices/labplans", "Microsoft.Logic/integrationServiceEnvironments", "Microsoft.MachineLearningServices/workspaces", "Microsoft.Netapp/volumes",
+      "Microsoft.Network/applicationGateways", "Microsoft.Network/dnsResolvers", "Microsoft.Network/networkWatchers", "Microsoft.Orbital/orbitalGateways",
+      "Microsoft.PowerAutomate/hostedRpa", "Microsoft.PowerPlatform/enterprisePolicies", "Microsoft.PowerPlatform/vnetaccesslinks",
+      "Microsoft.ServiceFabricMesh/networks", "Microsoft.ServiceNetworking/trafficControllers", "Microsoft.Singularity/accounts/networks",
+      "Microsoft.Singularity/accounts/npu", "Microsoft.Sql/managedInstances", "Microsoft.StoragePool/diskPools", "Microsoft.StreamAnalytics/streamingJobs",
+      "Microsoft.Synapse/workspaces", "Microsoft.Web/hostingEnvironments", "Microsoft.Web/serverFarms", "NGINX.NGINXPLUS/nginxDeployments",
+      "PaloAltoNetworks.Cloudngfw/firewalls", "Qumulo.Storage/fileSystems", "Oracle.Database/networkAttachments"
+    ], subnet.delegation) if subnet.delegation != null])
+    error_message = "All delegation values must be one of the allowed service delegations."
+  }
 }
