@@ -111,7 +111,7 @@ variable "subnets" {
   }
 
   validation {
-    condition = alltrue([for subnet in var.subnets : can(subnet.delegation) ? contains([
+    condition = alltrue([for subnet in var.subnets : contains([
       "GitHub.Network/networkSettings", "Informatica.DataManagement/organizations", "Microsoft.ApiManagement/service",
       "Microsoft.Apollo/npu", "Microsoft.App/environments", "Microsoft.App/testClients", "Microsoft.AVS/PrivateClouds",
       "Microsoft.AzureCosmosDB/clusters", "Microsoft.BareMetal/AzureHostedService", "Microsoft.BareMetal/AzureVMware",
@@ -128,7 +128,7 @@ variable "subnets" {
       "Microsoft.Singularity/accounts/npu", "Microsoft.Sql/managedInstances", "Microsoft.StoragePool/diskPools", "Microsoft.StreamAnalytics/streamingJobs",
       "Microsoft.Synapse/workspaces", "Microsoft.Web/hostingEnvironments", "Microsoft.Web/serverFarms", "NGINX.NGINXPLUS/nginxDeployments",
       "PaloAltoNetworks.Cloudngfw/firewalls", "Qumulo.Storage/fileSystems", "Oracle.Database/networkAttachments"
-    ], subnet.delegation) : true])
+    ], subnet.delegation)])
     error_message = "All delegation values must be one of the allowed service delegations."
   }
 }
