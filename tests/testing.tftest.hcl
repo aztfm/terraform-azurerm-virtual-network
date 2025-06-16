@@ -21,6 +21,7 @@ variables {
     }, {
     name                              = "subnet2"
     address_prefixes                  = ["10.2.0.0/24"]
+    default_outbound_access_enabled   = true
     service_endpoints                 = ["Microsoft.Sql"]
     private_endpoint_network_policies = "RouteTableEnabled"
     }, {
@@ -98,6 +99,11 @@ run "plan" {
   }
 
   assert {
+    condition     = azurerm_subnet.subnets["subnet1"].default_outbound_access_enabled == ({ for s in var.subnets : s.name => s })["subnet1"].default_outbound_access_enabled
+    error_message = "Subnet1 default outbound access enabled is being modified."
+  }
+
+  assert {
     condition     = azurerm_subnet.subnets["subnet2"].name == ({ for s in var.subnets : s.name => s })["subnet2"].name
     error_message = "The subnet2 name is being modified."
   }
@@ -105,6 +111,11 @@ run "plan" {
   assert {
     condition     = azurerm_subnet.subnets["subnet2"].address_prefixes == ({ for s in var.subnets : s.name => s })["subnet2"].address_prefixes
     error_message = "Subnet2 address prefixes are being modified."
+  }
+
+  assert {
+    condition     = azurerm_subnet.subnets["subnet2"].default_outbound_access_enabled == ({ for s in var.subnets : s.name => s })["subnet2"].default_outbound_access_enabled
+    error_message = "Subnet2 default outbound access enabled is being modified."
   }
 
   assert {
