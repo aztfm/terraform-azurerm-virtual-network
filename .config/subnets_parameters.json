@@ -87,7 +87,7 @@
             "Microsoft.Netapp/volumes",
             "Microsoft.Network/applicationGateways",
             "Microsoft.Network/dnsResolvers",
-            "Microsoft.Network/networkWatchers.",
+            "Microsoft.Network/networkWatchers",
             "Microsoft.Orbital/orbitalGateways",
             "Microsoft.PowerAutomate/hostedRpa",
             "Microsoft.PowerPlatform/enterprisePolicies",

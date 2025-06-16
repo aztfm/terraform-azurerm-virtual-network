@@ -122,7 +122,7 @@ variable "subnets" {
       "Microsoft.DBforPostgreSQL/singleServers", "Microsoft.DelegatedNetwork/controller", "Microsoft.DevCenter/networkConnection", "Microsoft.DevOpsInfrastructure/pools",
       "Microsoft.DocumentDB/cassandraClusters", "Microsoft.Fidalgo/networkSettings", "Microsoft.HardwareSecurityModules/dedicatedHSMs", "Microsoft.Kusto/clusters",
       "Microsoft.LabServices/labplans", "Microsoft.Logic/integrationServiceEnvironments", "Microsoft.MachineLearningServices/workspaces", "Microsoft.Netapp/volumes",
-      "Microsoft.Network/applicationGateways", "Microsoft.Network/dnsResolvers", "Microsoft.Network/networkWatchers.", "Microsoft.Orbital/orbitalGateways",
+      "Microsoft.Network/applicationGateways", "Microsoft.Network/dnsResolvers", "Microsoft.Network/networkWatchers", "Microsoft.Orbital/orbitalGateways",
       "Microsoft.PowerAutomate/hostedRpa", "Microsoft.PowerPlatform/enterprisePolicies", "Microsoft.PowerPlatform/vnetaccesslinks",
       "Microsoft.ServiceFabricMesh/networks", "Microsoft.ServiceNetworking/trafficControllers", "Microsoft.Singularity/accounts/networks",
       "Microsoft.Singularity/accounts/npu", "Microsoft.Sql/managedInstances", "Microsoft.StoragePool/diskPools", "Microsoft.StreamAnalytics/streamingJobs",
