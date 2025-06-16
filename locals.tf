@@ -1,18 +1,19 @@
 locals {
   service_delegation_actions = {
-    "GitHub.Network/networkSettings"         = ["virtualNetworks/subnets/join/action"]
-    "Microsoft.ApiManagement/service"        = ["virtualNetworks/subnets/join/action", "virtualNetworks/subnets/prepareNetworkPolicies/action"]
-    "Microsoft.Apollo/npu"                   = ["networkinterfaces/*", "virtualNetworks/subnets/join/action"]
-    "Microsoft.App/environments"             = ["virtualNetworks/subnets/join/action"]
-    "Microsoft.App/testClients"              = ["virtualNetworks/subnets/join/action"]
-    "Microsoft.AVS/PrivateClouds"            = ["networkinterfaces/*"]
-    "Microsoft.AzureCosmosDB/clusters"       = ["virtualNetworks/subnets/join/action"]
-    "Microsoft.BareMetal/AzureHostedService" = ["networkinterfaces/*", "virtualNetworks/subnets/join/action"]
-    # "Microsoft.BareMetal/AzureHPC"                    = [] # Need Microsoft.Network/AllowInternalDelegations
-    # "Microsoft.BareMetal/AzurePaymentHSM"             = [] # Need Microsoft.Network/AllowInternalDelegations
+    "GitHub.Network/networkSettings"           = ["virtualNetworks/subnets/join/action"]
+    "Informatica.DataManagement/organizations" = ["virtualNetworks/subnets/join/action"]
+    "Microsoft.ApiManagement/service"          = ["virtualNetworks/subnets/join/action", "virtualNetworks/subnets/prepareNetworkPolicies/action"]
+    "Microsoft.Apollo/npu"                     = ["networkinterfaces/*", "virtualNetworks/subnets/join/action"]
+    "Microsoft.App/environments"               = ["virtualNetworks/subnets/join/action"]
+    "Microsoft.App/testClients"                = ["virtualNetworks/subnets/join/action"]
+    "Microsoft.AVS/PrivateClouds"              = ["networkinterfaces/*"]
+    "Microsoft.AzureCosmosDB/clusters"         = ["virtualNetworks/subnets/join/action"]
+    "Microsoft.BareMetal/AzureHostedService"   = ["networkinterfaces/*", "virtualNetworks/subnets/join/action"]
+    # "Microsoft.BareMetal/AzureHPC"        = [] # Need Microsoft.Network/AllowInternalDelegations
+    # "Microsoft.BareMetal/AzurePaymentHSM" = [] # Need Microsoft.Network/AllowInternalDelegations
     "Microsoft.BareMetal/AzureVMware" = ["networkinterfaces/*", "virtualNetworks/subnets/join/action"]
     "Microsoft.BareMetal/CrayServers" = ["networkinterfaces/*", "virtualNetworks/subnets/join/action"]
-    # "Microsoft.BareMetal/MonitoringServers"           = [] # Need Microsoft.Network/AllowInternalDelegations
+    # "Microsoft.BareMetal/MonitoringServers" = [] # Need Microsoft.Network/AllowInternalDelegations
     "Microsoft.Batch/batchAccounts"               = ["virtualNetworks/subnets/action"]
     "Microsoft.CloudTest/hostedpools"             = ["virtualNetworks/subnets/join/action"]
     "Microsoft.CloudTest/images"                  = ["virtualNetworks/subnets/join/action"]
@@ -20,7 +21,7 @@ locals {
     "Microsoft.Codespaces/plans"                  = ["virtualNetworks/subnets/join/action"]
     "Microsoft.ContainerInstance/containerGroups" = ["virtualNetworks/subnets/action"]
     "Microsoft.ContainerService/managedClusters"  = ["virtualNetworks/subnets/join/action"]
-    # "Microsoft.ContainerService/TestClients"          = [] # Need Microsoft.Network/AllowInternalDelegations
+    # "Microsoft.ContainerService/TestClients" = [] # Need Microsoft.Network/AllowInternalDelegations
     "Microsoft.Databricks/workspaces"                 = formatlist("virtualNetworks/subnets/%s", ["join/action", "prepareNetworkPolicies/action", "unprepareNetworkPolicies/action"])
     "Microsoft.DBforMySQL/flexibleServers"            = ["virtualNetworks/subnets/join/action"]
     "Microsoft.DBforMySQL/servers"                    = ["virtualNetworks/subnets/join/action"]
@@ -30,6 +31,7 @@ locals {
     "Microsoft.DBforPostgreSQL/singleServers"         = ["virtualNetworks/subnets/join/action"]
     "Microsoft.DelegatedNetwork/controller"           = ["virtualNetworks/subnets/join/action"]
     "Microsoft.DevCenter/networkConnection"           = ["virtualNetworks/subnets/join/action"]
+    "Microsoft.DevOpsInfrastructure/pools"            = ["virtualNetworks/subnets/join/action"]
     "Microsoft.DocumentDB/cassandraClusters"          = ["virtualNetworks/subnets/join/action"]
     "Microsoft.Fidalgo/networkSettings"               = ["virtualNetworks/subnets/join/action"]
     "Microsoft.HardwareSecurityModules/dedicatedHSMs" = ["networkinterfaces/*", "virtualNetworks/subnets/join/action"]
@@ -38,12 +40,14 @@ locals {
     "Microsoft.Logic/integrationServiceEnvironments"  = ["virtualNetworks/subnets/action"]
     "Microsoft.MachineLearningServices/workspaces"    = ["virtualNetworks/subnets/join/action"]
     "Microsoft.Netapp/volumes"                        = ["networkinterfaces/*", "virtualNetworks/subnets/join/action"]
+    "Microsoft.Network/applicationGateways"           = ["virtualNetworks/subnets/join/action"]
     "Microsoft.Network/dnsResolvers"                  = ["virtualNetworks/subnets/join/action"]
-    # "Microsoft.Network/managedResolvers"              = [] # Not supported by Azure
-    # "Microsoft.Network/fpgaNetworkInterfaces"         = [] # Need Microsoft.Network/AllowInternalDelegations
-    # "Microsoft.Network/networkWatchers"               = [] # Not supported by Azure
-    # "Microsoft.Network/virtualNetworkGateways"        = [] # InternalServerError
+    # "Microsoft.Network/managedResolvers"      = [] # Not supported by Azure
+    # "Microsoft.Network/fpgaNetworkInterfaces" = [] # Need Microsoft.Network/AllowInternalDelegations
+    "Microsoft.Network/networkWatchers" = ["virtualNetworks/subnets/join/action"]
+    # "Microsoft.Network/virtualNetworkGateways" = [] # InternalServerError
     "Microsoft.Orbital/orbitalGateways"              = ["publicIPAddresses/join/action", "virtualNetworks/subnets/join/action", "virtualNetworks/read", "publicIPAddresses/read"]
+    "Microsoft.PowerAutomate/hostedRpa"              = ["virtualNetworks/subnets/join/action"]
     "Microsoft.PowerPlatform/enterprisePolicies"     = ["virtualNetworks/subnets/join/action"]
     "Microsoft.PowerPlatform/vnetaccesslinks"        = ["virtualNetworks/subnets/join/action"]
     "Microsoft.ServiceFabricMesh/networks"           = ["virtualNetworks/subnets/action"]
@@ -51,10 +55,10 @@ locals {
     "Microsoft.Singularity/accounts/networks"        = ["networkinterfaces/*", "virtualNetworks/subnets/join/action"]
     "Microsoft.Singularity/accounts/npu"             = ["networkinterfaces/*", "virtualNetworks/subnets/join/action"]
     "Microsoft.Sql/managedInstances"                 = formatlist("virtualNetworks/subnets/%s", ["join/action", "prepareNetworkPolicies/action", "unprepareNetworkPolicies/action"])
-    # "Microsoft.Sql/managedInstancesOnebox"            = [] # Need Microsoft.Network/AllowInternalDelegations
-    # "Microsoft.Sql/managedInstancesStage"             = [] # Need Microsoft.Network/AllowInternalDelegations
-    # "Microsoft.Sql/managedInstancesTest"              = [] # Need Microsoft.Network/AllowInternalDelegations
-    # "Microsoft.Sql/servers"                           = [] # Not supported by Azure
+    # "Microsoft.Sql/managedInstancesOnebox" = [] # Need Microsoft.Network/AllowInternalDelegations
+    # "Microsoft.Sql/managedInstancesStage"  = [] # Need Microsoft.Network/AllowInternalDelegations
+    # "Microsoft.Sql/managedInstancesTest"   = [] # Need Microsoft.Network/AllowInternalDelegations
+    # "Microsoft.Sql/servers"                = [] # Not supported by Azure
     "Microsoft.StoragePool/diskPools"         = ["virtualNetworks/read"]
     "Microsoft.StreamAnalytics/streamingJobs" = ["virtualNetworks/subnets/join/action"]
     "Microsoft.Synapse/workspaces"            = ["virtualNetworks/subnets/join/action"]
@@ -63,5 +67,6 @@ locals {
     "NGINX.NGINXPLUS/nginxDeployments"        = ["virtualNetworks/subnets/join/action"]
     "PaloAltoNetworks.Cloudngfw/firewalls"    = ["virtualNetworks/subnets/join/action"]
     "Qumulo.Storage/fileSystems"              = ["virtualNetworks/subnets/join/action"]
+    "Oracle.Database/networkAttachments"      = ["virtualNetworks/subnets/join/action"]
   }
 }

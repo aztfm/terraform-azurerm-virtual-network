@@ -10,6 +10,7 @@ ENHANCEMENTS:
 - **New Parameter:** `encryption_mode`
 - **New Parameter:** `subnets.default_outbound_access_enabled`
 - **New Parameter:** `subnets.private_endpoint_network_policies`
+- New options have been added to the `subnets.delegation` parameter: `Informatica.DataManagement/organizations`, `Microsoft.DevOpsInfrastructure/pools`, `Microsoft.Network/applicationGateways`, `Microsoft.Network/networkWatchers`, `Microsoft.PowerAutomate/hostedRpa`, and `Oracle.Database/networkAttachments`.
 
 DEPRECATIONS:
 
