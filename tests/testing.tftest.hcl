@@ -73,7 +73,7 @@ run "plan" {
   }
 
   assert {
-    condition     = azurerm_virtual_network.vnet.encryption.enforcement == var.encryption_mode
+    condition     = azurerm_virtual_network.vnet.encryption[0].enforcement == var.encryption_mode
     error_message = "The virtual network encryption mode is being modified."
   }
 
