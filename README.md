@@ -61,6 +61,7 @@ The following parameters are supported:
 |dns\_servers|List of IP addresses of DNS servers.|`list(string)`|`[]`|no|
 |ddos\_protection\_plan\_id|The ID of DDoS Protection Plan.|`string`|`null`|no|
 |bgp\_community|The BGP community attribute in format `<as-number>:<community-value>`. The as-number segment is the Microsoft ASN, which is always 12076 for now.|`string`|`null`|no|
+|encryption\_mode|The encryption mode for the virtual network. Possible values are 'AllowUnencrypted' or 'DropUnencrypted'.|`string`|`null`|no|
 |subnets|List of objects that represent the configuration of each subnet.|`list(object({}))`|`[]`|no|
 
 The `subnets` supports the following:

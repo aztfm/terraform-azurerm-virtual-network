@@ -7,6 +7,7 @@ BREAKING CHANGES:
 
 ENHANCEMENTS:
 
+- **New Parameter:** `encryption_mode`
 - **New Parameter:** `subnets.private_endpoint_network_policies`
 
 DEPRECATIONS:
