@@ -8,6 +8,7 @@ BREAKING CHANGES:
 ENHANCEMENTS:
 
 - **New Parameter:** `encryption_mode`
+- **New Parameter:** `subnets.default_outbound_access_enabled`
 - **New Parameter:** `subnets.private_endpoint_network_policies`
 
 DEPRECATIONS:
