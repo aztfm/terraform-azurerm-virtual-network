@@ -16,6 +16,14 @@
         "Support": []
     },
     {
+        "Name": "default_outbound_access_enabled",
+        "Description": "Enable default outbound access to the internet for the subnet.",
+        "Type": "bool",
+        "Default": "false",
+        "Required": "no",
+        "Support": []
+    },
+    {
         "Name": "service_endpoints",
         "Description": "The list of Service endpoints to associate with the subnet. Possible values include:",
         "Type": "string",

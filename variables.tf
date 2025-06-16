@@ -82,6 +82,7 @@ variable "subnets" {
   type = list(object({
     name                                          = string
     address_prefixes                              = list(string)
+    default_outbound_access_enabled               = optional(bool, false)
     service_endpoints                             = optional(list(string))
     delegation                                    = optional(string)
     private_endpoint_network_policies             = optional(string, "Disabled")
