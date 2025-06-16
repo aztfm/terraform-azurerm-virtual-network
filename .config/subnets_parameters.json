@@ -38,6 +38,7 @@
             "Microsoft.ServiceBus",
             "Microsoft.Sql",
             "Microsoft.Storage",
+            "Microsoft.Storage.Global",
             "Microsoft.Web"
         ]
     },
