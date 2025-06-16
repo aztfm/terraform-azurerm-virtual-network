@@ -9,9 +9,10 @@ run "setup" {
 }
 
 variables {
-  address_space = ["10.1.0.0/16", "10.2.0.0/16", "10.3.0.0/16"]
-  dns_servers   = ["8.8.8.8", "8.8.4.4"]
-  bgp_community = "12076:20001"
+  address_space   = ["10.1.0.0/16", "10.2.0.0/16", "10.3.0.0/16"]
+  dns_servers     = ["8.8.8.8", "8.8.4.4"]
+  bgp_community   = "12076:20001"
+  encryption_mode = "AllowUnencrypted"
   subnets = [{
     name                                          = "subnet1",
     address_prefixes                              = ["10.1.0.0/24"],
@@ -69,6 +70,11 @@ run "plan" {
   assert {
     condition     = azurerm_virtual_network.vnet.bgp_community == var.bgp_community
     error_message = "The virtual network bgp community variable is being modified."
+  }
+
+  assert {
+    condition     = azurerm_virtual_network.vnet.encryption[0].enforcement == var.encryption_mode
+    error_message = "The virtual network encryption mode is being modified."
   }
 
   assert {
@@ -215,7 +221,7 @@ run "apply" {
     condition     = output.ddos_protection_plan == azurerm_virtual_network.vnet.ddos_protection_plan
     error_message = "The Virtual Network DDoS protection plan output is not as expected."
   }
-  
+
   assert {
     condition     = length(output.subnets) == length(azurerm_subnet.subnets)
     error_message = "The Virtual Network subnets output is not as expected."

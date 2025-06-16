@@ -67,6 +67,17 @@ variable "bgp_community" {
   }
 }
 
+variable "encryption_mode" {
+  type        = string
+  default     = null
+  description = "The encryption mode for the virtual network. Possible values are 'AllowUnencrypted' or 'DropUnencrypted'."
+
+  validation {
+    condition     = var.encryption_mode == null || contains(["AllowUnencrypted", "DropUnencrypted"], var.encryption_mode)
+    error_message = "The encryption mode must be either 'AllowUnencrypted' or 'DropUnencrypted'."
+  }
+}
+
 variable "subnets" {
   type = list(object({
     name                                          = string

@@ -15,6 +15,14 @@ resource "azurerm_virtual_network" "vnet" {
       enable = true
     }
   }
+
+  dynamic "encryption" {
+    for_each = var.encryption_mode != null ? [""] : []
+
+    content {
+      enforcement = var.encryption_mode
+    }
+  }
 }
 
 resource "azurerm_subnet" "subnets" {
