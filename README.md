@@ -32,7 +32,7 @@ resource "azurerm_resource_group" "rg" {
 
 module "virtual_network" {
   source              = "aztfm/virtual-network/azurerm"
-  version             = ">=4.0.0"
+  version             = ">=5.0.0"
   name                = "virtual-network"
   resource_group_name = azurerm_resource_group.rg.name
   location            = azurerm_resource_group.rg.location
