@@ -3,7 +3,7 @@
 BREAKING CHANGES:
 
 - dependencies: updating to `v1.9.0` minimum of `terraform`.
-- dependencies: updating to `v4.15.0` minimum of `hashicorp/azurerm` provider.
+- dependencies: updating to `v4.27.0` minimum of `hashicorp/azurerm` provider.
 
 ENHANCEMENTS:
 
