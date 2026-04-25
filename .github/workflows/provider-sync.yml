@@ -1,0 +1,15 @@
+name: "Check azurerm provider updates"
+
+on:
+  schedule:
+    - cron: "0 8 1 * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  sync:
+    uses: aztfm/.github/.github/workflows/azurerm-sync.yml@main
+    secrets: inherit
