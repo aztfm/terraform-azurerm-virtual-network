@@ -119,7 +119,7 @@ run "plan" {
   }
 
   assert {
-    condition     = [for se in azurerm_subnet.subnets["subnet2"].service_endpoint : se.service] == ({ for s in var.subnets : s.name => s })["subnet2"].service_endpoints
+    condition     = tolist([for se in azurerm_subnet.subnets["subnet2"].service_endpoint : se.service]) == tolist(({ for s in var.subnets : s.name => s })["subnet2"].service_endpoints)
     error_message = "The subnet service_endpoints input variable is being modified."
   }
 
@@ -139,7 +139,7 @@ run "plan" {
   }
 
   assert {
-    condition     = [for se in azurerm_subnet.subnets["subnet3"].service_endpoint : se.service] == ({ for s in var.subnets : s.name => s })["subnet3"].service_endpoints
+    condition     = tolist([for se in azurerm_subnet.subnets["subnet3"].service_endpoint : se.service]) == tolist(({ for s in var.subnets : s.name => s })["subnet3"].service_endpoints)
     error_message = "The subnet service_endpoints input variable is being modified."
   }
 

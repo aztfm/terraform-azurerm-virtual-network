@@ -89,7 +89,7 @@ variable "encryption_mode" {
   default     = null
   description = "..."
   validation {
-    condition     = var.encryption_mode == null || contains(["AllowUnencrypted", "DropUnencrypted"], var.encryption_mode)
+    condition     = var.encryption_mode == null ? true : contains(["AllowUnencrypted", "DropUnencrypted"], var.encryption_mode)
     error_message = "The encryption mode must be either 'AllowUnencrypted' or 'DropUnencrypted'."
   }
 }

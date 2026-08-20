@@ -73,7 +73,7 @@ variable "encryption_mode" {
   description = "The encryption mode for the virtual network. Possible values are 'AllowUnencrypted' or 'DropUnencrypted'."
 
   validation {
-    condition     = var.encryption_mode == null || contains(["AllowUnencrypted", "DropUnencrypted"], var.encryption_mode)
+    condition     = var.encryption_mode == null ? true : contains(["AllowUnencrypted", "DropUnencrypted"], var.encryption_mode)
     error_message = "The encryption mode must be either 'AllowUnencrypted' or 'DropUnencrypted'."
   }
 }
