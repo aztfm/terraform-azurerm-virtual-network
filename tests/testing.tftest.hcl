@@ -44,37 +44,37 @@ run "plan" {
   }
 
   assert {
-    condition     = azurerm_virtual_network.vnet.name == run.setup.workspace_id
+    condition     = azurerm_virtual_network.main.name == run.setup.workspace_id
     error_message = "The virtual network name input variable is being modified."
   }
 
   assert {
-    condition     = azurerm_virtual_network.vnet.resource_group_name == run.setup.resource_group_name
+    condition     = azurerm_virtual_network.main.resource_group_name == run.setup.resource_group_name
     error_message = "The virtual network resource group input variable is being modified."
   }
 
   assert {
-    condition     = azurerm_virtual_network.vnet.location == run.setup.resource_group_location
+    condition     = azurerm_virtual_network.main.location == run.setup.resource_group_location
     error_message = "The virtual network location input variable is being modified."
   }
 
   assert {
-    condition     = tolist(azurerm_virtual_network.vnet.address_space) == var.address_space
+    condition     = tolist(azurerm_virtual_network.main.address_space) == var.address_space
     error_message = "Virtual network address prefix are being modified."
   }
 
   assert {
-    condition     = tolist(azurerm_virtual_network.vnet.dns_servers) == var.dns_servers
+    condition     = tolist(azurerm_virtual_network.main.dns_servers) == var.dns_servers
     error_message = "Virtual network DNS severs are being modified."
   }
 
   assert {
-    condition     = azurerm_virtual_network.vnet.bgp_community == var.bgp_community
+    condition     = azurerm_virtual_network.main.bgp_community == var.bgp_community
     error_message = "The virtual network bgp community variable is being modified."
   }
 
   assert {
-    condition     = azurerm_virtual_network.vnet.encryption[0].enforcement == var.encryption_mode
+    condition     = azurerm_virtual_network.main.encryption[0].enforcement == var.encryption_mode
     error_message = "The virtual network encryption mode is being modified."
   }
 
@@ -169,7 +169,7 @@ run "apply" {
   }
 
   assert {
-    condition     = azurerm_virtual_network.vnet.id == "${run.setup.resource_group_id}/providers/Microsoft.Network/virtualNetworks/${run.setup.workspace_id}"
+    condition     = azurerm_virtual_network.main.id == "${run.setup.resource_group_id}/providers/Microsoft.Network/virtualNetworks/${run.setup.workspace_id}"
     error_message = "The Virtual Network ID is not as expected."
   }
 
@@ -189,47 +189,47 @@ run "apply" {
   }
 
   assert {
-    condition     = output.id == azurerm_virtual_network.vnet.id
+    condition     = output.id == azurerm_virtual_network.main.id
     error_message = "The Virtual Network ID output is not as expected."
   }
 
   assert {
-    condition     = output.guid == azurerm_virtual_network.vnet.guid
+    condition     = output.guid == azurerm_virtual_network.main.guid
     error_message = "The Virtual Network GUID output is not as expected."
   }
 
   assert {
-    condition     = output.name == azurerm_virtual_network.vnet.name
+    condition     = output.name == azurerm_virtual_network.main.name
     error_message = "The Virtual Network name output is not as expected."
   }
 
   assert {
-    condition     = output.resource_group_name == azurerm_virtual_network.vnet.resource_group_name
+    condition     = output.resource_group_name == azurerm_virtual_network.main.resource_group_name
     error_message = "The Virtual Network resource group name output is not as expected."
   }
 
   assert {
-    condition     = output.location == azurerm_virtual_network.vnet.location
+    condition     = output.location == azurerm_virtual_network.main.location
     error_message = "The Virtual Network location output is not as expected."
   }
 
   assert {
-    condition     = output.tags == azurerm_virtual_network.vnet.tags
+    condition     = output.tags == azurerm_virtual_network.main.tags
     error_message = "The Virtual Network tags output is not as expected."
   }
 
   assert {
-    condition     = output.address_space == azurerm_virtual_network.vnet.address_space
+    condition     = output.address_space == azurerm_virtual_network.main.address_space
     error_message = "The Virtual Network address space output is not as expected."
   }
 
   assert {
-    condition     = output.dns_servers == azurerm_virtual_network.vnet.dns_servers
+    condition     = output.dns_servers == azurerm_virtual_network.main.dns_servers
     error_message = "The Virtual Network DNS servers output is not as expected."
   }
 
   assert {
-    condition     = output.ddos_protection_plan == azurerm_virtual_network.vnet.ddos_protection_plan
+    condition     = output.ddos_protection_plan == azurerm_virtual_network.main.ddos_protection_plan
     error_message = "The Virtual Network DDoS protection plan output is not as expected."
   }
 

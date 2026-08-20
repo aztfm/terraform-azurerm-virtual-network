@@ -1,4 +1,4 @@
-resource "azurerm_virtual_network" "vnet" {
+resource "azurerm_virtual_network" "main" {
   name                = var.name
   resource_group_name = var.resource_group_name
   location            = var.location
@@ -28,13 +28,20 @@ resource "azurerm_virtual_network" "vnet" {
 resource "azurerm_subnet" "subnets" {
   for_each                                      = { for subnet in var.subnets : subnet.name => subnet }
   name                                          = each.value.name
-  resource_group_name                           = azurerm_virtual_network.vnet.resource_group_name
-  virtual_network_name                          = azurerm_virtual_network.vnet.name
+  resource_group_name                           = azurerm_virtual_network.main.resource_group_name
+  virtual_network_name                          = azurerm_virtual_network.main.name
   address_prefixes                              = each.value.address_prefixes
   default_outbound_access_enabled               = each.value.default_outbound_access_enabled
-  service_endpoints                             = each.value.service_endpoints
   private_endpoint_network_policies             = each.value.private_endpoint_network_policies
   private_link_service_network_policies_enabled = each.value.private_link_service_network_policies_enabled
+
+  dynamic "service_endpoint" {
+    for_each = each.value.service_endpoints != null ? toset(each.value.service_endpoints) : toset([])
+
+    content {
+      service = service_endpoint.value
+    }
+  }
 
   dynamic "delegation" {
     for_each = lookup(each.value, "delegation", null) != null ? [""] : []

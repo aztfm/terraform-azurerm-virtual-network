@@ -26,7 +26,7 @@
     {
         "Name": "service_endpoints",
         "Description": "The list of Service endpoints to associate with the subnet. Possible values include:",
-        "Type": "string",
+        "Type": "list(string)",
         "Default": "null",
         "Required": "no",
         "Support": [
