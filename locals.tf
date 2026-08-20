@@ -39,6 +39,7 @@ locals {
     "Microsoft.LabServices/labplans"                  = ["virtualNetworks/subnets/join/action"]
     "Microsoft.Logic/integrationServiceEnvironments"  = ["virtualNetworks/subnets/action"]
     "Microsoft.MachineLearningServices/workspaces"    = ["virtualNetworks/subnets/join/action"]
+    "Microsoft.MessagingConnectors/connectors"        = ["virtualNetworks/subnets/join/action"]
     "Microsoft.Netapp/volumes"                        = ["networkinterfaces/*", "virtualNetworks/subnets/join/action"]
     "Microsoft.Network/applicationGateways"           = ["virtualNetworks/subnets/join/action"]
     "Microsoft.Network/dnsResolvers"                  = ["virtualNetworks/subnets/join/action"]
@@ -66,6 +67,7 @@ locals {
     "Microsoft.Web/serverFarms"               = ["virtualNetworks/subnets/action"]
     "NGINX.NGINXPLUS/nginxDeployments"        = ["virtualNetworks/subnets/join/action"]
     "PaloAltoNetworks.Cloudngfw/firewalls"    = ["virtualNetworks/subnets/join/action"]
+    "PureStorage.Block/storagePools"          = ["virtualNetworks/subnets/join/action"]
     "Qumulo.Storage/fileSystems"              = ["virtualNetworks/subnets/join/action"]
     "Oracle.Database/networkAttachments"      = ["virtualNetworks/subnets/join/action"]
   }

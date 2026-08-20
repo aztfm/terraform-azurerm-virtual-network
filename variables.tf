@@ -121,13 +121,13 @@ variable "subnets" {
       "Microsoft.DBforMySQL/servers", "Microsoft.DBforMySQL/serversv2", "Microsoft.DBforPostgreSQL/flexibleServers", "Microsoft.DBforPostgreSQL/serversv2",
       "Microsoft.DBforPostgreSQL/singleServers", "Microsoft.DelegatedNetwork/controller", "Microsoft.DevCenter/networkConnection", "Microsoft.DevOpsInfrastructure/pools",
       "Microsoft.DocumentDB/cassandraClusters", "Microsoft.Fidalgo/networkSettings", "Microsoft.HardwareSecurityModules/dedicatedHSMs", "Microsoft.Kusto/clusters",
-      "Microsoft.LabServices/labplans", "Microsoft.Logic/integrationServiceEnvironments", "Microsoft.MachineLearningServices/workspaces", "Microsoft.Netapp/volumes",
+      "Microsoft.LabServices/labplans", "Microsoft.Logic/integrationServiceEnvironments", "Microsoft.MachineLearningServices/workspaces", "Microsoft.MessagingConnectors/connectors", "Microsoft.Netapp/volumes",
       "Microsoft.Network/applicationGateways", "Microsoft.Network/dnsResolvers", "Microsoft.Network/networkWatchers", "Microsoft.Orbital/orbitalGateways",
       "Microsoft.PowerAutomate/hostedRpa", "Microsoft.PowerPlatform/enterprisePolicies", "Microsoft.PowerPlatform/vnetaccesslinks",
       "Microsoft.ServiceFabricMesh/networks", "Microsoft.ServiceNetworking/trafficControllers", "Microsoft.Singularity/accounts/networks",
       "Microsoft.Singularity/accounts/npu", "Microsoft.Sql/managedInstances", "Microsoft.StoragePool/diskPools", "Microsoft.StreamAnalytics/streamingJobs",
       "Microsoft.Synapse/workspaces", "Microsoft.Web/hostingEnvironments", "Microsoft.Web/serverFarms", "NGINX.NGINXPLUS/nginxDeployments",
-      "PaloAltoNetworks.Cloudngfw/firewalls", "Qumulo.Storage/fileSystems", "Oracle.Database/networkAttachments"
+      "PaloAltoNetworks.Cloudngfw/firewalls", "PureStorage.Block/storagePools", "Qumulo.Storage/fileSystems", "Oracle.Database/networkAttachments"
     ], subnet.delegation) if subnet.delegation != null])
     error_message = "All delegation values must be one of the allowed service delegations."
   }

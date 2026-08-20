@@ -4,6 +4,7 @@ ENHANCEMENTS:
 
 - `subnets.service_endpoints`: updated to use the `service_endpoint` block from `hashicorp/azurerm` provider v5.0.
 - New options have been added to the `subnets.service_endpoints` parameter: `Microsoft.CognitiveServices`.
+- New options have been added to the `subnets.delegation` parameter: `Microsoft.MessagingConnectors/connectors` and `PureStorage.Block/storagePools`.
 - dependencies: updating to `v5.0.0` minimum of `hashicorp/azurerm` provider.
 
 ## 5.0.0 (June 16, 2025)
