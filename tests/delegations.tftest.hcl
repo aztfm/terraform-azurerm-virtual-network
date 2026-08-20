@@ -167,10 +167,6 @@ variables {
     address_prefixes = ["10.38.0.0/24"]
     delegation       = "Microsoft.Network/dnsResolvers"
     }, {
-    name             = "delegation-39"
-    address_prefixes = ["10.39.0.0/24"]
-    delegation       = "Microsoft.Network/networkWatchers"
-    }, {
     name             = "delegation-40"
     address_prefixes = ["10.40.0.0/24"]
     delegation       = "Microsoft.Orbital/orbitalGateways"
@@ -262,6 +258,7 @@ run "plan" {
     condition     = azurerm_subnet.subnets["delegation-00"].delegation[0].service_delegation.name == "GitHub.Network/networkSettings"
     error_message = "plan: delegation GitHub.Network/networkSettings (delegation-00) service_delegation name is not as expected."
   }
+
   assert {
     condition     = sort(azurerm_subnet.subnets["delegation-00"].delegation[0].service_delegation.actions) == sort(["Microsoft.Network/virtualNetworks/subnets/join/action"])
     error_message = "plan: delegation GitHub.Network/networkSettings (delegation-00) service_delegation actions are not as expected."
@@ -271,6 +268,7 @@ run "plan" {
     condition     = azurerm_subnet.subnets["delegation-01"].delegation[0].service_delegation.name == "Informatica.DataManagement/organizations"
     error_message = "plan: delegation Informatica.DataManagement/organizations (delegation-01) service_delegation name is not as expected."
   }
+
   assert {
     condition     = sort(azurerm_subnet.subnets["delegation-01"].delegation[0].service_delegation.actions) == sort(["Microsoft.Network/virtualNetworks/subnets/join/action"])
     error_message = "plan: delegation Informatica.DataManagement/organizations (delegation-01) service_delegation actions are not as expected."
@@ -280,6 +278,7 @@ run "plan" {
     condition     = azurerm_subnet.subnets["delegation-02"].delegation[0].service_delegation.name == "Microsoft.ApiManagement/service"
     error_message = "plan: delegation Microsoft.ApiManagement/service (delegation-02) service_delegation name is not as expected."
   }
+
   assert {
     condition     = sort(azurerm_subnet.subnets["delegation-02"].delegation[0].service_delegation.actions) == sort(["Microsoft.Network/virtualNetworks/subnets/join/action", "Microsoft.Network/virtualNetworks/subnets/prepareNetworkPolicies/action"])
     error_message = "plan: delegation Microsoft.ApiManagement/service (delegation-02) service_delegation actions are not as expected."
@@ -289,6 +288,7 @@ run "plan" {
     condition     = azurerm_subnet.subnets["delegation-03"].delegation[0].service_delegation.name == "Microsoft.Apollo/npu"
     error_message = "plan: delegation Microsoft.Apollo/npu (delegation-03) service_delegation name is not as expected."
   }
+
   assert {
     condition     = sort(azurerm_subnet.subnets["delegation-03"].delegation[0].service_delegation.actions) == sort(["Microsoft.Network/networkinterfaces/*", "Microsoft.Network/virtualNetworks/subnets/join/action"])
     error_message = "plan: delegation Microsoft.Apollo/npu (delegation-03) service_delegation actions are not as expected."
@@ -298,6 +298,7 @@ run "plan" {
     condition     = azurerm_subnet.subnets["delegation-04"].delegation[0].service_delegation.name == "Microsoft.App/environments"
     error_message = "plan: delegation Microsoft.App/environments (delegation-04) service_delegation name is not as expected."
   }
+
   assert {
     condition     = sort(azurerm_subnet.subnets["delegation-04"].delegation[0].service_delegation.actions) == sort(["Microsoft.Network/virtualNetworks/subnets/join/action"])
     error_message = "plan: delegation Microsoft.App/environments (delegation-04) service_delegation actions are not as expected."
@@ -307,6 +308,7 @@ run "plan" {
     condition     = azurerm_subnet.subnets["delegation-05"].delegation[0].service_delegation.name == "Microsoft.App/testClients"
     error_message = "plan: delegation Microsoft.App/testClients (delegation-05) service_delegation name is not as expected."
   }
+
   assert {
     condition     = sort(azurerm_subnet.subnets["delegation-05"].delegation[0].service_delegation.actions) == sort(["Microsoft.Network/virtualNetworks/subnets/join/action"])
     error_message = "plan: delegation Microsoft.App/testClients (delegation-05) service_delegation actions are not as expected."
@@ -316,6 +318,7 @@ run "plan" {
     condition     = azurerm_subnet.subnets["delegation-06"].delegation[0].service_delegation.name == "Microsoft.AVS/PrivateClouds"
     error_message = "plan: delegation Microsoft.AVS/PrivateClouds (delegation-06) service_delegation name is not as expected."
   }
+
   assert {
     condition     = sort(azurerm_subnet.subnets["delegation-06"].delegation[0].service_delegation.actions) == sort(["Microsoft.Network/networkinterfaces/*"])
     error_message = "plan: delegation Microsoft.AVS/PrivateClouds (delegation-06) service_delegation actions are not as expected."
@@ -325,6 +328,7 @@ run "plan" {
     condition     = azurerm_subnet.subnets["delegation-07"].delegation[0].service_delegation.name == "Microsoft.AzureCosmosDB/clusters"
     error_message = "plan: delegation Microsoft.AzureCosmosDB/clusters (delegation-07) service_delegation name is not as expected."
   }
+
   assert {
     condition     = sort(azurerm_subnet.subnets["delegation-07"].delegation[0].service_delegation.actions) == sort(["Microsoft.Network/virtualNetworks/subnets/join/action"])
     error_message = "plan: delegation Microsoft.AzureCosmosDB/clusters (delegation-07) service_delegation actions are not as expected."
@@ -334,6 +338,7 @@ run "plan" {
     condition     = azurerm_subnet.subnets["delegation-08"].delegation[0].service_delegation.name == "Microsoft.BareMetal/AzureHostedService"
     error_message = "plan: delegation Microsoft.BareMetal/AzureHostedService (delegation-08) service_delegation name is not as expected."
   }
+
   assert {
     condition     = sort(azurerm_subnet.subnets["delegation-08"].delegation[0].service_delegation.actions) == sort(["Microsoft.Network/networkinterfaces/*", "Microsoft.Network/virtualNetworks/subnets/join/action"])
     error_message = "plan: delegation Microsoft.BareMetal/AzureHostedService (delegation-08) service_delegation actions are not as expected."
@@ -343,6 +348,7 @@ run "plan" {
     condition     = azurerm_subnet.subnets["delegation-09"].delegation[0].service_delegation.name == "Microsoft.BareMetal/AzureVMware"
     error_message = "plan: delegation Microsoft.BareMetal/AzureVMware (delegation-09) service_delegation name is not as expected."
   }
+
   assert {
     condition     = sort(azurerm_subnet.subnets["delegation-09"].delegation[0].service_delegation.actions) == sort(["Microsoft.Network/networkinterfaces/*", "Microsoft.Network/virtualNetworks/subnets/join/action"])
     error_message = "plan: delegation Microsoft.BareMetal/AzureVMware (delegation-09) service_delegation actions are not as expected."
@@ -352,6 +358,7 @@ run "plan" {
     condition     = azurerm_subnet.subnets["delegation-10"].delegation[0].service_delegation.name == "Microsoft.BareMetal/CrayServers"
     error_message = "plan: delegation Microsoft.BareMetal/CrayServers (delegation-10) service_delegation name is not as expected."
   }
+
   assert {
     condition     = sort(azurerm_subnet.subnets["delegation-10"].delegation[0].service_delegation.actions) == sort(["Microsoft.Network/networkinterfaces/*", "Microsoft.Network/virtualNetworks/subnets/join/action"])
     error_message = "plan: delegation Microsoft.BareMetal/CrayServers (delegation-10) service_delegation actions are not as expected."
@@ -361,6 +368,7 @@ run "plan" {
     condition     = azurerm_subnet.subnets["delegation-11"].delegation[0].service_delegation.name == "Microsoft.Batch/batchAccounts"
     error_message = "plan: delegation Microsoft.Batch/batchAccounts (delegation-11) service_delegation name is not as expected."
   }
+
   assert {
     condition     = sort(azurerm_subnet.subnets["delegation-11"].delegation[0].service_delegation.actions) == sort(["Microsoft.Network/virtualNetworks/subnets/action"])
     error_message = "plan: delegation Microsoft.Batch/batchAccounts (delegation-11) service_delegation actions are not as expected."
@@ -370,6 +378,7 @@ run "plan" {
     condition     = azurerm_subnet.subnets["delegation-12"].delegation[0].service_delegation.name == "Microsoft.CloudTest/hostedpools"
     error_message = "plan: delegation Microsoft.CloudTest/hostedpools (delegation-12) service_delegation name is not as expected."
   }
+
   assert {
     condition     = sort(azurerm_subnet.subnets["delegation-12"].delegation[0].service_delegation.actions) == sort(["Microsoft.Network/virtualNetworks/subnets/join/action"])
     error_message = "plan: delegation Microsoft.CloudTest/hostedpools (delegation-12) service_delegation actions are not as expected."
@@ -379,6 +388,7 @@ run "plan" {
     condition     = azurerm_subnet.subnets["delegation-13"].delegation[0].service_delegation.name == "Microsoft.CloudTest/images"
     error_message = "plan: delegation Microsoft.CloudTest/images (delegation-13) service_delegation name is not as expected."
   }
+
   assert {
     condition     = sort(azurerm_subnet.subnets["delegation-13"].delegation[0].service_delegation.actions) == sort(["Microsoft.Network/virtualNetworks/subnets/join/action"])
     error_message = "plan: delegation Microsoft.CloudTest/images (delegation-13) service_delegation actions are not as expected."
@@ -388,6 +398,7 @@ run "plan" {
     condition     = azurerm_subnet.subnets["delegation-14"].delegation[0].service_delegation.name == "Microsoft.CloudTest/pools"
     error_message = "plan: delegation Microsoft.CloudTest/pools (delegation-14) service_delegation name is not as expected."
   }
+
   assert {
     condition     = sort(azurerm_subnet.subnets["delegation-14"].delegation[0].service_delegation.actions) == sort(["Microsoft.Network/virtualNetworks/subnets/join/action"])
     error_message = "plan: delegation Microsoft.CloudTest/pools (delegation-14) service_delegation actions are not as expected."
@@ -397,6 +408,7 @@ run "plan" {
     condition     = azurerm_subnet.subnets["delegation-15"].delegation[0].service_delegation.name == "Microsoft.Codespaces/plans"
     error_message = "plan: delegation Microsoft.Codespaces/plans (delegation-15) service_delegation name is not as expected."
   }
+
   assert {
     condition     = sort(azurerm_subnet.subnets["delegation-15"].delegation[0].service_delegation.actions) == sort(["Microsoft.Network/virtualNetworks/subnets/join/action"])
     error_message = "plan: delegation Microsoft.Codespaces/plans (delegation-15) service_delegation actions are not as expected."
@@ -406,6 +418,7 @@ run "plan" {
     condition     = azurerm_subnet.subnets["delegation-16"].delegation[0].service_delegation.name == "Microsoft.ContainerInstance/containerGroups"
     error_message = "plan: delegation Microsoft.ContainerInstance/containerGroups (delegation-16) service_delegation name is not as expected."
   }
+
   assert {
     condition     = sort(azurerm_subnet.subnets["delegation-16"].delegation[0].service_delegation.actions) == sort(["Microsoft.Network/virtualNetworks/subnets/action"])
     error_message = "plan: delegation Microsoft.ContainerInstance/containerGroups (delegation-16) service_delegation actions are not as expected."
@@ -415,6 +428,7 @@ run "plan" {
     condition     = azurerm_subnet.subnets["delegation-17"].delegation[0].service_delegation.name == "Microsoft.ContainerService/managedClusters"
     error_message = "plan: delegation Microsoft.ContainerService/managedClusters (delegation-17) service_delegation name is not as expected."
   }
+
   assert {
     condition     = sort(azurerm_subnet.subnets["delegation-17"].delegation[0].service_delegation.actions) == sort(["Microsoft.Network/virtualNetworks/subnets/join/action"])
     error_message = "plan: delegation Microsoft.ContainerService/managedClusters (delegation-17) service_delegation actions are not as expected."
@@ -424,6 +438,7 @@ run "plan" {
     condition     = azurerm_subnet.subnets["delegation-18"].delegation[0].service_delegation.name == "Microsoft.Databricks/workspaces"
     error_message = "plan: delegation Microsoft.Databricks/workspaces (delegation-18) service_delegation name is not as expected."
   }
+
   assert {
     condition     = sort(azurerm_subnet.subnets["delegation-18"].delegation[0].service_delegation.actions) == sort(["Microsoft.Network/virtualNetworks/subnets/join/action", "Microsoft.Network/virtualNetworks/subnets/prepareNetworkPolicies/action", "Microsoft.Network/virtualNetworks/subnets/unprepareNetworkPolicies/action"])
     error_message = "plan: delegation Microsoft.Databricks/workspaces (delegation-18) service_delegation actions are not as expected."
@@ -433,6 +448,7 @@ run "plan" {
     condition     = azurerm_subnet.subnets["delegation-19"].delegation[0].service_delegation.name == "Microsoft.DBforMySQL/flexibleServers"
     error_message = "plan: delegation Microsoft.DBforMySQL/flexibleServers (delegation-19) service_delegation name is not as expected."
   }
+
   assert {
     condition     = sort(azurerm_subnet.subnets["delegation-19"].delegation[0].service_delegation.actions) == sort(["Microsoft.Network/virtualNetworks/subnets/join/action"])
     error_message = "plan: delegation Microsoft.DBforMySQL/flexibleServers (delegation-19) service_delegation actions are not as expected."
@@ -442,6 +458,7 @@ run "plan" {
     condition     = azurerm_subnet.subnets["delegation-20"].delegation[0].service_delegation.name == "Microsoft.DBforMySQL/servers"
     error_message = "plan: delegation Microsoft.DBforMySQL/servers (delegation-20) service_delegation name is not as expected."
   }
+
   assert {
     condition     = sort(azurerm_subnet.subnets["delegation-20"].delegation[0].service_delegation.actions) == sort(["Microsoft.Network/virtualNetworks/subnets/join/action"])
     error_message = "plan: delegation Microsoft.DBforMySQL/servers (delegation-20) service_delegation actions are not as expected."
@@ -451,6 +468,7 @@ run "plan" {
     condition     = azurerm_subnet.subnets["delegation-21"].delegation[0].service_delegation.name == "Microsoft.DBforMySQL/serversv2"
     error_message = "plan: delegation Microsoft.DBforMySQL/serversv2 (delegation-21) service_delegation name is not as expected."
   }
+
   assert {
     condition     = sort(azurerm_subnet.subnets["delegation-21"].delegation[0].service_delegation.actions) == sort(["Microsoft.Network/virtualNetworks/subnets/join/action"])
     error_message = "plan: delegation Microsoft.DBforMySQL/serversv2 (delegation-21) service_delegation actions are not as expected."
@@ -460,6 +478,7 @@ run "plan" {
     condition     = azurerm_subnet.subnets["delegation-22"].delegation[0].service_delegation.name == "Microsoft.DBforPostgreSQL/flexibleServers"
     error_message = "plan: delegation Microsoft.DBforPostgreSQL/flexibleServers (delegation-22) service_delegation name is not as expected."
   }
+
   assert {
     condition     = sort(azurerm_subnet.subnets["delegation-22"].delegation[0].service_delegation.actions) == sort(["Microsoft.Network/virtualNetworks/subnets/join/action"])
     error_message = "plan: delegation Microsoft.DBforPostgreSQL/flexibleServers (delegation-22) service_delegation actions are not as expected."
@@ -469,6 +488,7 @@ run "plan" {
     condition     = azurerm_subnet.subnets["delegation-23"].delegation[0].service_delegation.name == "Microsoft.DBforPostgreSQL/serversv2"
     error_message = "plan: delegation Microsoft.DBforPostgreSQL/serversv2 (delegation-23) service_delegation name is not as expected."
   }
+
   assert {
     condition     = sort(azurerm_subnet.subnets["delegation-23"].delegation[0].service_delegation.actions) == sort(["Microsoft.Network/virtualNetworks/subnets/join/action"])
     error_message = "plan: delegation Microsoft.DBforPostgreSQL/serversv2 (delegation-23) service_delegation actions are not as expected."
@@ -478,6 +498,7 @@ run "plan" {
     condition     = azurerm_subnet.subnets["delegation-24"].delegation[0].service_delegation.name == "Microsoft.DBforPostgreSQL/singleServers"
     error_message = "plan: delegation Microsoft.DBforPostgreSQL/singleServers (delegation-24) service_delegation name is not as expected."
   }
+
   assert {
     condition     = sort(azurerm_subnet.subnets["delegation-24"].delegation[0].service_delegation.actions) == sort(["Microsoft.Network/virtualNetworks/subnets/join/action"])
     error_message = "plan: delegation Microsoft.DBforPostgreSQL/singleServers (delegation-24) service_delegation actions are not as expected."
@@ -487,6 +508,7 @@ run "plan" {
     condition     = azurerm_subnet.subnets["delegation-25"].delegation[0].service_delegation.name == "Microsoft.DelegatedNetwork/controller"
     error_message = "plan: delegation Microsoft.DelegatedNetwork/controller (delegation-25) service_delegation name is not as expected."
   }
+
   assert {
     condition     = sort(azurerm_subnet.subnets["delegation-25"].delegation[0].service_delegation.actions) == sort(["Microsoft.Network/virtualNetworks/subnets/join/action"])
     error_message = "plan: delegation Microsoft.DelegatedNetwork/controller (delegation-25) service_delegation actions are not as expected."
@@ -496,6 +518,7 @@ run "plan" {
     condition     = azurerm_subnet.subnets["delegation-26"].delegation[0].service_delegation.name == "Microsoft.DevCenter/networkConnection"
     error_message = "plan: delegation Microsoft.DevCenter/networkConnection (delegation-26) service_delegation name is not as expected."
   }
+
   assert {
     condition     = sort(azurerm_subnet.subnets["delegation-26"].delegation[0].service_delegation.actions) == sort(["Microsoft.Network/virtualNetworks/subnets/join/action"])
     error_message = "plan: delegation Microsoft.DevCenter/networkConnection (delegation-26) service_delegation actions are not as expected."
@@ -505,6 +528,7 @@ run "plan" {
     condition     = azurerm_subnet.subnets["delegation-27"].delegation[0].service_delegation.name == "Microsoft.DevOpsInfrastructure/pools"
     error_message = "plan: delegation Microsoft.DevOpsInfrastructure/pools (delegation-27) service_delegation name is not as expected."
   }
+
   assert {
     condition     = sort(azurerm_subnet.subnets["delegation-27"].delegation[0].service_delegation.actions) == sort(["Microsoft.Network/virtualNetworks/subnets/join/action"])
     error_message = "plan: delegation Microsoft.DevOpsInfrastructure/pools (delegation-27) service_delegation actions are not as expected."
@@ -514,6 +538,7 @@ run "plan" {
     condition     = azurerm_subnet.subnets["delegation-28"].delegation[0].service_delegation.name == "Microsoft.DocumentDB/cassandraClusters"
     error_message = "plan: delegation Microsoft.DocumentDB/cassandraClusters (delegation-28) service_delegation name is not as expected."
   }
+
   assert {
     condition     = sort(azurerm_subnet.subnets["delegation-28"].delegation[0].service_delegation.actions) == sort(["Microsoft.Network/virtualNetworks/subnets/join/action"])
     error_message = "plan: delegation Microsoft.DocumentDB/cassandraClusters (delegation-28) service_delegation actions are not as expected."
@@ -523,6 +548,7 @@ run "plan" {
     condition     = azurerm_subnet.subnets["delegation-29"].delegation[0].service_delegation.name == "Microsoft.Fidalgo/networkSettings"
     error_message = "plan: delegation Microsoft.Fidalgo/networkSettings (delegation-29) service_delegation name is not as expected."
   }
+
   assert {
     condition     = sort(azurerm_subnet.subnets["delegation-29"].delegation[0].service_delegation.actions) == sort(["Microsoft.Network/virtualNetworks/subnets/join/action"])
     error_message = "plan: delegation Microsoft.Fidalgo/networkSettings (delegation-29) service_delegation actions are not as expected."
@@ -532,6 +558,7 @@ run "plan" {
     condition     = azurerm_subnet.subnets["delegation-30"].delegation[0].service_delegation.name == "Microsoft.HardwareSecurityModules/dedicatedHSMs"
     error_message = "plan: delegation Microsoft.HardwareSecurityModules/dedicatedHSMs (delegation-30) service_delegation name is not as expected."
   }
+
   assert {
     condition     = sort(azurerm_subnet.subnets["delegation-30"].delegation[0].service_delegation.actions) == sort(["Microsoft.Network/networkinterfaces/*", "Microsoft.Network/virtualNetworks/subnets/join/action"])
     error_message = "plan: delegation Microsoft.HardwareSecurityModules/dedicatedHSMs (delegation-30) service_delegation actions are not as expected."
@@ -541,6 +568,7 @@ run "plan" {
     condition     = azurerm_subnet.subnets["delegation-31"].delegation[0].service_delegation.name == "Microsoft.Kusto/clusters"
     error_message = "plan: delegation Microsoft.Kusto/clusters (delegation-31) service_delegation name is not as expected."
   }
+
   assert {
     condition     = sort(azurerm_subnet.subnets["delegation-31"].delegation[0].service_delegation.actions) == sort(["Microsoft.Network/virtualNetworks/subnets/join/action", "Microsoft.Network/virtualNetworks/subnets/prepareNetworkPolicies/action", "Microsoft.Network/virtualNetworks/subnets/unprepareNetworkPolicies/action"])
     error_message = "plan: delegation Microsoft.Kusto/clusters (delegation-31) service_delegation actions are not as expected."
@@ -550,6 +578,7 @@ run "plan" {
     condition     = azurerm_subnet.subnets["delegation-32"].delegation[0].service_delegation.name == "Microsoft.LabServices/labplans"
     error_message = "plan: delegation Microsoft.LabServices/labplans (delegation-32) service_delegation name is not as expected."
   }
+
   assert {
     condition     = sort(azurerm_subnet.subnets["delegation-32"].delegation[0].service_delegation.actions) == sort(["Microsoft.Network/virtualNetworks/subnets/join/action"])
     error_message = "plan: delegation Microsoft.LabServices/labplans (delegation-32) service_delegation actions are not as expected."
@@ -559,6 +588,7 @@ run "plan" {
     condition     = azurerm_subnet.subnets["delegation-33"].delegation[0].service_delegation.name == "Microsoft.Logic/integrationServiceEnvironments"
     error_message = "plan: delegation Microsoft.Logic/integrationServiceEnvironments (delegation-33) service_delegation name is not as expected."
   }
+
   assert {
     condition     = sort(azurerm_subnet.subnets["delegation-33"].delegation[0].service_delegation.actions) == sort(["Microsoft.Network/virtualNetworks/subnets/action"])
     error_message = "plan: delegation Microsoft.Logic/integrationServiceEnvironments (delegation-33) service_delegation actions are not as expected."
@@ -568,6 +598,7 @@ run "plan" {
     condition     = azurerm_subnet.subnets["delegation-34"].delegation[0].service_delegation.name == "Microsoft.MachineLearningServices/workspaces"
     error_message = "plan: delegation Microsoft.MachineLearningServices/workspaces (delegation-34) service_delegation name is not as expected."
   }
+
   assert {
     condition     = sort(azurerm_subnet.subnets["delegation-34"].delegation[0].service_delegation.actions) == sort(["Microsoft.Network/virtualNetworks/subnets/join/action"])
     error_message = "plan: delegation Microsoft.MachineLearningServices/workspaces (delegation-34) service_delegation actions are not as expected."
@@ -577,6 +608,7 @@ run "plan" {
     condition     = azurerm_subnet.subnets["delegation-35"].delegation[0].service_delegation.name == "Microsoft.MessagingConnectors/connectors"
     error_message = "plan: delegation Microsoft.MessagingConnectors/connectors (delegation-35) service_delegation name is not as expected."
   }
+
   assert {
     condition     = sort(azurerm_subnet.subnets["delegation-35"].delegation[0].service_delegation.actions) == sort(["Microsoft.Network/virtualNetworks/subnets/join/action"])
     error_message = "plan: delegation Microsoft.MessagingConnectors/connectors (delegation-35) service_delegation actions are not as expected."
@@ -586,6 +618,7 @@ run "plan" {
     condition     = azurerm_subnet.subnets["delegation-36"].delegation[0].service_delegation.name == "Microsoft.Netapp/volumes"
     error_message = "plan: delegation Microsoft.Netapp/volumes (delegation-36) service_delegation name is not as expected."
   }
+
   assert {
     condition     = sort(azurerm_subnet.subnets["delegation-36"].delegation[0].service_delegation.actions) == sort(["Microsoft.Network/networkinterfaces/*", "Microsoft.Network/virtualNetworks/subnets/join/action"])
     error_message = "plan: delegation Microsoft.Netapp/volumes (delegation-36) service_delegation actions are not as expected."
@@ -595,6 +628,7 @@ run "plan" {
     condition     = azurerm_subnet.subnets["delegation-37"].delegation[0].service_delegation.name == "Microsoft.Network/applicationGateways"
     error_message = "plan: delegation Microsoft.Network/applicationGateways (delegation-37) service_delegation name is not as expected."
   }
+
   assert {
     condition     = sort(azurerm_subnet.subnets["delegation-37"].delegation[0].service_delegation.actions) == sort(["Microsoft.Network/virtualNetworks/subnets/join/action"])
     error_message = "plan: delegation Microsoft.Network/applicationGateways (delegation-37) service_delegation actions are not as expected."
@@ -604,24 +638,27 @@ run "plan" {
     condition     = azurerm_subnet.subnets["delegation-38"].delegation[0].service_delegation.name == "Microsoft.Network/dnsResolvers"
     error_message = "plan: delegation Microsoft.Network/dnsResolvers (delegation-38) service_delegation name is not as expected."
   }
+
   assert {
     condition     = sort(azurerm_subnet.subnets["delegation-38"].delegation[0].service_delegation.actions) == sort(["Microsoft.Network/virtualNetworks/subnets/join/action"])
     error_message = "plan: delegation Microsoft.Network/dnsResolvers (delegation-38) service_delegation actions are not as expected."
   }
 
-  assert {
-    condition     = azurerm_subnet.subnets["delegation-39"].delegation[0].service_delegation.name == "Microsoft.Network/networkWatchers"
-    error_message = "plan: delegation Microsoft.Network/networkWatchers (delegation-39) service_delegation name is not as expected."
-  }
-  assert {
-    condition     = sort(azurerm_subnet.subnets["delegation-39"].delegation[0].service_delegation.actions) == sort(["Microsoft.Network/virtualNetworks/subnets/join/action"])
-    error_message = "plan: delegation Microsoft.Network/networkWatchers (delegation-39) service_delegation actions are not as expected."
-  }
+  # assert {
+  #   condition     = azurerm_subnet.subnets["delegation-39"].delegation[0].service_delegation.name == "Microsoft.Network/networkWatchers"
+  #   error_message = "plan: delegation Microsoft.Network/networkWatchers (delegation-39) service_delegation name is not as expected."
+  # }
+
+  # assert {
+  #   condition     = sort(azurerm_subnet.subnets["delegation-39"].delegation[0].service_delegation.actions) == sort(["Microsoft.Network/virtualNetworks/subnets/join/action"])
+  #   error_message = "plan: delegation Microsoft.Network/networkWatchers (delegation-39) service_delegation actions are not as expected."
+  # }
 
   assert {
     condition     = azurerm_subnet.subnets["delegation-40"].delegation[0].service_delegation.name == "Microsoft.Orbital/orbitalGateways"
     error_message = "plan: delegation Microsoft.Orbital/orbitalGateways (delegation-40) service_delegation name is not as expected."
   }
+
   assert {
     condition     = sort(azurerm_subnet.subnets["delegation-40"].delegation[0].service_delegation.actions) == sort(["Microsoft.Network/publicIPAddresses/join/action", "Microsoft.Network/virtualNetworks/subnets/join/action", "Microsoft.Network/virtualNetworks/read", "Microsoft.Network/publicIPAddresses/read"])
     error_message = "plan: delegation Microsoft.Orbital/orbitalGateways (delegation-40) service_delegation actions are not as expected."
@@ -631,6 +668,7 @@ run "plan" {
     condition     = azurerm_subnet.subnets["delegation-41"].delegation[0].service_delegation.name == "Microsoft.PowerAutomate/hostedRpa"
     error_message = "plan: delegation Microsoft.PowerAutomate/hostedRpa (delegation-41) service_delegation name is not as expected."
   }
+
   assert {
     condition     = sort(azurerm_subnet.subnets["delegation-41"].delegation[0].service_delegation.actions) == sort(["Microsoft.Network/virtualNetworks/subnets/join/action"])
     error_message = "plan: delegation Microsoft.PowerAutomate/hostedRpa (delegation-41) service_delegation actions are not as expected."
@@ -640,6 +678,7 @@ run "plan" {
     condition     = azurerm_subnet.subnets["delegation-42"].delegation[0].service_delegation.name == "Microsoft.PowerPlatform/enterprisePolicies"
     error_message = "plan: delegation Microsoft.PowerPlatform/enterprisePolicies (delegation-42) service_delegation name is not as expected."
   }
+
   assert {
     condition     = sort(azurerm_subnet.subnets["delegation-42"].delegation[0].service_delegation.actions) == sort(["Microsoft.Network/virtualNetworks/subnets/join/action"])
     error_message = "plan: delegation Microsoft.PowerPlatform/enterprisePolicies (delegation-42) service_delegation actions are not as expected."
@@ -649,6 +688,7 @@ run "plan" {
     condition     = azurerm_subnet.subnets["delegation-43"].delegation[0].service_delegation.name == "Microsoft.PowerPlatform/vnetaccesslinks"
     error_message = "plan: delegation Microsoft.PowerPlatform/vnetaccesslinks (delegation-43) service_delegation name is not as expected."
   }
+
   assert {
     condition     = sort(azurerm_subnet.subnets["delegation-43"].delegation[0].service_delegation.actions) == sort(["Microsoft.Network/virtualNetworks/subnets/join/action"])
     error_message = "plan: delegation Microsoft.PowerPlatform/vnetaccesslinks (delegation-43) service_delegation actions are not as expected."
@@ -658,6 +698,7 @@ run "plan" {
     condition     = azurerm_subnet.subnets["delegation-44"].delegation[0].service_delegation.name == "Microsoft.ServiceFabricMesh/networks"
     error_message = "plan: delegation Microsoft.ServiceFabricMesh/networks (delegation-44) service_delegation name is not as expected."
   }
+
   assert {
     condition     = sort(azurerm_subnet.subnets["delegation-44"].delegation[0].service_delegation.actions) == sort(["Microsoft.Network/virtualNetworks/subnets/action"])
     error_message = "plan: delegation Microsoft.ServiceFabricMesh/networks (delegation-44) service_delegation actions are not as expected."
@@ -667,6 +708,7 @@ run "plan" {
     condition     = azurerm_subnet.subnets["delegation-45"].delegation[0].service_delegation.name == "Microsoft.ServiceNetworking/trafficControllers"
     error_message = "plan: delegation Microsoft.ServiceNetworking/trafficControllers (delegation-45) service_delegation name is not as expected."
   }
+
   assert {
     condition     = sort(azurerm_subnet.subnets["delegation-45"].delegation[0].service_delegation.actions) == sort(["Microsoft.Network/virtualNetworks/subnets/join/action"])
     error_message = "plan: delegation Microsoft.ServiceNetworking/trafficControllers (delegation-45) service_delegation actions are not as expected."
@@ -676,6 +718,7 @@ run "plan" {
     condition     = azurerm_subnet.subnets["delegation-46"].delegation[0].service_delegation.name == "Microsoft.Singularity/accounts/networks"
     error_message = "plan: delegation Microsoft.Singularity/accounts/networks (delegation-46) service_delegation name is not as expected."
   }
+
   assert {
     condition     = sort(azurerm_subnet.subnets["delegation-46"].delegation[0].service_delegation.actions) == sort(["Microsoft.Network/networkinterfaces/*", "Microsoft.Network/virtualNetworks/subnets/join/action"])
     error_message = "plan: delegation Microsoft.Singularity/accounts/networks (delegation-46) service_delegation actions are not as expected."
@@ -685,6 +728,7 @@ run "plan" {
     condition     = azurerm_subnet.subnets["delegation-47"].delegation[0].service_delegation.name == "Microsoft.Singularity/accounts/npu"
     error_message = "plan: delegation Microsoft.Singularity/accounts/npu (delegation-47) service_delegation name is not as expected."
   }
+
   assert {
     condition     = sort(azurerm_subnet.subnets["delegation-47"].delegation[0].service_delegation.actions) == sort(["Microsoft.Network/networkinterfaces/*", "Microsoft.Network/virtualNetworks/subnets/join/action"])
     error_message = "plan: delegation Microsoft.Singularity/accounts/npu (delegation-47) service_delegation actions are not as expected."
@@ -694,6 +738,7 @@ run "plan" {
     condition     = azurerm_subnet.subnets["delegation-48"].delegation[0].service_delegation.name == "Microsoft.Sql/managedInstances"
     error_message = "plan: delegation Microsoft.Sql/managedInstances (delegation-48) service_delegation name is not as expected."
   }
+
   assert {
     condition     = sort(azurerm_subnet.subnets["delegation-48"].delegation[0].service_delegation.actions) == sort(["Microsoft.Network/virtualNetworks/subnets/join/action", "Microsoft.Network/virtualNetworks/subnets/prepareNetworkPolicies/action", "Microsoft.Network/virtualNetworks/subnets/unprepareNetworkPolicies/action"])
     error_message = "plan: delegation Microsoft.Sql/managedInstances (delegation-48) service_delegation actions are not as expected."
@@ -703,6 +748,7 @@ run "plan" {
     condition     = azurerm_subnet.subnets["delegation-49"].delegation[0].service_delegation.name == "Microsoft.StoragePool/diskPools"
     error_message = "plan: delegation Microsoft.StoragePool/diskPools (delegation-49) service_delegation name is not as expected."
   }
+
   assert {
     condition     = sort(azurerm_subnet.subnets["delegation-49"].delegation[0].service_delegation.actions) == sort(["Microsoft.Network/virtualNetworks/read"])
     error_message = "plan: delegation Microsoft.StoragePool/diskPools (delegation-49) service_delegation actions are not as expected."
@@ -712,6 +758,7 @@ run "plan" {
     condition     = azurerm_subnet.subnets["delegation-50"].delegation[0].service_delegation.name == "Microsoft.StreamAnalytics/streamingJobs"
     error_message = "plan: delegation Microsoft.StreamAnalytics/streamingJobs (delegation-50) service_delegation name is not as expected."
   }
+
   assert {
     condition     = sort(azurerm_subnet.subnets["delegation-50"].delegation[0].service_delegation.actions) == sort(["Microsoft.Network/virtualNetworks/subnets/join/action"])
     error_message = "plan: delegation Microsoft.StreamAnalytics/streamingJobs (delegation-50) service_delegation actions are not as expected."
@@ -721,6 +768,7 @@ run "plan" {
     condition     = azurerm_subnet.subnets["delegation-51"].delegation[0].service_delegation.name == "Microsoft.Synapse/workspaces"
     error_message = "plan: delegation Microsoft.Synapse/workspaces (delegation-51) service_delegation name is not as expected."
   }
+
   assert {
     condition     = sort(azurerm_subnet.subnets["delegation-51"].delegation[0].service_delegation.actions) == sort(["Microsoft.Network/virtualNetworks/subnets/join/action"])
     error_message = "plan: delegation Microsoft.Synapse/workspaces (delegation-51) service_delegation actions are not as expected."
@@ -730,6 +778,7 @@ run "plan" {
     condition     = azurerm_subnet.subnets["delegation-52"].delegation[0].service_delegation.name == "Microsoft.Web/hostingEnvironments"
     error_message = "plan: delegation Microsoft.Web/hostingEnvironments (delegation-52) service_delegation name is not as expected."
   }
+
   assert {
     condition     = sort(azurerm_subnet.subnets["delegation-52"].delegation[0].service_delegation.actions) == sort(["Microsoft.Network/virtualNetworks/subnets/action"])
     error_message = "plan: delegation Microsoft.Web/hostingEnvironments (delegation-52) service_delegation actions are not as expected."
@@ -739,6 +788,7 @@ run "plan" {
     condition     = azurerm_subnet.subnets["delegation-53"].delegation[0].service_delegation.name == "Microsoft.Web/serverFarms"
     error_message = "plan: delegation Microsoft.Web/serverFarms (delegation-53) service_delegation name is not as expected."
   }
+
   assert {
     condition     = sort(azurerm_subnet.subnets["delegation-53"].delegation[0].service_delegation.actions) == sort(["Microsoft.Network/virtualNetworks/subnets/action"])
     error_message = "plan: delegation Microsoft.Web/serverFarms (delegation-53) service_delegation actions are not as expected."
@@ -748,6 +798,7 @@ run "plan" {
     condition     = azurerm_subnet.subnets["delegation-54"].delegation[0].service_delegation.name == "NGINX.NGINXPLUS/nginxDeployments"
     error_message = "plan: delegation NGINX.NGINXPLUS/nginxDeployments (delegation-54) service_delegation name is not as expected."
   }
+
   assert {
     condition     = sort(azurerm_subnet.subnets["delegation-54"].delegation[0].service_delegation.actions) == sort(["Microsoft.Network/virtualNetworks/subnets/join/action"])
     error_message = "plan: delegation NGINX.NGINXPLUS/nginxDeployments (delegation-54) service_delegation actions are not as expected."
@@ -757,6 +808,7 @@ run "plan" {
     condition     = azurerm_subnet.subnets["delegation-55"].delegation[0].service_delegation.name == "Oracle.Database/networkAttachments"
     error_message = "plan: delegation Oracle.Database/networkAttachments (delegation-55) service_delegation name is not as expected."
   }
+
   assert {
     condition     = sort(azurerm_subnet.subnets["delegation-55"].delegation[0].service_delegation.actions) == sort(["Microsoft.Network/virtualNetworks/subnets/join/action"])
     error_message = "plan: delegation Oracle.Database/networkAttachments (delegation-55) service_delegation actions are not as expected."
@@ -766,6 +818,7 @@ run "plan" {
     condition     = azurerm_subnet.subnets["delegation-56"].delegation[0].service_delegation.name == "PaloAltoNetworks.Cloudngfw/firewalls"
     error_message = "plan: delegation PaloAltoNetworks.Cloudngfw/firewalls (delegation-56) service_delegation name is not as expected."
   }
+
   assert {
     condition     = sort(azurerm_subnet.subnets["delegation-56"].delegation[0].service_delegation.actions) == sort(["Microsoft.Network/virtualNetworks/subnets/join/action"])
     error_message = "plan: delegation PaloAltoNetworks.Cloudngfw/firewalls (delegation-56) service_delegation actions are not as expected."
@@ -775,6 +828,7 @@ run "plan" {
     condition     = azurerm_subnet.subnets["delegation-57"].delegation[0].service_delegation.name == "PureStorage.Block/storagePools"
     error_message = "plan: delegation PureStorage.Block/storagePools (delegation-57) service_delegation name is not as expected."
   }
+
   assert {
     condition     = sort(azurerm_subnet.subnets["delegation-57"].delegation[0].service_delegation.actions) == sort(["Microsoft.Network/virtualNetworks/subnets/join/action"])
     error_message = "plan: delegation PureStorage.Block/storagePools (delegation-57) service_delegation actions are not as expected."
@@ -784,6 +838,7 @@ run "plan" {
     condition     = azurerm_subnet.subnets["delegation-58"].delegation[0].service_delegation.name == "Qumulo.Storage/fileSystems"
     error_message = "plan: delegation Qumulo.Storage/fileSystems (delegation-58) service_delegation name is not as expected."
   }
+
   assert {
     condition     = sort(azurerm_subnet.subnets["delegation-58"].delegation[0].service_delegation.actions) == sort(["Microsoft.Network/virtualNetworks/subnets/join/action"])
     error_message = "plan: delegation Qumulo.Storage/fileSystems (delegation-58) service_delegation actions are not as expected."
@@ -803,234 +858,292 @@ run "apply" {
     condition     = azurerm_subnet.subnets["delegation-00"].id == "${run.setup.resource_group_id}/providers/Microsoft.Network/virtualNetworks/${run.setup.workspace_id}/subnets/delegation-00"
     error_message = "apply: delegation GitHub.Network/networkSettings (delegation-00) ID is not as expected."
   }
+
   assert {
     condition     = azurerm_subnet.subnets["delegation-01"].id == "${run.setup.resource_group_id}/providers/Microsoft.Network/virtualNetworks/${run.setup.workspace_id}/subnets/delegation-01"
     error_message = "apply: delegation Informatica.DataManagement/organizations (delegation-01) ID is not as expected."
   }
+
   assert {
     condition     = azurerm_subnet.subnets["delegation-02"].id == "${run.setup.resource_group_id}/providers/Microsoft.Network/virtualNetworks/${run.setup.workspace_id}/subnets/delegation-02"
     error_message = "apply: delegation Microsoft.ApiManagement/service (delegation-02) ID is not as expected."
   }
+
   assert {
     condition     = azurerm_subnet.subnets["delegation-03"].id == "${run.setup.resource_group_id}/providers/Microsoft.Network/virtualNetworks/${run.setup.workspace_id}/subnets/delegation-03"
     error_message = "apply: delegation Microsoft.Apollo/npu (delegation-03) ID is not as expected."
   }
+
   assert {
     condition     = azurerm_subnet.subnets["delegation-04"].id == "${run.setup.resource_group_id}/providers/Microsoft.Network/virtualNetworks/${run.setup.workspace_id}/subnets/delegation-04"
     error_message = "apply: delegation Microsoft.App/environments (delegation-04) ID is not as expected."
   }
+
   assert {
     condition     = azurerm_subnet.subnets["delegation-05"].id == "${run.setup.resource_group_id}/providers/Microsoft.Network/virtualNetworks/${run.setup.workspace_id}/subnets/delegation-05"
     error_message = "apply: delegation Microsoft.App/testClients (delegation-05) ID is not as expected."
   }
+
   assert {
     condition     = azurerm_subnet.subnets["delegation-06"].id == "${run.setup.resource_group_id}/providers/Microsoft.Network/virtualNetworks/${run.setup.workspace_id}/subnets/delegation-06"
     error_message = "apply: delegation Microsoft.AVS/PrivateClouds (delegation-06) ID is not as expected."
   }
+
   assert {
     condition     = azurerm_subnet.subnets["delegation-07"].id == "${run.setup.resource_group_id}/providers/Microsoft.Network/virtualNetworks/${run.setup.workspace_id}/subnets/delegation-07"
     error_message = "apply: delegation Microsoft.AzureCosmosDB/clusters (delegation-07) ID is not as expected."
   }
+
   assert {
     condition     = azurerm_subnet.subnets["delegation-08"].id == "${run.setup.resource_group_id}/providers/Microsoft.Network/virtualNetworks/${run.setup.workspace_id}/subnets/delegation-08"
     error_message = "apply: delegation Microsoft.BareMetal/AzureHostedService (delegation-08) ID is not as expected."
   }
+
   assert {
     condition     = azurerm_subnet.subnets["delegation-09"].id == "${run.setup.resource_group_id}/providers/Microsoft.Network/virtualNetworks/${run.setup.workspace_id}/subnets/delegation-09"
     error_message = "apply: delegation Microsoft.BareMetal/AzureVMware (delegation-09) ID is not as expected."
   }
+
   assert {
     condition     = azurerm_subnet.subnets["delegation-10"].id == "${run.setup.resource_group_id}/providers/Microsoft.Network/virtualNetworks/${run.setup.workspace_id}/subnets/delegation-10"
     error_message = "apply: delegation Microsoft.BareMetal/CrayServers (delegation-10) ID is not as expected."
   }
+
   assert {
     condition     = azurerm_subnet.subnets["delegation-11"].id == "${run.setup.resource_group_id}/providers/Microsoft.Network/virtualNetworks/${run.setup.workspace_id}/subnets/delegation-11"
     error_message = "apply: delegation Microsoft.Batch/batchAccounts (delegation-11) ID is not as expected."
   }
+
   assert {
     condition     = azurerm_subnet.subnets["delegation-12"].id == "${run.setup.resource_group_id}/providers/Microsoft.Network/virtualNetworks/${run.setup.workspace_id}/subnets/delegation-12"
     error_message = "apply: delegation Microsoft.CloudTest/hostedpools (delegation-12) ID is not as expected."
   }
+
   assert {
     condition     = azurerm_subnet.subnets["delegation-13"].id == "${run.setup.resource_group_id}/providers/Microsoft.Network/virtualNetworks/${run.setup.workspace_id}/subnets/delegation-13"
     error_message = "apply: delegation Microsoft.CloudTest/images (delegation-13) ID is not as expected."
   }
+
   assert {
     condition     = azurerm_subnet.subnets["delegation-14"].id == "${run.setup.resource_group_id}/providers/Microsoft.Network/virtualNetworks/${run.setup.workspace_id}/subnets/delegation-14"
     error_message = "apply: delegation Microsoft.CloudTest/pools (delegation-14) ID is not as expected."
   }
+
   assert {
     condition     = azurerm_subnet.subnets["delegation-15"].id == "${run.setup.resource_group_id}/providers/Microsoft.Network/virtualNetworks/${run.setup.workspace_id}/subnets/delegation-15"
     error_message = "apply: delegation Microsoft.Codespaces/plans (delegation-15) ID is not as expected."
   }
+
   assert {
     condition     = azurerm_subnet.subnets["delegation-16"].id == "${run.setup.resource_group_id}/providers/Microsoft.Network/virtualNetworks/${run.setup.workspace_id}/subnets/delegation-16"
     error_message = "apply: delegation Microsoft.ContainerInstance/containerGroups (delegation-16) ID is not as expected."
   }
+
   assert {
     condition     = azurerm_subnet.subnets["delegation-17"].id == "${run.setup.resource_group_id}/providers/Microsoft.Network/virtualNetworks/${run.setup.workspace_id}/subnets/delegation-17"
     error_message = "apply: delegation Microsoft.ContainerService/managedClusters (delegation-17) ID is not as expected."
   }
+
   assert {
     condition     = azurerm_subnet.subnets["delegation-18"].id == "${run.setup.resource_group_id}/providers/Microsoft.Network/virtualNetworks/${run.setup.workspace_id}/subnets/delegation-18"
     error_message = "apply: delegation Microsoft.Databricks/workspaces (delegation-18) ID is not as expected."
   }
+
   assert {
     condition     = azurerm_subnet.subnets["delegation-19"].id == "${run.setup.resource_group_id}/providers/Microsoft.Network/virtualNetworks/${run.setup.workspace_id}/subnets/delegation-19"
     error_message = "apply: delegation Microsoft.DBforMySQL/flexibleServers (delegation-19) ID is not as expected."
   }
+
   assert {
     condition     = azurerm_subnet.subnets["delegation-20"].id == "${run.setup.resource_group_id}/providers/Microsoft.Network/virtualNetworks/${run.setup.workspace_id}/subnets/delegation-20"
     error_message = "apply: delegation Microsoft.DBforMySQL/servers (delegation-20) ID is not as expected."
   }
+
   assert {
     condition     = azurerm_subnet.subnets["delegation-21"].id == "${run.setup.resource_group_id}/providers/Microsoft.Network/virtualNetworks/${run.setup.workspace_id}/subnets/delegation-21"
     error_message = "apply: delegation Microsoft.DBforMySQL/serversv2 (delegation-21) ID is not as expected."
   }
+
   assert {
     condition     = azurerm_subnet.subnets["delegation-22"].id == "${run.setup.resource_group_id}/providers/Microsoft.Network/virtualNetworks/${run.setup.workspace_id}/subnets/delegation-22"
     error_message = "apply: delegation Microsoft.DBforPostgreSQL/flexibleServers (delegation-22) ID is not as expected."
   }
+
   assert {
     condition     = azurerm_subnet.subnets["delegation-23"].id == "${run.setup.resource_group_id}/providers/Microsoft.Network/virtualNetworks/${run.setup.workspace_id}/subnets/delegation-23"
     error_message = "apply: delegation Microsoft.DBforPostgreSQL/serversv2 (delegation-23) ID is not as expected."
   }
+
   assert {
     condition     = azurerm_subnet.subnets["delegation-24"].id == "${run.setup.resource_group_id}/providers/Microsoft.Network/virtualNetworks/${run.setup.workspace_id}/subnets/delegation-24"
     error_message = "apply: delegation Microsoft.DBforPostgreSQL/singleServers (delegation-24) ID is not as expected."
   }
+
   assert {
     condition     = azurerm_subnet.subnets["delegation-25"].id == "${run.setup.resource_group_id}/providers/Microsoft.Network/virtualNetworks/${run.setup.workspace_id}/subnets/delegation-25"
     error_message = "apply: delegation Microsoft.DelegatedNetwork/controller (delegation-25) ID is not as expected."
   }
+
   assert {
     condition     = azurerm_subnet.subnets["delegation-26"].id == "${run.setup.resource_group_id}/providers/Microsoft.Network/virtualNetworks/${run.setup.workspace_id}/subnets/delegation-26"
     error_message = "apply: delegation Microsoft.DevCenter/networkConnection (delegation-26) ID is not as expected."
   }
+
   assert {
     condition     = azurerm_subnet.subnets["delegation-27"].id == "${run.setup.resource_group_id}/providers/Microsoft.Network/virtualNetworks/${run.setup.workspace_id}/subnets/delegation-27"
     error_message = "apply: delegation Microsoft.DevOpsInfrastructure/pools (delegation-27) ID is not as expected."
   }
+
   assert {
     condition     = azurerm_subnet.subnets["delegation-28"].id == "${run.setup.resource_group_id}/providers/Microsoft.Network/virtualNetworks/${run.setup.workspace_id}/subnets/delegation-28"
     error_message = "apply: delegation Microsoft.DocumentDB/cassandraClusters (delegation-28) ID is not as expected."
   }
+
   assert {
     condition     = azurerm_subnet.subnets["delegation-29"].id == "${run.setup.resource_group_id}/providers/Microsoft.Network/virtualNetworks/${run.setup.workspace_id}/subnets/delegation-29"
     error_message = "apply: delegation Microsoft.Fidalgo/networkSettings (delegation-29) ID is not as expected."
   }
+
   assert {
     condition     = azurerm_subnet.subnets["delegation-30"].id == "${run.setup.resource_group_id}/providers/Microsoft.Network/virtualNetworks/${run.setup.workspace_id}/subnets/delegation-30"
     error_message = "apply: delegation Microsoft.HardwareSecurityModules/dedicatedHSMs (delegation-30) ID is not as expected."
   }
+
   assert {
     condition     = azurerm_subnet.subnets["delegation-31"].id == "${run.setup.resource_group_id}/providers/Microsoft.Network/virtualNetworks/${run.setup.workspace_id}/subnets/delegation-31"
     error_message = "apply: delegation Microsoft.Kusto/clusters (delegation-31) ID is not as expected."
   }
+
   assert {
     condition     = azurerm_subnet.subnets["delegation-32"].id == "${run.setup.resource_group_id}/providers/Microsoft.Network/virtualNetworks/${run.setup.workspace_id}/subnets/delegation-32"
     error_message = "apply: delegation Microsoft.LabServices/labplans (delegation-32) ID is not as expected."
   }
+
   assert {
     condition     = azurerm_subnet.subnets["delegation-33"].id == "${run.setup.resource_group_id}/providers/Microsoft.Network/virtualNetworks/${run.setup.workspace_id}/subnets/delegation-33"
     error_message = "apply: delegation Microsoft.Logic/integrationServiceEnvironments (delegation-33) ID is not as expected."
   }
+
   assert {
     condition     = azurerm_subnet.subnets["delegation-34"].id == "${run.setup.resource_group_id}/providers/Microsoft.Network/virtualNetworks/${run.setup.workspace_id}/subnets/delegation-34"
     error_message = "apply: delegation Microsoft.MachineLearningServices/workspaces (delegation-34) ID is not as expected."
   }
+
   assert {
     condition     = azurerm_subnet.subnets["delegation-35"].id == "${run.setup.resource_group_id}/providers/Microsoft.Network/virtualNetworks/${run.setup.workspace_id}/subnets/delegation-35"
     error_message = "apply: delegation Microsoft.MessagingConnectors/connectors (delegation-35) ID is not as expected."
   }
+
   assert {
     condition     = azurerm_subnet.subnets["delegation-36"].id == "${run.setup.resource_group_id}/providers/Microsoft.Network/virtualNetworks/${run.setup.workspace_id}/subnets/delegation-36"
     error_message = "apply: delegation Microsoft.Netapp/volumes (delegation-36) ID is not as expected."
   }
+
   assert {
     condition     = azurerm_subnet.subnets["delegation-37"].id == "${run.setup.resource_group_id}/providers/Microsoft.Network/virtualNetworks/${run.setup.workspace_id}/subnets/delegation-37"
     error_message = "apply: delegation Microsoft.Network/applicationGateways (delegation-37) ID is not as expected."
   }
+
   assert {
     condition     = azurerm_subnet.subnets["delegation-38"].id == "${run.setup.resource_group_id}/providers/Microsoft.Network/virtualNetworks/${run.setup.workspace_id}/subnets/delegation-38"
     error_message = "apply: delegation Microsoft.Network/dnsResolvers (delegation-38) ID is not as expected."
   }
-  assert {
-    condition     = azurerm_subnet.subnets["delegation-39"].id == "${run.setup.resource_group_id}/providers/Microsoft.Network/virtualNetworks/${run.setup.workspace_id}/subnets/delegation-39"
-    error_message = "apply: delegation Microsoft.Network/networkWatchers (delegation-39) ID is not as expected."
-  }
+
+  # assert {
+  #   condition     = azurerm_subnet.subnets["delegation-39"].id == "${run.setup.resource_group_id}/providers/Microsoft.Network/virtualNetworks/${run.setup.workspace_id}/subnets/delegation-39"
+  #   error_message = "apply: delegation Microsoft.Network/networkWatchers (delegation-39) ID is not as expected."
+  # }
+
   assert {
     condition     = azurerm_subnet.subnets["delegation-40"].id == "${run.setup.resource_group_id}/providers/Microsoft.Network/virtualNetworks/${run.setup.workspace_id}/subnets/delegation-40"
     error_message = "apply: delegation Microsoft.Orbital/orbitalGateways (delegation-40) ID is not as expected."
   }
+
   assert {
     condition     = azurerm_subnet.subnets["delegation-41"].id == "${run.setup.resource_group_id}/providers/Microsoft.Network/virtualNetworks/${run.setup.workspace_id}/subnets/delegation-41"
     error_message = "apply: delegation Microsoft.PowerAutomate/hostedRpa (delegation-41) ID is not as expected."
   }
+
   assert {
     condition     = azurerm_subnet.subnets["delegation-42"].id == "${run.setup.resource_group_id}/providers/Microsoft.Network/virtualNetworks/${run.setup.workspace_id}/subnets/delegation-42"
     error_message = "apply: delegation Microsoft.PowerPlatform/enterprisePolicies (delegation-42) ID is not as expected."
   }
+
   assert {
     condition     = azurerm_subnet.subnets["delegation-43"].id == "${run.setup.resource_group_id}/providers/Microsoft.Network/virtualNetworks/${run.setup.workspace_id}/subnets/delegation-43"
     error_message = "apply: delegation Microsoft.PowerPlatform/vnetaccesslinks (delegation-43) ID is not as expected."
   }
+
   assert {
     condition     = azurerm_subnet.subnets["delegation-44"].id == "${run.setup.resource_group_id}/providers/Microsoft.Network/virtualNetworks/${run.setup.workspace_id}/subnets/delegation-44"
     error_message = "apply: delegation Microsoft.ServiceFabricMesh/networks (delegation-44) ID is not as expected."
   }
+
   assert {
     condition     = azurerm_subnet.subnets["delegation-45"].id == "${run.setup.resource_group_id}/providers/Microsoft.Network/virtualNetworks/${run.setup.workspace_id}/subnets/delegation-45"
     error_message = "apply: delegation Microsoft.ServiceNetworking/trafficControllers (delegation-45) ID is not as expected."
   }
+
   assert {
     condition     = azurerm_subnet.subnets["delegation-46"].id == "${run.setup.resource_group_id}/providers/Microsoft.Network/virtualNetworks/${run.setup.workspace_id}/subnets/delegation-46"
     error_message = "apply: delegation Microsoft.Singularity/accounts/networks (delegation-46) ID is not as expected."
   }
+
   assert {
     condition     = azurerm_subnet.subnets["delegation-47"].id == "${run.setup.resource_group_id}/providers/Microsoft.Network/virtualNetworks/${run.setup.workspace_id}/subnets/delegation-47"
     error_message = "apply: delegation Microsoft.Singularity/accounts/npu (delegation-47) ID is not as expected."
   }
+
   assert {
     condition     = azurerm_subnet.subnets["delegation-48"].id == "${run.setup.resource_group_id}/providers/Microsoft.Network/virtualNetworks/${run.setup.workspace_id}/subnets/delegation-48"
     error_message = "apply: delegation Microsoft.Sql/managedInstances (delegation-48) ID is not as expected."
   }
+
   assert {
     condition     = azurerm_subnet.subnets["delegation-49"].id == "${run.setup.resource_group_id}/providers/Microsoft.Network/virtualNetworks/${run.setup.workspace_id}/subnets/delegation-49"
     error_message = "apply: delegation Microsoft.StoragePool/diskPools (delegation-49) ID is not as expected."
   }
+
   assert {
     condition     = azurerm_subnet.subnets["delegation-50"].id == "${run.setup.resource_group_id}/providers/Microsoft.Network/virtualNetworks/${run.setup.workspace_id}/subnets/delegation-50"
     error_message = "apply: delegation Microsoft.StreamAnalytics/streamingJobs (delegation-50) ID is not as expected."
   }
+
   assert {
     condition     = azurerm_subnet.subnets["delegation-51"].id == "${run.setup.resource_group_id}/providers/Microsoft.Network/virtualNetworks/${run.setup.workspace_id}/subnets/delegation-51"
     error_message = "apply: delegation Microsoft.Synapse/workspaces (delegation-51) ID is not as expected."
   }
+
   assert {
     condition     = azurerm_subnet.subnets["delegation-52"].id == "${run.setup.resource_group_id}/providers/Microsoft.Network/virtualNetworks/${run.setup.workspace_id}/subnets/delegation-52"
     error_message = "apply: delegation Microsoft.Web/hostingEnvironments (delegation-52) ID is not as expected."
   }
+
   assert {
     condition     = azurerm_subnet.subnets["delegation-53"].id == "${run.setup.resource_group_id}/providers/Microsoft.Network/virtualNetworks/${run.setup.workspace_id}/subnets/delegation-53"
     error_message = "apply: delegation Microsoft.Web/serverFarms (delegation-53) ID is not as expected."
   }
+
   assert {
     condition     = azurerm_subnet.subnets["delegation-54"].id == "${run.setup.resource_group_id}/providers/Microsoft.Network/virtualNetworks/${run.setup.workspace_id}/subnets/delegation-54"
     error_message = "apply: delegation NGINX.NGINXPLUS/nginxDeployments (delegation-54) ID is not as expected."
   }
+
   assert {
     condition     = azurerm_subnet.subnets["delegation-55"].id == "${run.setup.resource_group_id}/providers/Microsoft.Network/virtualNetworks/${run.setup.workspace_id}/subnets/delegation-55"
     error_message = "apply: delegation Oracle.Database/networkAttachments (delegation-55) ID is not as expected."
   }
+
   assert {
     condition     = azurerm_subnet.subnets["delegation-56"].id == "${run.setup.resource_group_id}/providers/Microsoft.Network/virtualNetworks/${run.setup.workspace_id}/subnets/delegation-56"
     error_message = "apply: delegation PaloAltoNetworks.Cloudngfw/firewalls (delegation-56) ID is not as expected."
   }
+
   assert {
     condition     = azurerm_subnet.subnets["delegation-57"].id == "${run.setup.resource_group_id}/providers/Microsoft.Network/virtualNetworks/${run.setup.workspace_id}/subnets/delegation-57"
     error_message = "apply: delegation PureStorage.Block/storagePools (delegation-57) ID is not as expected."
   }
+
   assert {
     condition     = azurerm_subnet.subnets["delegation-58"].id == "${run.setup.resource_group_id}/providers/Microsoft.Network/virtualNetworks/${run.setup.workspace_id}/subnets/delegation-58"
     error_message = "apply: delegation Qumulo.Storage/fileSystems (delegation-58) ID is not as expected."

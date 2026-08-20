@@ -45,7 +45,7 @@ locals {
     "Microsoft.Network/dnsResolvers"                  = ["virtualNetworks/subnets/join/action"]
     # "Microsoft.Network/managedResolvers"      = [] # Not supported by Azure
     # "Microsoft.Network/fpgaNetworkInterfaces" = [] # Need Microsoft.Network/AllowInternalDelegations
-    "Microsoft.Network/networkWatchers" = ["virtualNetworks/subnets/join/action"]
+    # "Microsoft.Network/networkWatchers" = [] # Provider bug: trailing dot in allowlist
     # "Microsoft.Network/virtualNetworkGateways" = [] # InternalServerError
     "Microsoft.Orbital/orbitalGateways"              = ["publicIPAddresses/join/action", "virtualNetworks/subnets/join/action", "virtualNetworks/read", "publicIPAddresses/read"]
     "Microsoft.PowerAutomate/hostedRpa"              = ["virtualNetworks/subnets/join/action"]
