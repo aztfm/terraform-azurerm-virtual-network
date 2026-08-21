@@ -44,118 +44,118 @@ run "plan" {
   }
 
   assert {
-    condition     = azurerm_virtual_network.vnet.name == run.setup.workspace_id
+    condition     = azurerm_virtual_network.main.name == run.setup.workspace_id
     error_message = "The virtual network name input variable is being modified."
   }
 
   assert {
-    condition     = azurerm_virtual_network.vnet.resource_group_name == run.setup.resource_group_name
-    error_message = "The virtual network resource group input variable is being modified."
+    condition     = azurerm_virtual_network.main.resource_group_name == run.setup.resource_group_name
+    error_message = "The virtual network resource_group_name input variable is being modified."
   }
 
   assert {
-    condition     = azurerm_virtual_network.vnet.location == run.setup.resource_group_location
+    condition     = azurerm_virtual_network.main.location == run.setup.resource_group_location
     error_message = "The virtual network location input variable is being modified."
   }
 
   assert {
-    condition     = tolist(azurerm_virtual_network.vnet.address_space) == var.address_space
-    error_message = "Virtual network address prefix are being modified."
+    condition     = tolist(azurerm_virtual_network.main.address_space) == var.address_space
+    error_message = "The virtual network address_space input variable is being modified."
   }
 
   assert {
-    condition     = tolist(azurerm_virtual_network.vnet.dns_servers) == var.dns_servers
-    error_message = "Virtual network DNS severs are being modified."
+    condition     = tolist(azurerm_virtual_network.main.dns_servers) == var.dns_servers
+    error_message = "The virtual network dns_servers input variable is being modified."
   }
 
   assert {
-    condition     = azurerm_virtual_network.vnet.bgp_community == var.bgp_community
-    error_message = "The virtual network bgp community variable is being modified."
+    condition     = azurerm_virtual_network.main.bgp_community == var.bgp_community
+    error_message = "The virtual network bgp_community input variable is being modified."
   }
 
   assert {
-    condition     = azurerm_virtual_network.vnet.encryption[0].enforcement == var.encryption_mode
-    error_message = "The virtual network encryption mode is being modified."
+    condition     = azurerm_virtual_network.main.encryption[0].enforcement == var.encryption_mode
+    error_message = "The virtual network encryption_mode input variable is being modified."
   }
 
   assert {
     condition     = azurerm_subnet.subnets["subnet1"].name == ({ for s in var.subnets : s.name => s })["subnet1"].name
-    error_message = "The subnet1 name is being modified."
+    error_message = "The subnet name input variable is being modified."
   }
 
   assert {
     condition     = azurerm_subnet.subnets["subnet1"].address_prefixes == ({ for s in var.subnets : s.name => s })["subnet1"].address_prefixes
-    error_message = "Subnet1 address prefixes are being modified."
+    error_message = "The subnet address_prefixes input variable is being modified."
   }
 
   assert {
     condition     = azurerm_subnet.subnets["subnet1"].delegation[0].name == ({ for s in var.subnets : s.name => s })["subnet1"].delegation
-    error_message = "The subnet1 delegation is being modified."
+    error_message = "The subnet delegation input variable is being modified."
   }
 
   assert {
     condition     = azurerm_subnet.subnets["subnet1"].private_link_service_network_policies_enabled == ({ for s in var.subnets : s.name => s })["subnet1"].private_link_service_network_policies_enabled
-    error_message = "Subnet1 private link service network policies is being modified."
+    error_message = "The subnet private_link_service_network_policies_enabled input variable is being modified."
   }
 
   assert {
     condition     = azurerm_subnet.subnets["subnet1"].default_outbound_access_enabled == ({ for s in var.subnets : s.name => s })["subnet1"].default_outbound_access_enabled
-    error_message = "Subnet1 default outbound access enabled is being modified."
+    error_message = "The subnet default_outbound_access_enabled input variable is being modified."
   }
 
   assert {
     condition     = azurerm_subnet.subnets["subnet2"].name == ({ for s in var.subnets : s.name => s })["subnet2"].name
-    error_message = "The subnet2 name is being modified."
+    error_message = "The subnet name input variable is being modified."
   }
 
   assert {
     condition     = azurerm_subnet.subnets["subnet2"].address_prefixes == ({ for s in var.subnets : s.name => s })["subnet2"].address_prefixes
-    error_message = "Subnet2 address prefixes are being modified."
+    error_message = "The subnet address_prefixes input variable is being modified."
   }
 
   assert {
     condition     = azurerm_subnet.subnets["subnet2"].default_outbound_access_enabled == ({ for s in var.subnets : s.name => s })["subnet2"].default_outbound_access_enabled
-    error_message = "Subnet2 default outbound access enabled is being modified."
+    error_message = "The subnet default_outbound_access_enabled input variable is being modified."
   }
 
   assert {
-    condition     = tolist(azurerm_subnet.subnets["subnet2"].service_endpoints) == ({ for s in var.subnets : s.name => s })["subnet2"].service_endpoints
-    error_message = "Subnet2 service endpoints are being modified."
+    condition     = tolist([for se in azurerm_subnet.subnets["subnet2"].service_endpoint : se.service]) == tolist(({ for s in var.subnets : s.name => s })["subnet2"].service_endpoints)
+    error_message = "The subnet service_endpoints input variable is being modified."
   }
 
   assert {
     condition     = azurerm_subnet.subnets["subnet2"].private_endpoint_network_policies == ({ for s in var.subnets : s.name => s })["subnet2"].private_endpoint_network_policies
-    error_message = "Subnet2 private endpoint service network policies is being modified."
+    error_message = "The subnet private_endpoint_network_policies input variable is being modified."
   }
 
   assert {
     condition     = azurerm_subnet.subnets["subnet3"].name == ({ for s in var.subnets : s.name => s })["subnet3"].name
-    error_message = "The subnet3 name is being modified."
+    error_message = "The subnet name input variable is being modified."
   }
 
   assert {
     condition     = azurerm_subnet.subnets["subnet3"].address_prefixes == ({ for s in var.subnets : s.name => s })["subnet3"].address_prefixes
-    error_message = "Subnet3 address prefixes are being modified."
+    error_message = "The subnet address_prefixes input variable is being modified."
   }
 
   assert {
-    condition     = tolist(azurerm_subnet.subnets["subnet3"].service_endpoints) == ({ for s in var.subnets : s.name => s })["subnet3"].service_endpoints
-    error_message = "Subnet3 service endpoints are being modified."
+    condition     = tolist([for se in azurerm_subnet.subnets["subnet3"].service_endpoint : se.service]) == tolist(({ for s in var.subnets : s.name => s })["subnet3"].service_endpoints)
+    error_message = "The subnet service_endpoints input variable is being modified."
   }
 
   assert {
     condition     = azurerm_subnet.subnets["subnet3"].delegation[0].name == ({ for s in var.subnets : s.name => s })["subnet3"].delegation
-    error_message = "The subnet1 delegation is being modified."
+    error_message = "The subnet delegation input variable is being modified."
   }
 
   assert {
     condition     = azurerm_subnet.subnets["subnet3"].private_endpoint_network_policies == ({ for s in var.subnets : s.name => s })["subnet3"].private_endpoint_network_policies
-    error_message = "Subnet3 private endpoint service network policies is being modified."
+    error_message = "The subnet private_endpoint_network_policies input variable is being modified."
   }
 
   assert {
     condition     = azurerm_subnet.subnets["subnet3"].private_link_service_network_policies_enabled == ({ for s in var.subnets : s.name => s })["subnet3"].private_link_service_network_policies_enabled
-    error_message = "Subnet3 private link service network policies is being modified."
+    error_message = "The subnet private_link_service_network_policies_enabled input variable is being modified."
   }
 }
 
@@ -169,7 +169,7 @@ run "apply" {
   }
 
   assert {
-    condition     = azurerm_virtual_network.vnet.id == "${run.setup.resource_group_id}/providers/Microsoft.Network/virtualNetworks/${run.setup.workspace_id}"
+    condition     = azurerm_virtual_network.main.id == "${run.setup.resource_group_id}/providers/Microsoft.Network/virtualNetworks/${run.setup.workspace_id}"
     error_message = "The Virtual Network ID is not as expected."
   }
 
@@ -189,47 +189,47 @@ run "apply" {
   }
 
   assert {
-    condition     = output.id == azurerm_virtual_network.vnet.id
+    condition     = output.id == azurerm_virtual_network.main.id
     error_message = "The Virtual Network ID output is not as expected."
   }
 
   assert {
-    condition     = output.guid == azurerm_virtual_network.vnet.guid
+    condition     = output.guid == azurerm_virtual_network.main.guid
     error_message = "The Virtual Network GUID output is not as expected."
   }
 
   assert {
-    condition     = output.name == azurerm_virtual_network.vnet.name
+    condition     = output.name == azurerm_virtual_network.main.name
     error_message = "The Virtual Network name output is not as expected."
   }
 
   assert {
-    condition     = output.resource_group_name == azurerm_virtual_network.vnet.resource_group_name
+    condition     = output.resource_group_name == azurerm_virtual_network.main.resource_group_name
     error_message = "The Virtual Network resource group name output is not as expected."
   }
 
   assert {
-    condition     = output.location == azurerm_virtual_network.vnet.location
+    condition     = output.location == azurerm_virtual_network.main.location
     error_message = "The Virtual Network location output is not as expected."
   }
 
   assert {
-    condition     = output.tags == azurerm_virtual_network.vnet.tags
+    condition     = output.tags == azurerm_virtual_network.main.tags
     error_message = "The Virtual Network tags output is not as expected."
   }
 
   assert {
-    condition     = output.address_space == azurerm_virtual_network.vnet.address_space
+    condition     = output.address_space == azurerm_virtual_network.main.address_space
     error_message = "The Virtual Network address space output is not as expected."
   }
 
   assert {
-    condition     = output.dns_servers == azurerm_virtual_network.vnet.dns_servers
+    condition     = output.dns_servers == azurerm_virtual_network.main.dns_servers
     error_message = "The Virtual Network DNS servers output is not as expected."
   }
 
   assert {
-    condition     = output.ddos_protection_plan == azurerm_virtual_network.vnet.ddos_protection_plan
+    condition     = output.ddos_protection_plan == azurerm_virtual_network.main.ddos_protection_plan
     error_message = "The Virtual Network DDoS protection plan output is not as expected."
   }
 

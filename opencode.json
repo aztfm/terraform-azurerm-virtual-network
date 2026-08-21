@@ -1,0 +1,14 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "autoupdate": true,
+  "skills": {
+    "paths": [".agents/skills"]
+  },
+  "mcp": {
+    "terraform-registry": {
+      "type": "local",
+      "command": ["npx", "-y", "terraform-mcp-server"],
+      "enabled": true
+    }
+  }
+}

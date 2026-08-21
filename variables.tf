@@ -73,7 +73,7 @@ variable "encryption_mode" {
   description = "The encryption mode for the virtual network. Possible values are 'AllowUnencrypted' or 'DropUnencrypted'."
 
   validation {
-    condition     = var.encryption_mode == null || contains(["AllowUnencrypted", "DropUnencrypted"], var.encryption_mode)
+    condition     = var.encryption_mode == null ? true : contains(["AllowUnencrypted", "DropUnencrypted"], var.encryption_mode)
     error_message = "The encryption mode must be either 'AllowUnencrypted' or 'DropUnencrypted'."
   }
 }
@@ -98,11 +98,11 @@ variable "subnets" {
 
   validation {
     condition = alltrue([for subnet in var.subnets : alltrue([for endpoint in subnet.service_endpoints : contains([
-      "Microsoft.AzureActiveDirectory", "Microsoft.AzureCosmosDB", "Microsoft.ContainerRegistry",
-      "Microsoft.EventHub", "Microsoft.KeyVault", "Microsoft.ServiceBus", "Microsoft.Sql",
-      "Microsoft.Storage", "Microsoft.Storage.Global", "Microsoft.Web"
+      "Microsoft.AzureActiveDirectory", "Microsoft.AzureCosmosDB", "Microsoft.CognitiveServices",
+      "Microsoft.ContainerRegistry", "Microsoft.EventHub", "Microsoft.KeyVault", "Microsoft.ServiceBus",
+      "Microsoft.Sql", "Microsoft.Storage", "Microsoft.Storage.Global", "Microsoft.Web"
     ], endpoint)]) if subnet.service_endpoints != null])
-    error_message = "All service endpoints must be one of the following: Microsoft.AzureActiveDirectory, Microsoft.AzureCosmosDB, Microsoft.ContainerRegistry, Microsoft.EventHub, Microsoft.KeyVault, Microsoft.ServiceBus, Microsoft.Sql, Microsoft.Storage, or Microsoft.Web."
+    error_message = "All service endpoints must be one of the following: Microsoft.AzureActiveDirectory, Microsoft.AzureCosmosDB, Microsoft.CognitiveServices, Microsoft.ContainerRegistry, Microsoft.EventHub, Microsoft.KeyVault, Microsoft.ServiceBus, Microsoft.Sql, Microsoft.Storage, Microsoft.Storage.Global, or Microsoft.Web."
   }
 
   validation {
@@ -112,22 +112,28 @@ variable "subnets" {
 
   validation {
     condition = alltrue([for subnet in var.subnets : contains([
+      # Supported delegations
       "GitHub.Network/networkSettings", "Informatica.DataManagement/organizations", "Microsoft.ApiManagement/service",
-      "Microsoft.Apollo/npu", "Microsoft.App/environments", "Microsoft.App/testClients", "Microsoft.AVS/PrivateClouds",
+      "Microsoft.Apollo/npu", "Microsoft.App/environments", "Microsoft.AVS/PrivateClouds",
       "Microsoft.AzureCosmosDB/clusters", "Microsoft.BareMetal/AzureHostedService", "Microsoft.BareMetal/AzureVMware",
       "Microsoft.BareMetal/CrayServers", "Microsoft.Batch/batchAccounts", "Microsoft.CloudTest/hostedpools",
-      "Microsoft.CloudTest/images", "Microsoft.CloudTest/pools", "Microsoft.Codespaces/plans", "Microsoft.ContainerInstance/containerGroups",
+      "Microsoft.CloudTest/images", "Microsoft.CloudTest/pools", "Microsoft.ContainerInstance/containerGroups",
       "Microsoft.ContainerService/managedClusters", "Microsoft.Databricks/workspaces", "Microsoft.DBforMySQL/flexibleServers",
       "Microsoft.DBforMySQL/servers", "Microsoft.DBforMySQL/serversv2", "Microsoft.DBforPostgreSQL/flexibleServers", "Microsoft.DBforPostgreSQL/serversv2",
       "Microsoft.DBforPostgreSQL/singleServers", "Microsoft.DelegatedNetwork/controller", "Microsoft.DevCenter/networkConnection", "Microsoft.DevOpsInfrastructure/pools",
       "Microsoft.DocumentDB/cassandraClusters", "Microsoft.Fidalgo/networkSettings", "Microsoft.HardwareSecurityModules/dedicatedHSMs", "Microsoft.Kusto/clusters",
-      "Microsoft.LabServices/labplans", "Microsoft.Logic/integrationServiceEnvironments", "Microsoft.MachineLearningServices/workspaces", "Microsoft.Netapp/volumes",
-      "Microsoft.Network/applicationGateways", "Microsoft.Network/dnsResolvers", "Microsoft.Network/networkWatchers", "Microsoft.Orbital/orbitalGateways",
+      "Microsoft.LabServices/labplans", "Microsoft.Logic/integrationServiceEnvironments", "Microsoft.MachineLearningServices/workspaces", "Microsoft.MessagingConnectors/connectors", "Microsoft.Netapp/volumes",
+      "Microsoft.Network/applicationGateways", "Microsoft.Network/dnsResolvers",
       "Microsoft.PowerAutomate/hostedRpa", "Microsoft.PowerPlatform/enterprisePolicies", "Microsoft.PowerPlatform/vnetaccesslinks",
       "Microsoft.ServiceFabricMesh/networks", "Microsoft.ServiceNetworking/trafficControllers", "Microsoft.Singularity/accounts/networks",
       "Microsoft.Singularity/accounts/npu", "Microsoft.Sql/managedInstances", "Microsoft.StoragePool/diskPools", "Microsoft.StreamAnalytics/streamingJobs",
       "Microsoft.Synapse/workspaces", "Microsoft.Web/hostingEnvironments", "Microsoft.Web/serverFarms", "NGINX.NGINXPLUS/nginxDeployments",
-      "PaloAltoNetworks.Cloudngfw/firewalls", "Qumulo.Storage/fileSystems", "Oracle.Database/networkAttachments"
+      "PaloAltoNetworks.Cloudngfw/firewalls", "PureStorage.Block/storagePools", "Qumulo.Storage/fileSystems", "Oracle.Database/networkAttachments",
+      # Provider bug: trailing dot in allowlist — "Microsoft.Network/networkWatchers."
+      # Need Microsoft.Network/AllowInternalDelegations — "Microsoft.App/testClients", "Microsoft.BareMetal/AzureHPC", "Microsoft.BareMetal/AzurePaymentHSM", "Microsoft.BareMetal/MonitoringServers", "Microsoft.ContainerService/TestClients", "Microsoft.Network/fpgaNetworkInterfaces", "Microsoft.Sql/managedInstancesOnebox", "Microsoft.Sql/managedInstancesStage", "Microsoft.Sql/managedInstancesTest"
+      # InvalidServiceNameOnDelegation — "Microsoft.Codespaces/plans", "Microsoft.Orbital/orbitalGateways"
+      # Not supported by Azure — "Microsoft.Network/managedResolvers", "Microsoft.Sql/servers"
+      # InternalServerError — "Microsoft.Network/virtualNetworkGateways"
     ], subnet.delegation) if subnet.delegation != null])
     error_message = "All delegation values must be one of the allowed service delegations."
   }
