@@ -30,6 +30,7 @@ variables {
     name             = "delegation-04"
     address_prefixes = ["10.4.0.0/24"]
     delegation       = "Microsoft.App/environments"
+    }, {
     # delegation-05: Microsoft.App/testClients — Need Microsoft.Network/AllowInternalDelegations
     # {
     #   name             = "delegation-05"
@@ -72,6 +73,7 @@ variables {
     name             = "delegation-14"
     address_prefixes = ["10.14.0.0/24"]
     delegation       = "Microsoft.CloudTest/pools"
+    }, {
     # delegation-15: Microsoft.Codespaces/plans — InvalidServiceNameOnDelegation
     # {
     #   name             = "delegation-15"
@@ -170,6 +172,7 @@ variables {
     name             = "delegation-38"
     address_prefixes = ["10.38.0.0/24"]
     delegation       = "Microsoft.Network/dnsResolvers"
+    }, {
     # delegation-40: Microsoft.Orbital/orbitalGateways — InvalidServiceNameOnDelegation
     # {
     #   name             = "delegation-40"
