@@ -1,5 +1,9 @@
 ## UNRELEASED
 
+BREAKING CHANGES:
+
+- The following values have been removed from the `subnets.delegation` parameter: `Microsoft.App/testClients`, `Microsoft.Codespaces/plans` and `Microsoft.Orbital/orbitalGateways`.
+
 ENHANCEMENTS:
 
 - `subnets.service_endpoints`: updated to use the `service_endpoint` block from `hashicorp/azurerm` provider v5.0.

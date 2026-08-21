@@ -30,11 +30,13 @@ variables {
     name             = "delegation-04"
     address_prefixes = ["10.4.0.0/24"]
     delegation       = "Microsoft.App/environments"
-    }, {
-    name             = "delegation-05"
-    address_prefixes = ["10.5.0.0/24"]
-    delegation       = "Microsoft.App/testClients"
-    }, {
+    # delegation-05: Microsoft.App/testClients — Need Microsoft.Network/AllowInternalDelegations
+    # {
+    #   name             = "delegation-05"
+    #   address_prefixes = ["10.5.0.0/24"]
+    #   delegation       = "Microsoft.App/testClients"
+    # }, {
+
     name             = "delegation-06"
     address_prefixes = ["10.6.0.0/24"]
     delegation       = "Microsoft.AVS/PrivateClouds"
@@ -70,11 +72,13 @@ variables {
     name             = "delegation-14"
     address_prefixes = ["10.14.0.0/24"]
     delegation       = "Microsoft.CloudTest/pools"
-    }, {
-    name             = "delegation-15"
-    address_prefixes = ["10.15.0.0/24"]
-    delegation       = "Microsoft.Codespaces/plans"
-    }, {
+    # delegation-15: Microsoft.Codespaces/plans — InvalidServiceNameOnDelegation
+    # {
+    #   name             = "delegation-15"
+    #   address_prefixes = ["10.15.0.0/24"]
+    #   delegation       = "Microsoft.Codespaces/plans"
+    # }, {
+
     name             = "delegation-16"
     address_prefixes = ["10.16.0.0/24"]
     delegation       = "Microsoft.ContainerInstance/containerGroups"
@@ -166,11 +170,13 @@ variables {
     name             = "delegation-38"
     address_prefixes = ["10.38.0.0/24"]
     delegation       = "Microsoft.Network/dnsResolvers"
-    }, {
-    name             = "delegation-40"
-    address_prefixes = ["10.40.0.0/24"]
-    delegation       = "Microsoft.Orbital/orbitalGateways"
-    }, {
+    # delegation-40: Microsoft.Orbital/orbitalGateways — InvalidServiceNameOnDelegation
+    # {
+    #   name             = "delegation-40"
+    #   address_prefixes = ["10.40.0.0/24"]
+    #   delegation       = "Microsoft.Orbital/orbitalGateways"
+    # }, {
+
     name             = "delegation-41"
     address_prefixes = ["10.41.0.0/24"]
     delegation       = "Microsoft.PowerAutomate/hostedRpa"
@@ -304,15 +310,15 @@ run "plan" {
     error_message = "plan: delegation Microsoft.App/environments (delegation-04) service_delegation actions are not as expected."
   }
 
-  assert {
-    condition     = azurerm_subnet.subnets["delegation-05"].delegation[0].service_delegation[0].name == "Microsoft.App/testClients"
-    error_message = "plan: delegation Microsoft.App/testClients (delegation-05) service_delegation name is not as expected."
-  }
+  # assert {
+  #   condition     = azurerm_subnet.subnets["delegation-05"].delegation[0].service_delegation[0].name == "Microsoft.App/testClients"
+  #   error_message = "plan: delegation Microsoft.App/testClients (delegation-05) service_delegation name is not as expected."
+  # }
 
-  assert {
-    condition     = sort(azurerm_subnet.subnets["delegation-05"].delegation[0].service_delegation[0].actions) == sort(["Microsoft.Network/virtualNetworks/subnets/join/action"])
-    error_message = "plan: delegation Microsoft.App/testClients (delegation-05) service_delegation actions are not as expected."
-  }
+  # assert {
+  #   condition     = sort(azurerm_subnet.subnets["delegation-05"].delegation[0].service_delegation[0].actions) == sort(["Microsoft.Network/virtualNetworks/subnets/join/action"])
+  #   error_message = "plan: delegation Microsoft.App/testClients (delegation-05) service_delegation actions are not as expected."
+  # }
 
   assert {
     condition     = azurerm_subnet.subnets["delegation-06"].delegation[0].service_delegation[0].name == "Microsoft.AVS/PrivateClouds"
@@ -404,15 +410,15 @@ run "plan" {
     error_message = "plan: delegation Microsoft.CloudTest/pools (delegation-14) service_delegation actions are not as expected."
   }
 
-  assert {
-    condition     = azurerm_subnet.subnets["delegation-15"].delegation[0].service_delegation[0].name == "Microsoft.Codespaces/plans"
-    error_message = "plan: delegation Microsoft.Codespaces/plans (delegation-15) service_delegation name is not as expected."
-  }
+  # assert {
+  #   condition     = azurerm_subnet.subnets["delegation-15"].delegation[0].service_delegation[0].name == "Microsoft.Codespaces/plans"
+  #   error_message = "plan: delegation Microsoft.Codespaces/plans (delegation-15) service_delegation name is not as expected."
+  # }
 
-  assert {
-    condition     = sort(azurerm_subnet.subnets["delegation-15"].delegation[0].service_delegation[0].actions) == sort(["Microsoft.Network/virtualNetworks/subnets/join/action"])
-    error_message = "plan: delegation Microsoft.Codespaces/plans (delegation-15) service_delegation actions are not as expected."
-  }
+  # assert {
+  #   condition     = sort(azurerm_subnet.subnets["delegation-15"].delegation[0].service_delegation[0].actions) == sort(["Microsoft.Network/virtualNetworks/subnets/join/action"])
+  #   error_message = "plan: delegation Microsoft.Codespaces/plans (delegation-15) service_delegation actions are not as expected."
+  # }
 
   assert {
     condition     = azurerm_subnet.subnets["delegation-16"].delegation[0].service_delegation[0].name == "Microsoft.ContainerInstance/containerGroups"
@@ -654,15 +660,15 @@ run "plan" {
   #   error_message = "plan: delegation Microsoft.Network/networkWatchers (delegation-39) service_delegation actions are not as expected."
   # }
 
-  assert {
-    condition     = azurerm_subnet.subnets["delegation-40"].delegation[0].service_delegation[0].name == "Microsoft.Orbital/orbitalGateways"
-    error_message = "plan: delegation Microsoft.Orbital/orbitalGateways (delegation-40) service_delegation name is not as expected."
-  }
+  # assert {
+  #   condition     = azurerm_subnet.subnets["delegation-40"].delegation[0].service_delegation[0].name == "Microsoft.Orbital/orbitalGateways"
+  #   error_message = "plan: delegation Microsoft.Orbital/orbitalGateways (delegation-40) service_delegation name is not as expected."
+  # }
 
-  assert {
-    condition     = sort(azurerm_subnet.subnets["delegation-40"].delegation[0].service_delegation[0].actions) == sort(["Microsoft.Network/publicIPAddresses/join/action", "Microsoft.Network/virtualNetworks/subnets/join/action", "Microsoft.Network/virtualNetworks/read", "Microsoft.Network/publicIPAddresses/read"])
-    error_message = "plan: delegation Microsoft.Orbital/orbitalGateways (delegation-40) service_delegation actions are not as expected."
-  }
+  # assert {
+  #   condition     = sort(azurerm_subnet.subnets["delegation-40"].delegation[0].service_delegation[0].actions) == sort(["Microsoft.Network/publicIPAddresses/join/action", "Microsoft.Network/virtualNetworks/subnets/join/action", "Microsoft.Network/virtualNetworks/read", "Microsoft.Network/publicIPAddresses/read"])
+  #   error_message = "plan: delegation Microsoft.Orbital/orbitalGateways (delegation-40) service_delegation actions are not as expected."
+  # }
 
   assert {
     condition     = azurerm_subnet.subnets["delegation-41"].delegation[0].service_delegation[0].name == "Microsoft.PowerAutomate/hostedRpa"
@@ -879,10 +885,10 @@ run "apply" {
     error_message = "apply: delegation Microsoft.App/environments (delegation-04) ID is not as expected."
   }
 
-  assert {
-    condition     = azurerm_subnet.subnets["delegation-05"].id == "${run.setup.resource_group_id}/providers/Microsoft.Network/virtualNetworks/${run.setup.workspace_id}/subnets/delegation-05"
-    error_message = "apply: delegation Microsoft.App/testClients (delegation-05) ID is not as expected."
-  }
+  # assert {
+  #   condition     = azurerm_subnet.subnets["delegation-05"].id == "${run.setup.resource_group_id}/providers/Microsoft.Network/virtualNetworks/${run.setup.workspace_id}/subnets/delegation-05"
+  #   error_message = "apply: delegation Microsoft.App/testClients (delegation-05) ID is not as expected."
+  # }
 
   assert {
     condition     = azurerm_subnet.subnets["delegation-06"].id == "${run.setup.resource_group_id}/providers/Microsoft.Network/virtualNetworks/${run.setup.workspace_id}/subnets/delegation-06"
@@ -929,10 +935,10 @@ run "apply" {
     error_message = "apply: delegation Microsoft.CloudTest/pools (delegation-14) ID is not as expected."
   }
 
-  assert {
-    condition     = azurerm_subnet.subnets["delegation-15"].id == "${run.setup.resource_group_id}/providers/Microsoft.Network/virtualNetworks/${run.setup.workspace_id}/subnets/delegation-15"
-    error_message = "apply: delegation Microsoft.Codespaces/plans (delegation-15) ID is not as expected."
-  }
+  # assert {
+  #   condition     = azurerm_subnet.subnets["delegation-15"].id == "${run.setup.resource_group_id}/providers/Microsoft.Network/virtualNetworks/${run.setup.workspace_id}/subnets/delegation-15"
+  #   error_message = "apply: delegation Microsoft.Codespaces/plans (delegation-15) ID is not as expected."
+  # }
 
   assert {
     condition     = azurerm_subnet.subnets["delegation-16"].id == "${run.setup.resource_group_id}/providers/Microsoft.Network/virtualNetworks/${run.setup.workspace_id}/subnets/delegation-16"
@@ -1054,10 +1060,10 @@ run "apply" {
   #   error_message = "apply: delegation Microsoft.Network/networkWatchers (delegation-39) ID is not as expected."
   # }
 
-  assert {
-    condition     = azurerm_subnet.subnets["delegation-40"].id == "${run.setup.resource_group_id}/providers/Microsoft.Network/virtualNetworks/${run.setup.workspace_id}/subnets/delegation-40"
-    error_message = "apply: delegation Microsoft.Orbital/orbitalGateways (delegation-40) ID is not as expected."
-  }
+  # assert {
+  #   condition     = azurerm_subnet.subnets["delegation-40"].id == "${run.setup.resource_group_id}/providers/Microsoft.Network/virtualNetworks/${run.setup.workspace_id}/subnets/delegation-40"
+  #   error_message = "apply: delegation Microsoft.Orbital/orbitalGateways (delegation-40) ID is not as expected."
+  # }
 
   assert {
     condition     = azurerm_subnet.subnets["delegation-41"].id == "${run.setup.resource_group_id}/providers/Microsoft.Network/virtualNetworks/${run.setup.workspace_id}/subnets/delegation-41"
