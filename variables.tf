@@ -78,6 +78,80 @@ variable "encryption_mode" {
   }
 }
 
+variable "service_delegation_actions" {
+  type  = map(list(string))
+  default = {
+    "GitHub.Network/networkSettings"           = ["virtualNetworks/subnets/join/action"]
+    "Informatica.DataManagement/organizations" = ["virtualNetworks/subnets/join/action"]
+    "Microsoft.ApiManagement/service"          = ["virtualNetworks/subnets/join/action", "virtualNetworks/subnets/prepareNetworkPolicies/action"]
+    "Microsoft.Apollo/npu"                     = ["networkinterfaces/*", "virtualNetworks/subnets/join/action"]
+    "Microsoft.App/environments"               = ["virtualNetworks/subnets/join/action"]
+    "Microsoft.App/testClients"                = ["virtualNetworks/subnets/join/action"]
+    "Microsoft.AVS/PrivateClouds"              = ["networkinterfaces/*"]
+    "Microsoft.AzureCosmosDB/clusters"         = ["virtualNetworks/subnets/join/action"]
+    "Microsoft.BareMetal/AzureHostedService"   = ["networkinterfaces/*", "virtualNetworks/subnets/join/action"]
+    # "Microsoft.BareMetal/AzureHPC"        = [] # Need Microsoft.Network/AllowInternalDelegations
+    # "Microsoft.BareMetal/AzurePaymentHSM" = [] # Need Microsoft.Network/AllowInternalDelegations
+    "Microsoft.BareMetal/AzureVMware" = ["networkinterfaces/*", "virtualNetworks/subnets/join/action"]
+    "Microsoft.BareMetal/CrayServers" = ["networkinterfaces/*", "virtualNetworks/subnets/join/action"]
+    # "Microsoft.BareMetal/MonitoringServers" = [] # Need Microsoft.Network/AllowInternalDelegations
+    "Microsoft.Batch/batchAccounts"               = ["virtualNetworks/subnets/action"]
+    "Microsoft.CloudTest/hostedpools"             = ["virtualNetworks/subnets/join/action"]
+    "Microsoft.CloudTest/images"                  = ["virtualNetworks/subnets/join/action"]
+    "Microsoft.CloudTest/pools"                   = ["virtualNetworks/subnets/join/action"]
+    "Microsoft.Codespaces/plans"                  = ["virtualNetworks/subnets/join/action"]
+    "Microsoft.ContainerInstance/containerGroups" = ["virtualNetworks/subnets/action"]
+    "Microsoft.ContainerService/managedClusters"  = ["virtualNetworks/subnets/join/action"]
+    # "Microsoft.ContainerService/TestClients" = [] # Need Microsoft.Network/AllowInternalDelegations
+    "Microsoft.Databricks/workspaces"                 = ["virtualNetworks/subnets/join/action", "virtualNetworks/subnets/prepareNetworkPolicies/action", "virtualNetworks/subnets/unprepareNetworkPolicies/action"]
+    "Microsoft.DBforMySQL/flexibleServers"            = ["virtualNetworks/subnets/join/action"]
+    "Microsoft.DBforMySQL/servers"                    = ["virtualNetworks/subnets/join/action"]
+    "Microsoft.DBforMySQL/serversv2"                  = ["virtualNetworks/subnets/join/action"]
+    "Microsoft.DBforPostgreSQL/flexibleServers"       = ["virtualNetworks/subnets/join/action"]
+    "Microsoft.DBforPostgreSQL/serversv2"             = ["virtualNetworks/subnets/join/action"]
+    "Microsoft.DBforPostgreSQL/singleServers"         = ["virtualNetworks/subnets/join/action"]
+    "Microsoft.DelegatedNetwork/controller"           = ["virtualNetworks/subnets/join/action"]
+    "Microsoft.DevCenter/networkConnection"           = ["virtualNetworks/subnets/join/action"]
+    "Microsoft.DevOpsInfrastructure/pools"            = ["virtualNetworks/subnets/join/action"]
+    "Microsoft.DocumentDB/cassandraClusters"          = ["virtualNetworks/subnets/join/action"]
+    "Microsoft.Fidalgo/networkSettings"               = ["virtualNetworks/subnets/join/action"]
+    "Microsoft.HardwareSecurityModules/dedicatedHSMs" = ["networkinterfaces/*", "virtualNetworks/subnets/join/action"]
+    "Microsoft.Kusto/clusters"                        = ["virtualNetworks/subnets/join/action", "virtualNetworks/subnets/prepareNetworkPolicies/action", "virtualNetworks/subnets/unprepareNetworkPolicies/action"]
+    "Microsoft.LabServices/labplans"                  = ["virtualNetworks/subnets/join/action"]
+    "Microsoft.Logic/integrationServiceEnvironments"  = ["virtualNetworks/subnets/action"]
+    "Microsoft.MachineLearningServices/workspaces"    = ["virtualNetworks/subnets/join/action"]
+    "Microsoft.Netapp/volumes"                        = ["networkinterfaces/*", "virtualNetworks/subnets/join/action"]
+    "Microsoft.Network/applicationGateways"           = ["virtualNetworks/subnets/join/action"]
+    "Microsoft.Network/dnsResolvers"                  = ["virtualNetworks/subnets/join/action"]
+    # "Microsoft.Network/managedResolvers"      = [] # Not supported by Azure
+    # "Microsoft.Network/fpgaNetworkInterfaces" = [] # Need Microsoft.Network/AllowInternalDelegations
+    "Microsoft.Network/networkWatchers" = ["virtualNetworks/subnets/join/action"]
+    # "Microsoft.Network/virtualNetworkGateways" = [] # InternalServerError
+    "Microsoft.Orbital/orbitalGateways"              = ["publicIPAddresses/join/action", "virtualNetworks/subnets/join/action", "virtualNetworks/read", "publicIPAddresses/read"]
+    "Microsoft.PowerAutomate/hostedRpa"              = ["virtualNetworks/subnets/join/action"]
+    "Microsoft.PowerPlatform/enterprisePolicies"     = ["virtualNetworks/subnets/join/action"]
+    "Microsoft.PowerPlatform/vnetaccesslinks"        = ["virtualNetworks/subnets/join/action"]
+    "Microsoft.ServiceFabricMesh/networks"           = ["virtualNetworks/subnets/action"]
+    "Microsoft.ServiceNetworking/trafficControllers" = ["virtualNetworks/subnets/join/action"]
+    "Microsoft.Singularity/accounts/networks"        = ["networkinterfaces/*", "virtualNetworks/subnets/join/action"]
+    "Microsoft.Singularity/accounts/npu"             = ["networkinterfaces/*", "virtualNetworks/subnets/join/action"]
+    "Microsoft.Sql/managedInstances"                 = ["virtualNetworks/subnets/join/action", "virtualNetworks/subnets/prepareNetworkPolicies/action", "virtualNetworks/subnets/unprepareNetworkPolicies/action"]
+    # "Microsoft.Sql/managedInstancesOnebox" = [] # Need Microsoft.Network/AllowInternalDelegations
+    # "Microsoft.Sql/managedInstancesStage"  = [] # Need Microsoft.Network/AllowInternalDelegations
+    # "Microsoft.Sql/managedInstancesTest"   = [] # Need Microsoft.Network/AllowInternalDelegations
+    # "Microsoft.Sql/servers"                = [] # Not supported by Azure
+    "Microsoft.StoragePool/diskPools"         = ["virtualNetworks/read"]
+    "Microsoft.StreamAnalytics/streamingJobs" = ["virtualNetworks/subnets/join/action"]
+    "Microsoft.Synapse/workspaces"            = ["virtualNetworks/subnets/join/action"]
+    "Microsoft.Web/hostingEnvironments"       = ["virtualNetworks/subnets/action"]
+    "Microsoft.Web/serverFarms"               = ["virtualNetworks/subnets/action"]
+    "NGINX.NGINXPLUS/nginxDeployments"        = ["virtualNetworks/subnets/join/action"]
+    "PaloAltoNetworks.Cloudngfw/firewalls"    = ["virtualNetworks/subnets/join/action"]
+    "Qumulo.Storage/fileSystems"              = ["virtualNetworks/subnets/join/action"]
+    "Oracle.Database/networkAttachments"      = ["virtualNetworks/subnets/join/action"]
+  }
+}
+
 variable "subnets" {
   type = list(object({
     name                                          = string
@@ -90,7 +164,6 @@ variable "subnets" {
   }))
   default     = []
   description = "List of objects that represent the configuration of each subnet."
-
   validation {
     condition     = alltrue([for subnet in var.subnets : can([for ip in subnet.address_prefixes : cidrsubnet(ip, 0, 0)])])
     error_message = "All address prefixes must be valid IP ranges in CIDR format."
@@ -111,24 +184,7 @@ variable "subnets" {
   }
 
   validation {
-    condition = alltrue([for subnet in var.subnets : contains([
-      "GitHub.Network/networkSettings", "Informatica.DataManagement/organizations", "Microsoft.ApiManagement/service",
-      "Microsoft.Apollo/npu", "Microsoft.App/environments", "Microsoft.App/testClients", "Microsoft.AVS/PrivateClouds",
-      "Microsoft.AzureCosmosDB/clusters", "Microsoft.BareMetal/AzureHostedService", "Microsoft.BareMetal/AzureVMware",
-      "Microsoft.BareMetal/CrayServers", "Microsoft.Batch/batchAccounts", "Microsoft.CloudTest/hostedpools",
-      "Microsoft.CloudTest/images", "Microsoft.CloudTest/pools", "Microsoft.Codespaces/plans", "Microsoft.ContainerInstance/containerGroups",
-      "Microsoft.ContainerService/managedClusters", "Microsoft.Databricks/workspaces", "Microsoft.DBforMySQL/flexibleServers",
-      "Microsoft.DBforMySQL/servers", "Microsoft.DBforMySQL/serversv2", "Microsoft.DBforPostgreSQL/flexibleServers", "Microsoft.DBforPostgreSQL/serversv2",
-      "Microsoft.DBforPostgreSQL/singleServers", "Microsoft.DelegatedNetwork/controller", "Microsoft.DevCenter/networkConnection", "Microsoft.DevOpsInfrastructure/pools",
-      "Microsoft.DocumentDB/cassandraClusters", "Microsoft.Fidalgo/networkSettings", "Microsoft.HardwareSecurityModules/dedicatedHSMs", "Microsoft.Kusto/clusters",
-      "Microsoft.LabServices/labplans", "Microsoft.Logic/integrationServiceEnvironments", "Microsoft.MachineLearningServices/workspaces", "Microsoft.Netapp/volumes",
-      "Microsoft.Network/applicationGateways", "Microsoft.Network/dnsResolvers", "Microsoft.Network/networkWatchers", "Microsoft.Orbital/orbitalGateways",
-      "Microsoft.PowerAutomate/hostedRpa", "Microsoft.PowerPlatform/enterprisePolicies", "Microsoft.PowerPlatform/vnetaccesslinks",
-      "Microsoft.ServiceFabricMesh/networks", "Microsoft.ServiceNetworking/trafficControllers", "Microsoft.Singularity/accounts/networks",
-      "Microsoft.Singularity/accounts/npu", "Microsoft.Sql/managedInstances", "Microsoft.StoragePool/diskPools", "Microsoft.StreamAnalytics/streamingJobs",
-      "Microsoft.Synapse/workspaces", "Microsoft.Web/hostingEnvironments", "Microsoft.Web/serverFarms", "NGINX.NGINXPLUS/nginxDeployments",
-      "PaloAltoNetworks.Cloudngfw/firewalls", "Qumulo.Storage/fileSystems", "Oracle.Database/networkAttachments"
-    ], subnet.delegation) if subnet.delegation != null])
+    condition = alltrue([for subnet in var.subnets : contains(keys(var.service_delegation_actions), subnet.delegation) if subnet.delegation != null])
     error_message = "All delegation values must be one of the allowed service delegations."
   }
 }

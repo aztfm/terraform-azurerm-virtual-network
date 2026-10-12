@@ -44,7 +44,7 @@ resource "azurerm_subnet" "subnets" {
 
       service_delegation {
         name    = each.value.delegation
-        actions = formatlist("Microsoft.Network/%s", local.service_delegation_actions[each.value.delegation])
+        actions = formatlist("Microsoft.Network/%s", var.service_delegation_actions[each.value.delegation])
       }
     }
   }
